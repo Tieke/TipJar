@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: TipJar_development
+
+test:
+  <<: *default
+  database: TipJar_test
+
+production:
+  <<: *default
+  database: TipJar_production
+  username: TipJar
+  password: <%= ENV['TIPJAR_DATABASE_PASSWORD'] %>
