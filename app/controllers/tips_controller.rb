@@ -7,7 +7,7 @@ class TipsController < ApplicationController
 	end
 
 	def show
-		@tip = Tip.find(params[:id])		
+		@tip = Tip.find(params[:id])
 		render json: @tip
 	end
 
@@ -22,6 +22,7 @@ class TipsController < ApplicationController
 	end
 
 	def new
+		@tippee = Tippee.find_by(tippee_token: params[:tippee_token])
 	end
 
 	def create

@@ -1,0 +1,10 @@
+<%= form_for :tip do |f| %>
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount, placeholder: 0.01 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Tip" %>
+  </div>
+<% end %>
