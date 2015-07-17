@@ -2,15 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :users, only: [:index, :show] do
-  	resources :tips, except: [:edit, :update, :destroy, :show, :index]
-  end
+  resources :users, only: [:index, :show]
 
   resources :tips, only: [:index, :show]
 
   get 'users/:user_id/tips/given', to: 'tips#given'
 
   get 'users/:user_id/tips/received', to: 'tips#received'
+
+  get 'tips/new', to: 'tips#new'
+
+  post 'tips/:tippee_id', to: 'tips#create'
 
   # transactions
   # 	create
