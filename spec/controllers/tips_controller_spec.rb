@@ -84,22 +84,23 @@ RSpec.describe TipsController, type: :controller do
 
 	end
 
-	describe "#new" do
+	describe "#new_widget" do
 		before do
-			get :new
+			tippee = create(:tippee)
+			get :new_widget, {tippee_token: tippee.tippee_token}
 		end
 
 		it { should respond_with(200) }
-		it {should render_template(:new) }
+		it { should render_template(:new_widget) }
 	end
 
-	describe '#create' do
+	describe '#create_from_widget' do
 		context "if valid params" do
 
 			before do
 				@tippee = create(:tippee)
 				@tip_params = attributes_for(:tip, tippee_id: @tippee.id)
-				post :create, { tippee_id: @tippee.id, tip: @tip_params }
+				post :create_from_widget, { tippee_token: @tippee.tippee_token, tip: @tip_params }
 			end
 
 			it { should respond_with(302) }
@@ -123,6 +124,14 @@ RSpec.describe TipsController, type: :controller do
 				expect(@tippee.tips).to include(tip)
 			end
 
+			it "increased the balance for the intended tippee" do
+
+			end
+
+			it "decreased the balance of the tipper" do
+
+			end
+
 		end
 
 		context "if invalid params" do
@@ -130,12 +139,12 @@ RSpec.describe TipsController, type: :controller do
 			before do
 				@tippee = create(:tippee)
 				@invalid_tip_params = attributes_for(:tip, amount: 0, tippee_id: @tippee.id)
-				post :create, { tippee_id: @tippee.id, tip: @invalid_tip_params }
+				post :create_from_widget, { tippee_token: @tippee.tippee_token, tip: @invalid_tip_params }
 			end
 
 			it { should respond_with(400) }
 
-			it {should render_template(:new) }
+			it {should render_template(:new_widget) }
 
 			it "doesn't create a new tip with specified params" do
 				expect(Tip.find_by(@valid_params)).to be_falsey

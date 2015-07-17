@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/tips/received', to: 'tips#received'
 
-  get 'tips/new', to: 'tips#new'
+  get 'tips/:tippee_token/new', to: 'tips#new_widget'
 
-  post 'tips/:tippee_id', to: 'tips#create'
+  post 'tips/:tippee_token', to: 'tips#create_from_widget'
 
   # transactions
   # 	create
