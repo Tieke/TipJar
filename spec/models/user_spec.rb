@@ -5,6 +5,8 @@ RSpec.describe User, type: :model do
     it { should have_one(:tipper) }
     it { should have_one(:tippee) }
     it { should have_many(:tips) }
+    it { should have_many(:withdrawals)}
+    it { should have_many(:deposits)}
   end
 
   describe "validations" do
