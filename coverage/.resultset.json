@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/rhysportegys/github/phase-3/TipJar/app/models/user.rb": [
+      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/user.rb": [
         1,
         1,
         1,
@@ -18,16 +18,16 @@
         1,
         null
       ],
-      "/Users/rhysportegys/github/phase-3/TipJar/app/helpers/application_helper.rb": [
+      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/rhysportegys/github/phase-3/TipJar/app/models/deposit.rb": [
+      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/deposit.rb": [
         1,
         1,
         null
       ],
-      "/Users/rhysportegys/github/phase-3/TipJar/app/models/tip.rb": [
+      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/tip.rb": [
         1,
         1,
         1,
@@ -36,24 +36,24 @@
         1,
         null
       ],
-      "/Users/rhysportegys/github/phase-3/TipJar/app/models/tippee.rb": [
+      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/tippee.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/rhysportegys/github/phase-3/TipJar/app/models/tipper.rb": [
+      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/tipper.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/rhysportegys/github/phase-3/TipJar/app/models/withdrawal.rb": [
+      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/withdrawal.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1437099747
+    "timestamp": 1437101851
   }
 }
