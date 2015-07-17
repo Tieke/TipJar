@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "home#index"
+  root to: "pages#home"
 
-  resources :users, except: [:new, :create] do
+  resources :users, only: [:index, :show] do
   	resources :tips, except: [:edit, :update, :destroy]
   end
 
