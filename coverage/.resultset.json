@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/user.rb": [
+      "/Users/masudniloy/EDA/TipJar/app/models/user.rb": [
         1,
         1,
         1,
@@ -16,32 +16,32 @@
         1,
         null
       ],
-      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/helpers/application_helper.rb": [
+      "/Users/masudniloy/EDA/TipJar/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/tip.rb": [
+      "/Users/masudniloy/EDA/TipJar/app/helpers/users_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/masudniloy/EDA/TipJar/app/controllers/users_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/masudniloy/EDA/TipJar/app/controllers/application_controller.rb": [
         1,
         1,
+        null,
+        null,
         1,
         null,
         1,
         1,
-        null
-      ],
-      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/tippee.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/Kel/Documents/dev/git/Phase3/TipJar/app/models/tipper.rb": [
-        1,
-        1,
-        1,
+        0,
+        null,
         null
       ]
     },
-    "timestamp": 1437097406
+    "timestamp": 1437098182
   }
 }
