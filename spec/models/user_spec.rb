@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe "relationships" do
+    it { should have_one(:tipper) }
+    it { should have_one(:tippee) }
+    it { should have_many(:tips) }
+  end
+
   describe "validations" do
     let!(:user) { create(:user) }
 
