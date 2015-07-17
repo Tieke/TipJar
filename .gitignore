@@ -14,3 +14,7 @@
 
 #ignore the coverage test results
 /coverage/*
+/coverage/index.html
+/coverage/.resultset.json
+coverage/.resultset.json
+coverage/index.html
