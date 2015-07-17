@@ -19,6 +19,31 @@ RSpec.describe TipsController, type: :controller do
 		end
 	end
 
+	describe "#show" do
+		before do
+				@tip = create(:tip)
+				get :show, id: @tip.id
+		end
+
+		it { should respond_with(200) }
+
+		it "should return specified tip in last response body, as json" do
+			expect(response.body).to eq(@tip.to_json)
+		end 
+
+		it "should assign specified tip to @tip" do
+			expect(assigns(:tip)).to eq(@tip)
+		end
+	end
+
+	describe "given" do
+		before do
+			10.times { create(:tip) }
+			get :index
+			
+		end
+	end
+
 
 
 end

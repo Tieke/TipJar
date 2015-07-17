@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :users, only: [:index, :show] do
-  	resources :tips, except: [:edit, :update, :destroy]
+  	resources :tips, except: [:edit, :update, :destroy, :show, :index]
   end
+
+  resources :tips, only: [:index, :show]
 
   get 'users/:user_id/tips/given', to: 'tips#given'
 
