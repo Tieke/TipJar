@@ -38,10 +38,13 @@ RSpec.describe TipsController, type: :controller do
 
 	describe "given" do
 		before do
-			10.times { create(:tip) }
-			get :index
-			
+			@tipper = create(:tipper)
+			# @tippee = create(:tippee)
+			10.times { create( :tip, tipper_id: @tipper.id ) }
+			get :given, @user.id
 		end
+
+		
 	end
 
 

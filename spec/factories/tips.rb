@@ -3,6 +3,8 @@ FactoryGirl.define do
     url "http://www.firstgroup.com/ukbus/assets/images/midlands/freddie.jpg"
     amount 0.01
     message "Awesome photo"
+    tippee
+    tipper
   end
 
 end
