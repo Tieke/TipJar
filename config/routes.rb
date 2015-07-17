@@ -10,12 +10,6 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/tips/received', to: 'tips#received'
 
-
- 
-
-
-
-
   # transactions
   # 	create
   # 		#new
