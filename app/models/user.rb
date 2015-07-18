@@ -13,9 +13,11 @@ class User < ActiveRecord::Base
 
   def increase_balance(amount)
     self.balance += amount
+    self.save
   end
 
   def decrease_balance(amount)
     self.balance -= amount
+    self.save
   end
 end
