@@ -45,7 +45,7 @@ RSpec.describe TippeesController, type: :controller do
       get :new
     end
 
-    it "should have successful http status"  do
+    it "should have a successful http status"  do
       expect(response).to have_http_status(:success)
     end
 
@@ -54,4 +54,23 @@ RSpec.describe TippeesController, type: :controller do
     end
   end
 
+  describe "#create" do
+
+    it "creates a new tippee" do
+      expect { post :create, user_id: @user.id }.to change{ Tippee.count }.by(1)
+    end
+
+    before do
+      post :create, user_id: @user.id
+    end
+
+    it "should return a redirect" do
+      expect(response).to be_redirect
+    end
+
+    it "redirects to the token screen" do
+      expect(response).to redirect_to(display_token_path(@user))
+    end
+
+  end
 end
