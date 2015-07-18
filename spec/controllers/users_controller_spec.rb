@@ -42,6 +42,57 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
+	describe '#transactions' do
+
+		context 'withdrawal' do
+			before do
+				@user = create(:user)
+				create(:withdrawal, user_id: @user.id)
+				get :transactions, user_id: @user.id
+			end
+			
+			it { should respond_with(200) }
+
+			it 'should return a users withdrawals as json' do
+				expect(response.body).to eq({"withdrawals" => @user.withdrawals, "deposits" => @user.deposits}.to_json)
+			end
+		end
+
+		context 'deposit' do
+			before do
+				@user = create(:user)
+				create(:deposit, user_id: @user.id)
+				get :transactions, user_id: @user.id
+			end
+			
+			it { should respond_with(200) }
+
+			it 'should return a users deposits as json' do
+				expect(response.body).to eq({"withdrawals" => @user.withdrawals, "deposits" => @user.deposits}.to_json)
+			end
+		end
+
+		context 'withdrawal and deposit' do
+			before do
+				@user = create(:user)
+				create(:deposit, user_id: @user.id)
+				create(:withdrawal, user_id: @user.id)
+				get :transactions, user_id: @user.id
+			end
+			
+			it { should respond_with(200) }
+
+			it 'should return a users deposits and withdrawals, as json' do
+				expect(response.body).to eq({"withdrawals" => @user.withdrawals, "deposits" => @user.deposits}.to_json)
+			end
+		end
+
+
+	end
+
+
+
+
 	# xdescribe '#edit' do
 	# 	before do
 	# 		@user = create(:user)
