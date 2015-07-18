@@ -31,8 +31,8 @@ class TipsController < ApplicationController
 
 		if @tip.save
 			redirect_to("/tips/#{@tip.id}")
-			tipper.user.decrease_balance(@tip.amount)
-			tippee.user.increase_balance(@tip.amount)
+			tipper.user.decrease_balance(tipper.standard_tip_amount)
+			tippee.user.increase_balance(tipper.standard_tip_amount)
 		else
 			render 'new', status: 400
 		end

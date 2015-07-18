@@ -96,7 +96,6 @@ RSpec.describe TipsController, type: :controller do
 
 		context 'with tipper not created' do
 			before do
-				@user1 = create(:user)
 				@user2 = create(:user)
 				@tippee = create(:tippee, user_id: @user2.id)
 				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: "")
@@ -114,31 +113,22 @@ RSpec.describe TipsController, type: :controller do
 				expect(Tip.count).to eq(1)
 			end
 
-			xit "creates a tip with the new tips params associated to the tipper" do
+			it "creates a tip with the new tips params associated to the tipper" do
 				tip = Tip.last
-				expect(@user1.tipper.tips).to include(tip)
+				expect(@user.tipper.tips).to include(tip)
 			end
 
 			it "creates a tip with the new tip params and is associated with the tippee" do
 				tip = Tip.last
 				expect(@user2.tippee.tips).to include(tip)
 			end
-
-			xit "increased the balance for the intended tippee" do
-				expect(@user2.balance).to eq(10.01)
-			end
-
-			xit "decreased the balance of the tipper" do
-
-			end
 		end
 
 		context 'with both tipper and tippee created' do
 			before do
-				@user1 = create(:user)
 				@user2 = create(:user)
 				@tippee = create(:tippee, user_id: @user2.id)
-				@tipper = create(:tipper, user_id: @user1.id)
+				@tipper = create(:tipper, user_id: @user.id)
 				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: @tipper.id)
 				get :create, {tippee_token: @tippee.tippee_token, tip: @tip_params}
 			end
@@ -162,12 +152,13 @@ RSpec.describe TipsController, type: :controller do
 
 			it "creates a new tip associated with the tipper" do
 				tip = Tip.last
-				expect(@user1.tipper.tips).to include(tip)
+				expect(@tippee.tips).to include(tip)
+				expect(@tipper.tips).to include(tip)
 			end
 
 			it "creates a new tip associated with the tippee" do
 				tip = Tip.last
-				expect(@user2.tippee.tips).to include(tip)
+				expect(@tippee.tips).to include(tip)
 			end
 		end
 	end
