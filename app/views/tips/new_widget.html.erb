@@ -1,0 +1,10 @@
+<%= form_for @tip, url: create_tip_from_widget_path(@tippee_token) do |f| %>
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount, value: 0.01 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Tip" %>
+  </div>
+<% end %>

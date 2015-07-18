@@ -35,7 +35,7 @@ RSpec.describe TipsController, type: :controller do
 
 		it "should return specified tip in last response body, as json" do
 			expect(response.body).to eq(@tip.to_json)
-		end 
+		end
 
 		it "should assign specified tip to @tip" do
 			expect(assigns(:tip)).to eq(@tip)
@@ -46,7 +46,6 @@ RSpec.describe TipsController, type: :controller do
 		before do
 			@tipper = create(:tipper)
 			@user = @tipper.user
-			# @tippee = create(:tippee)
 			10.times { create( :tip, tipper_id: @tipper.id ) }
 			get :given, user_id: @user.id
 		end
@@ -67,7 +66,6 @@ RSpec.describe TipsController, type: :controller do
 		before do
 			@tippee = create(:tippee)
 			@user = @tippee.user
-			# @tippee = create(:tippee)
 			10.times { create( :tip, tippee_id: @tippee.id ) }
 			get :received, user_id: @user.id
 		end
@@ -95,14 +93,14 @@ RSpec.describe TipsController, type: :controller do
 	end
 
 	describe "#create" do
-		
+
 		context 'with tipper not created' do
 			before do
-				user1 = create(:user)
-				user2 = create(:user)
-				@tippee = create(:tippee, user_id: user2.id)
-				@tip_params = attributes_for(:tip, tippee_id: "", tipper_id: "")
-				get :create, {recipient_id: user2.id, tip: @tip_params}
+				@user1 = create(:user)
+				@user2 = create(:user)
+				@tippee = create(:tippee, user_id: @user2.id)
+				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: "")
+				get :create, {tippee_token: @tippee.tippee_token, tip: @tip_params}
 			end
 
 			it { should respond_with(302) }
@@ -112,22 +110,22 @@ RSpec.describe TipsController, type: :controller do
 				expect(response).to redirect_to("/tips/#{tip.id}")
 			end
 
-			xit "creates a new tip with specified params" do
-				expect(Tip.find_by(@valid_params)).to be_truthy
+			it "creates a new tip with specified params" do
+				expect(Tip.count).to eq(1)
 			end
 
 			xit "creates a tip with the new tips params associated to the tipper" do
-				tip = Tip.find_by(@tip_params)
-				expect(@user.tipper.tips).to include(tip)
+				tip = Tip.last
+				expect(@user1.tipper.tips).to include(tip)
 			end
 
-			xit "creates a tip with the new tip params and is associated with the tippee" do
-				tip = Tip.find_by(@tip_params)
-				expect(@tippee.tips).to include(tip)
+			it "creates a tip with the new tip params and is associated with the tippee" do
+				tip = Tip.last
+				expect(@user2.tippee.tips).to include(tip)
 			end
 
 			xit "increased the balance for the intended tippee" do
-
+				expect(@user2.balance).to eq(10.01)
 			end
 
 			xit "decreased the balance of the tipper" do
@@ -135,106 +133,50 @@ RSpec.describe TipsController, type: :controller do
 			end
 		end
 
-		context 'with tippee not created' do
-			before do
-				user1 = create(:user)
-				tipper = create(:tipper, user_id: user1.id)
-				user2 = create(:user)
-				get :create, {user_id: user2.id}
-			end
-		end
-
-		context 'with neither tippee nor tipper created' do
-
-		end
-
 		context 'with both tipper and tippee created' do
-
-		end
-
-	end
-
-	describe "#new_widget" do
-		before do
-			tippee = create(:tippee)
-			get :new_widget, {tippee_token: tippee.tippee_token}
-		end
-
-		it { should respond_with(200) }
-		it { should render_template(:new_widget) }
-	end
-
-	describe '#create_from_widget' do
-		context "if valid params" do
-
 			before do
-				@tippee = create(:tippee)
-				@tip_params = attributes_for(:tip, tippee_id: @tippee.id)
-				post :create_from_widget, { tippee_token: @tippee.tippee_token, tip: @tip_params }
+				@user1 = create(:user)
+				@user2 = create(:user)
+				@tippee = create(:tippee, user_id: @user2.id)
+				@tipper = create(:tipper, user_id: @user1.id)
+				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: @tipper.id)
+				get :create, {tippee_token: @tippee.tippee_token, tip: @tip_params}
 			end
 
 			it { should respond_with(302) }
 
-			it "should redirect to tips#show" do
-				tip = Tip.find_by(@tip_params)
+			it "redirects to tips#show" do
+				tip = Tip.last
 				expect(response).to redirect_to("/tips/#{tip.id}")
 			end
 
-			it "creates a new tip with specified params" do
-				expect(Tip.find_by(@valid_params)).to be_truthy
+			it "creates a new tip" do
+				tip = Tip.last
+				expect(Tip.count).to eq(1)
 			end
 
-			it "creates a tip with the new tips params associated to the tipper" do
-				tip = Tip.find_by(@tip_params)
-				expect(@user.tipper.tips).to include(tip)
+			it "creates a new tip with the referring url" do
+				tip = Tip.last
+				expect(tip.url).to eq("http://www.firstgroup.com/ukbus/assets/images/midlands/test.jpg")
 			end
 
-			it "creates a tip with the new tip params and is associated with the tippee" do
-				tip = Tip.find_by(@tip_params)
-				expect(@tippee.tips).to include(tip)
+			it "creates a new tip associated with the tipper" do
+				tip = Tip.last
+				expect(@user1.tipper.tips).to include(tip)
 			end
 
-			it "increased the balance for the intended tippee" do
-
+			it "creates a new tip associated with the tippee" do
+				tip = Tip.last
+				expect(@user2.tippee.tips).to include(tip)
 			end
-
-			it "decreased the balance of the tipper" do
-
-			end
-
-		end
-
-		context "if invalid params" do
-
-			before do
-				@tippee = create(:tippee)
-				@invalid_tip_params = attributes_for(:tip, amount: 0, tippee_id: @tippee.id)
-				post :create_from_widget, { tippee_token: @tippee.tippee_token, tip: @invalid_tip_params }
-			end
-
-			it { should respond_with(400) }
-
-			it {should render_template(:new_widget) }
-
-			it "doesn't create a new tip with specified params" do
-				expect(Tip.find_by(@valid_params)).to be_falsey
-			end
-
-			it "doesn't create a tip with the new tips params associated to the tipper" do
-				tip = Tip.find_by(@tip_params)
-				expect(@user.tipper.tips).to_not include(tip)
-			end
-
-			it "doesn't create a tip with the new tip params and is associated with the tippee" do
-				tip = Tip.find_by(@tip_params)
-				expect(@tippee.tips).to_not include(tip)
-			end
-
 		end
 	end
 
-
-
-
+	after do
+		Tip.destroy_all
+		User.destroy_all
+		Tippee.destroy_all
+		Tipper.destroy_all
+	end
 
 end
