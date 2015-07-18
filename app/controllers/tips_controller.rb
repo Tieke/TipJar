@@ -26,9 +26,8 @@ class TipsController < ApplicationController
 
 	def create
 		tipper = Tipper.find_or_create_by(user_id: current_user.id)
-		tippee = Tippee.find_or_create_by(user_id: params[:recipient_id])
+		tippee = Tippee.find_by_tippee_token(params[:tippee_token])
 		@tip = tipper.tips.new(tip_params)
-		@tip.tippee_id = tippee.id
 
 		if @tip.save
 			redirect_to("/tips/#{@tip.id}")
@@ -44,6 +43,7 @@ private
 	def tip_params
 		@tippee_id = Tippee.find_by_tippee_token(params[:tippee_token]).id
 		@tipper_id = current_user.id
+		@url = request.env["HTTP_REFERER"]
 	  params.require(:tip).permit(:tipper_id, :amount, :tippee_id, :url)
 	end
 
