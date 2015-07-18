@@ -92,7 +92,6 @@ RSpec.describe UsersController, type: :controller do
 		context 'valid params' do
 			before do
 				@user = create(:user)
-				post :purchase {amount: 500, first_name: "freddy", ""}
 			end
 
 
