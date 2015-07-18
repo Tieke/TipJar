@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/tips/received', to: 'tips#received'
 
-  get 'users/:user_id/token', to: 'tippees#token', as: :token 
+  get 'users/:user_id/token', to: 'tippees#token', as: :display_token
 
   resources :tippees, only: [:new, :create]
 
