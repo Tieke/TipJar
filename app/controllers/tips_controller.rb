@@ -21,6 +21,24 @@ class TipsController < ApplicationController
 		render json: @tips_received
 	end
 
+	def new
+	end
+
+	def create
+		tipper = Tipper.find_or_create_by(user_id: current_user.id)
+		tippee = Tippee.find_or_create_by(user_id: params[:recipient_id])
+		@tip = tipper.tips.new(tip_params)
+		@tip.tippee_id = tippee.id
+
+		if @tip.save
+			redirect_to("/tips/#{@tip.id}")
+			tipper.user.decrease_balance(@tip.amount)
+			tippee.user.increase_balance(@tip.amount)
+		else
+			render 'new', status: 400
+		end
+	end
+
 	def new_widget
 	end
 

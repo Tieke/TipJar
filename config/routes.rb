@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
-  resources :tips, only: [:index, :show, :create, :new]
+  resources :tips, only: [:index, :show]
+
+  get 'tips/:recipient_id/new', to: 'tips#new'
+  
+  post 'tips/:recipient_id', to: 'tips#create'
 
   get 'users/:user_id/transactions', to: 'users#transactions'
   
