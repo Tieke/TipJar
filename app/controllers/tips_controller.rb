@@ -21,28 +21,12 @@ class TipsController < ApplicationController
 		render json: @tips_received
 	end
 
-	def new_widget
-		@tippee = Tippee.find_by(tippee_token: params[:tippee_token])
-	end
-
-	def create_from_widget
-		tipper = Tipper.find_or_create_by(user_id: current_user.id)
-		@tip = tipper.tips.new(tip_params)
-		tippee = @tip.tippee
-
-		if @tip.save
-			redirect_to("/tips/#{@tip.id}")
-			tipper.user.decrease_balance(@tip.amount)
-			tippee.user.increase_balance(@tip.amount)
-		else
-			render 'new_widget', status: 400
-		end
-	end
-
 private
 
 	def tip_params
-	  params.require(:tip).permit(:username, :tippee_token, :message, :url, :amount, :tippee_id)
+		@tippee_id = Tippee.find_by_tippee_token(params[:tippee_token]).id
+		@tipper_id = current_user.id
+	  params.require(:tip).permit(:tipper_id, :amount, :tippee_id, :url)
 	end
 
 end
