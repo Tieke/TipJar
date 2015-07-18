@@ -41,11 +41,4 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.after_initialize do
-  ActiveMerchant::Billing::Base.mode = :test
-  ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-    login: "kyle.snowschwartz-facilitator_api1.gmail.com",
-    password: "85AQXD8ULGS3QG3H",
-    signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AE-O0Gx8XiLaRO-lUxSNLz-P4wWq")
-  end
 end
