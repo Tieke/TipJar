@@ -14,7 +14,7 @@ Tip.destroy_all
               image_url: Faker::Avatar.image,
               balance: rand(2..10),
               terms_version: "1.0")
-  Tipper.create(user_id: user.id)
+  Tipper.create(user_id: user.id, standard_tip_amount: rand(0.01..0.2))
 end
 
 5.times do
@@ -36,7 +36,7 @@ end
               image_url: Faker::Avatar.image,
               balance: rand(2..10),
               terms_version: "1.0")
-  Tipper.create(user_id: user.id)
+  Tipper.create(user_id: user.id, standard_tip_amount: rand(0.01..0.2))
   Tippee.create(user_id: user.id)
 end
 

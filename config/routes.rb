@@ -7,13 +7,16 @@ Rails.application.routes.draw do
 
   resources :tips, only: [:index, :show]
 
+  get 'tips/:recipient_id/new', to: 'tips#new'
+
+  get 'tips/:tippee_token', to: 'tips#create'
+
+  get 'users/:user_id/transactions', to: 'users#transactions'
+
   get 'users/:user_id/tips/given', to: 'tips#given'
 
   get 'users/:user_id/tips/received', to: 'tips#received'
 
-  get 'tips/new', to: 'tips#new'
-
-  post 'tips/:tippee_id', to: 'tips#create'
 
   # transactions
   # 	create

@@ -35,7 +35,7 @@ RSpec.describe TipsController, type: :controller do
 
 		it "should return specified tip in last response body, as json" do
 			expect(response.body).to eq(@tip.to_json)
-		end 
+		end
 
 		it "should assign specified tip to @tip" do
 			expect(assigns(:tip)).to eq(@tip)
@@ -46,7 +46,6 @@ RSpec.describe TipsController, type: :controller do
 		before do
 			@tipper = create(:tipper)
 			@user = @tipper.user
-			# @tippee = create(:tippee)
 			10.times { create( :tip, tipper_id: @tipper.id ) }
 			get :given, user_id: @user.id
 		end
@@ -67,7 +66,6 @@ RSpec.describe TipsController, type: :controller do
 		before do
 			@tippee = create(:tippee)
 			@user = @tippee.user
-			# @tippee = create(:tippee)
 			10.times { create( :tip, tippee_id: @tippee.id ) }
 			get :received, user_id: @user.id
 		end
@@ -86,76 +84,90 @@ RSpec.describe TipsController, type: :controller do
 
 	describe "#new" do
 		before do
-			get :new
+			user2 = create(:user)
+			get :new, {recipient_id: user2.id}
 		end
 
 		it { should respond_with(200) }
-		it {should render_template(:new) }
+		it { should render_template(:new) }
 	end
 
-	describe '#create' do
-		context "if valid params" do
+	describe "#create" do
 
+		context 'with tipper not created' do
 			before do
-				@tippee = create(:tippee)
-				@tip_params = attributes_for(:tip, tippee_id: @tippee.id)
-				post :create, { tippee_id: @tippee.id, tip: @tip_params }
+				@user2 = create(:user)
+				@tippee = create(:tippee, user_id: @user2.id)
+				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: "")
+				get :create, {tippee_token: @tippee.tippee_token, tip: @tip_params}
 			end
 
 			it { should respond_with(302) }
 
 			it "should redirect to tips#show" do
-				tip = Tip.find_by(@tip_params)
+				tip = Tip.find_by_tippee_id(@tippee.id)
 				expect(response).to redirect_to("/tips/#{tip.id}")
 			end
 
 			it "creates a new tip with specified params" do
-				expect(Tip.find_by(@valid_params)).to be_truthy
+				expect(Tip.count).to eq(1)
 			end
 
 			it "creates a tip with the new tips params associated to the tipper" do
-				tip = Tip.find_by(@tip_params)
+				tip = Tip.last
 				expect(@user.tipper.tips).to include(tip)
 			end
 
 			it "creates a tip with the new tip params and is associated with the tippee" do
-				tip = Tip.find_by(@tip_params)
-				expect(@tippee.tips).to include(tip)
+				tip = Tip.last
+				expect(@user2.tippee.tips).to include(tip)
 			end
-
 		end
 
-		context "if invalid params" do
-
+		context 'with both tipper and tippee created' do
 			before do
-				@tippee = create(:tippee)
-				@invalid_tip_params = attributes_for(:tip, amount: 0, tippee_id: @tippee.id)
-				post :create, { tippee_id: @tippee.id, tip: @invalid_tip_params }
+				@user2 = create(:user)
+				@tippee = create(:tippee, user_id: @user2.id)
+				@tipper = create(:tipper, user_id: @user.id)
+				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: @tipper.id)
+				get :create, {tippee_token: @tippee.tippee_token, tip: @tip_params}
 			end
 
-			it { should respond_with(400) }
+			it { should respond_with(302) }
 
-			it {should render_template(:new) }
-
-			it "doesn't create a new tip with specified params" do
-				expect(Tip.find_by(@valid_params)).to be_falsey
+			it "redirects to tips#show" do
+				tip = Tip.last
+				expect(response).to redirect_to("/tips/#{tip.id}")
 			end
 
-			it "doesn't create a tip with the new tips params associated to the tipper" do
-				tip = Tip.find_by(@tip_params)
-				expect(@user.tipper.tips).to_not include(tip)
+			it "creates a new tip" do
+				tip = Tip.last
+				expect(Tip.count).to eq(1)
 			end
 
-			it "doesn't create a tip with the new tip params and is associated with the tippee" do
-				tip = Tip.find_by(@tip_params)
-				expect(@tippee.tips).to_not include(tip)
+			it "creates a new tip with the referring url" do
+				tip = Tip.last
+				expect(tip.url).to eq("http://www.firstgroup.com/ukbus/assets/images/midlands/test.jpg")
 			end
 
+			it "creates a new tip associated with the tipper" do
+				tip = Tip.last
+				expect(@tippee.tips).to include(tip)
+				expect(@tipper.tips).to include(tip)
+			end
+
+			it "creates a new tip associated with the tippee" do
+				tip = Tip.last
+				expect(@tippee.tips).to include(tip)
+			end
 		end
 	end
 
-
-
-
+	after do
+		Tip.destroy_all
+		User.destroy_all
+		Tippee.destroy_all
+		Tipper.destroy_all
+	end
 
 end

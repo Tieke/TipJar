@@ -7,7 +7,7 @@ class TipsController < ApplicationController
 	end
 
 	def show
-		@tip = Tip.find(params[:id])		
+		@tip = Tip.find(params[:id])
 		render json: @tip
 	end
 
@@ -26,10 +26,13 @@ class TipsController < ApplicationController
 
 	def create
 		tipper = Tipper.find_or_create_by(user_id: current_user.id)
+		tippee = Tippee.find_by_tippee_token(params[:tippee_token])
 		@tip = tipper.tips.new(tip_params)
 
 		if @tip.save
 			redirect_to("/tips/#{@tip.id}")
+			tipper.user.decrease_balance(tipper.standard_tip_amount)
+			tippee.user.increase_balance(tipper.standard_tip_amount)
 		else
 			render 'new', status: 400
 		end
@@ -38,7 +41,10 @@ class TipsController < ApplicationController
 private
 
 	def tip_params
-	  params.require(:tip).permit(:username, :message, :url, :amount, :tippee_id)
+		@tippee_id = Tippee.find_by_tippee_token(params[:tippee_token]).id
+		@tipper_id = current_user.id
+		@url = request.env["HTTP_REFERER"]
+	  params.require(:tip).permit(:tipper_id, :amount, :tippee_id, :url)
 	end
 
 end

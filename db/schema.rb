@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717071327) do
+ActiveRecord::Schema.define(version: 20150718020223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20150717071327) do
 
   create_table "tippers", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.decimal  "standard_tip_amount", default: 0.01
   end
 
   create_table "tips", force: :cascade do |t|
