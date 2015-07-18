@@ -11,6 +11,15 @@ class UsersController < ApplicationController
 		render json: @user
 	end
 
+	def transactions
+		@user = User.find(params[:user_id])
+		@withdrawals = @user.withdrawals
+		@deposits = @user.deposits
+		render json: { "withdrawals" => @withdrawals, "deposits" => @deposits }
+	end
+
+
+
 	# private
 	# def user_params
 	# 	params.require(:user).permit(:username, :full_name, :email, :image_url)
