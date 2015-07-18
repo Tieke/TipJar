@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/tips/received', to: 'tips#received'
 
+  get 'users/:user_id/token', to: 'tippees#token', as: :token 
+
+  resources :tippees, only: [:new, :create]
+
 
   # transactions
   # 	create
