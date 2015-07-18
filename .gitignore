@@ -18,4 +18,5 @@
 /coverage/.resultset.json
 coverage/.resultset.json
 coverage/index.html
+config/database.yml
 coverage/.last_run.json
