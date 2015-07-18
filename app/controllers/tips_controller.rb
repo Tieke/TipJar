@@ -1,8 +1,10 @@
-class TipsController < ApplicationController
+ticlass TipsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@tips = Tip.all
+		@tips = Tip.all.map do |tip|
+			tip[:giver] = tip.tipper.user
+		end
 		render json: @tips
 	end
 

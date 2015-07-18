@@ -9,7 +9,6 @@ class TippeesController < ApplicationController
       @tippee_token = current_user.tippee.tippee_token
       render :token
     end
-
   end
 
   def new
