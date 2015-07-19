@@ -19,7 +19,7 @@ var ProfileInfoContainer = React.createClass({
 	},
 	componentDidMount: function() {
 		this.loadUserDetailsFromServer();
-		setInterval(this.loadUserDetailsFromServer, 2000);
+		// setInterval(this.loadUserDetailsFromServer, 2000);
 	},
 	render: function() {
 		if (this.state.data) {
