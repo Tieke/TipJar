@@ -1,7 +1,7 @@
 var TipBox = React.createClass({
   loadTipsFromServer: function() {
     $.ajax({
-      url: "/tips",
+      url: this.props.url,
       dataType: 'json',
       cache: false,
       success: function(data) {
