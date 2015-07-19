@@ -3,9 +3,12 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
+
   resources :users, only: [:index, :show]
 
   resources :tips, only: [:index, :show]
+
+  get 'template', to: 'pages#page'
 
   get 'tips/:recipient_id/new', to: 'tips#new'
 
