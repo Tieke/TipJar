@@ -7,7 +7,7 @@ var TipsContainer = React.createClass({
 			cache: false,
 			success: function(data) {
 				this.setState({data: data});
-				console.log("loadTipsFromServer: ", data)
+				// console.log("loadTipsFromServer: ", data)
 			}.bind(this),
 			error: function(err) {
 				alert('TipsContainer FAIL');
@@ -24,10 +24,16 @@ var TipsContainer = React.createClass({
 		// setInterval(this.loadTipsFromServer, 5000)
 	},
 	render: function() {
-		return (
-			<div className="tipsContainer">
-				// <TipCreator data={this.state.data} />
-			</div>
-		);
+		if (this.state.data.length > 0) {
+			// console.log("this.state.data: ", this.state.data)
+			// console.log("YEPYEPYEPYEPYEPYEPYEP")
+			return (
+				<div className="tipsContainer">
+					<ProfileTipCreator data={this.state.data} />
+				</div>
+			);
+		} else {
+			return <div>Loading....</div>
+		} 
 	}
 })

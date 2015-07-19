@@ -24,7 +24,7 @@ var ProfileInfoContainer = React.createClass({
 	render: function() {
 		if (this.state.data) {
 			return (
-				<div className="profileInfoContainer">
+				<div className="profileInfoContainer col-lg-8">
 					<PersonalInfoContainer data={this.state.data} />
 					<Following />
 					<Followers />

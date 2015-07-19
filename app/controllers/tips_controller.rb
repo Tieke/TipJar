@@ -47,8 +47,8 @@ class TipsController < ApplicationController
 
 	def formatTipsWithUsers(tips)
 		outputData = []
-		givers = Tip.all.map { |tip| tip.tipper.user }
-		receivers = Tip.all.map { |tip| tip.tippee.user }
+		givers = tips.map { |tip| tip.tipper.user }
+		receivers = tips.map { |tip| tip.tippee.user }
 		givers.length.times do | i |
 			outputData.push(
 				{
