@@ -2,4 +2,6 @@
 
 <% if !@tippee_token %>
   <%= button_tag "Generate URL" %>
-  <% end %>
+<% else %>
+  <p><%= @tipUrl %><%= @tippee_token %></p>
+<% end %>

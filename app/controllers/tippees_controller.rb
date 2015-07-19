@@ -7,6 +7,7 @@ class TippeesController < ApplicationController
       render :new
     else
       @tippee_token = current_user.tippee.tippee_token
+      @tipUrl = "http://localhost:3000/tips/create/"
       render :token
     end
   end
