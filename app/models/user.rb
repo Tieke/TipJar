@@ -20,5 +20,15 @@ class User < ActiveRecord::Base
     self.balance -= amount
     self.save
   end
+
+  def self.find_for_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.name = auth.info.name
+      user.create_credentials! :user => user, :credentials => auth.credentials
+    end
+  end
  
 end

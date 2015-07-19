@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
+  get 'users/topup', to: 'users#topup'
+
   resources :users, only: [:index, :show]
 
   resources :tips, only: [:index, :show]
 
-  post 'users/:user_id/purchase', to: 'users#purchase_checkout'
+  get 'users/:user_id/purchase', to: 'users#purchase_checkout', as: :purchase
 
   post 'users/:user_id/retrieve', to: 'users#retrieve_checkout'
 
@@ -26,7 +28,5 @@ Rails.application.routes.draw do
   get 'users/:user_id/token', to: 'tippees#token', as: :display_token
 
   resources :tippees, only: [:new, :create]
-
-  get '/auth/:provider/callback', to: 'sessions#create'
 
 end
