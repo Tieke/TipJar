@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :tips, only: [:index, :show]
 
-  get 'template', to: 'pages#page'
+  get 'browse', to: 'pages#page'
 
   get 'tips/:recipient_id/new', to: 'tips#new'
 

@@ -2,7 +2,7 @@ $(document).ready(function(){
 	// renderProfile();
 	//when we get /template
 
-	if (window.location.pathname === '/template') {
+	if (window.location.pathname === '/browse') {
 		renderFeed();
 	}
 
@@ -29,7 +29,9 @@ $(document).ready(function(){
 		renderProfile(url)
 	})
 
-	
+
+
+
 
 });
 
