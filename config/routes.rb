@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: "pages#page"
+  root to: "pages#home"
 
-  resources :pages, only: [:page]
 
   resources :users, only: [:index, :show]
 
   resources :tips, only: [:index, :show]
+
+  get 'template', to: 'pages#page'
 
   get 'tips/:recipient_id/new', to: 'tips#new'
 
