@@ -1,5 +1,5 @@
 $(document).ready(function(){
 	renderProfile();
-	renderFeed();
+	// renderFeed();
 });
 

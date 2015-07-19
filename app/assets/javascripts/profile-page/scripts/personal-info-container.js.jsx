@@ -8,6 +8,9 @@ var PersonalInfoContainer = React.createClass({
 						<img src={this.props.data.image_url} alt="here is cat" />
 						<h2> {this.props.data.username} </h2>
 					</div>
+					<div className="account_info col-lg-3">
+						<h3> {this.props.data.full_name} </h3>
+					</div>
 				</div>
 			);
 		}

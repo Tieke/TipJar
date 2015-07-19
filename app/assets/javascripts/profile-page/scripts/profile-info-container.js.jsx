@@ -8,7 +8,7 @@ var ProfileInfoContainer = React.createClass({
 				this.setState({data: data});
 			}.bind(this),
 			error: function(err) {
-				alert('FAIL: ' + err.toString());
+				console.log('NOPE: ', err)
 			}.bind(this)
 		});
 	},
@@ -27,7 +27,8 @@ var ProfileInfoContainer = React.createClass({
 				<div className="profileInfoContainer">
 					<h1>HELLO I AM PROFILE INFO CONTAINER</h1>
 					<PersonalInfoContainer data={this.state.data} />
-					
+					<Following />
+					<Followers />
 				</div>
 			);
 		} else {
