@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 	def index
 		@outputData = []
@@ -25,7 +25,6 @@ class TipsController < ApplicationController
 				}
 			)
 		end
-		pp @outputData
 		render json: @outputData
 	end
 
