@@ -2,10 +2,31 @@ class TipsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@tips = Tip.all.map do |tip|
-			tip[:giver] = tip.tipper.user
+		@outputData = []
+
+		@tips = Tip.all
+		givers = Tip.all.map { |tip| tip.tipper.user }
+		receivers = Tip.all.map { |tip| tip.tippee.user }
+			
+		givers.length.times do | i |
+			@outputData.push(
+				{
+					tip: @tips[i],
+					giver: {
+						userName: givers[i].username,
+						id: givers[i].id,
+						image_url: givers[i].image_url
+					},
+					receiver: {
+						userName: receivers[i].username,
+						id: receivers[i].id,
+						image_url: receivers[i].image_url
+					}
+				}
+			)
 		end
-		render json: @tips
+		pp @outputData
+		render json: @outputData
 	end
 
 	def show

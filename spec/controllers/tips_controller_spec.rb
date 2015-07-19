@@ -11,13 +11,35 @@ RSpec.describe TipsController, type: :controller do
 	describe "#index" do
 		before do
 			10.times { create(:tip) }
+			tips = Tip.all
+			givers = Tip.all.map { |tip| tip.tipper.user }
+			receivers = Tip.all.map { |tip| tip.tippee.user }
+			@expected_response = []
+
+			givers.length.times do | i |
+				@expected_response.push(
+					{
+						tip: tips[i],
+						giver: {
+							userName: givers[i].username,
+							id: givers[i].id,
+							image_url: givers[i].image_url
+						},
+						receiver: {
+							userName: receivers[i].username,
+							id: receivers[i].id,
+							image_url: receivers[i].image_url
+						}
+					}
+				)
+			end 
 			get :index
 		end
 
 		it { should respond_with(200) }
 
-		it "should expect the body of the last response to be all the tips as json" do
-			expect(response.body).to eq(Tip.all.to_json)
+		it "should expect the body of the last response to be all the tips, plus the giver and reveiver objects, as json" do
+			expect(response.body).to eq(@expected_response.to_json)
 		end
 
 		it "should assign @tips to all tips in the DB" do
