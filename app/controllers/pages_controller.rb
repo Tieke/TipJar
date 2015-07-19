@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  def page
+  def home
   end
 
 end
