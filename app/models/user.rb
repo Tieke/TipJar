@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :deposits
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:coinbase]
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true

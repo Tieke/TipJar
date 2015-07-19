@@ -1,5 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_action :verify_authenticity_token
+  protect_from_forgery except: :coinbase
 
   def coinbase
     p "it goes to here"
