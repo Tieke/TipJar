@@ -18,31 +18,12 @@ class UsersController < ApplicationController
 		render json: { "withdrawals" => @withdrawals, "deposits" => @deposits }
 	end
 
-	def purchase_checkout
-		amount = params[:amount]
-		credit_card = ActiveMerchant::Billing::CreditCard.new(
-                :first_name         => params[:first_name],
-                :last_name          => params[:last_name],
-                :number             => params[:number],
-                :month              => params[:month],
-                :year               => params[:year],
-                :verification_value => params[:verification_value])
-		# Validating the card automatically detects the card type
-		if credit_card.validate.empty?
-		  # Capture $10 from the credit card
-		  response = gateway.purchase(amount, credit_card)
-
-		  if response.success?
-		    puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
-		    current_user.increase_balance(amount)
-		    current_user.deposit.create(amount: amount)
-		  else
-		    raise StandardError, response.message
-		  end
-		end
+	def purchase
+		@user = current_user
+		redirect_to @user.paypal_url
 	end
 
-	def retrieve_checkout 
+	def withdraw
 		amount = params[:amount]
 		credit_card = ActiveMerchant::Billing::CreditCard.new(
 	              :first_name         => params[:first_name],
@@ -65,6 +46,9 @@ class UsersController < ApplicationController
 		    raise StandardError, response.message
 		  end
 		end
+	end
+
+	def topup
 	end
 
 	# private

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   resources :tips, only: [:index, :show]
 
-  post 'users/:user_id/purchase', to: 'users#purchase_checkout'
+  get 'users/:user_id/purchase', to: 'users#purchase'
 
-  post 'users/:user_id/retrieve', to: 'users#retrieve_checkout'
+  get 'users/:user_id/withdraw', to: 'users#withdraw'
 
   get 'template', to: 'pages#page'
 
