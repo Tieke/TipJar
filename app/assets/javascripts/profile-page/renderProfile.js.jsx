@@ -1,6 +1,6 @@
-renderProfile = function() {
+renderProfile = function(profileUrl) {
 	React.render(
-		<ProfileInfoContainer url="http://localhost:3000/users/4" />,
+		<ProfileInfoContainer url={profileUrl} />,
 		document.getElementById('main_body')
 	);
 }
