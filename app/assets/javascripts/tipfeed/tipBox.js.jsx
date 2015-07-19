@@ -28,30 +28,3 @@ var TipBox = React.createClass({
   }
 });
 
-
-
-
-{
-	tips: [tipObjects......],
-	givers: []
-}
-
-[
-	{
-		tips: tipObject,
-		giver: giverObject,
-		receiver: receiverObject
-	},
-	{
-
-	},
-]
-
-
-
-
-
-
-
-
-
