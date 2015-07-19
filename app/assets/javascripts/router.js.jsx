@@ -18,6 +18,17 @@ $(document).ready(function(){
 		window.open(url, '_blank')
 	})
 
+	$(document).on('click', '#home_button', function(e) {
+		e.preventDefault()
+		renderFeed();
+	})
+
+	$(document).on('click', '#profile_button', function(e) {
+		e.preventDefault()
+		var url = $(this).context.pathname
+		renderProfile(url)
+	})
+
 	//listener : to the thing
 	//listener : to the thing
 	//listener : to the thing

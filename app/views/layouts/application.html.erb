@@ -20,12 +20,13 @@
 	<nav class='navbar navbar-default navbar-fixed-top'>
 		<div class='container'>
 			<div class='navbar-header'></div>
-			<a class="navbar-brand" href="#">Tip Jar</a>
+			<a id='home_button' href='/template' class="navbar-brand">Tip Jar</a>
 			<div id='navbar' class='collapse navbar-collapse'>
 				<ul class='nav navbar-nav'>
-					<li><a href='#'>Home</a></li>
-					<li><a href='#'>Profile</a></li>
-					<li><a href='#'>Walet</a></li>
+					<li><a id='profile_button' href="/users/#{current_user.id}">Profile</a></li>
+					<li><a href='#'>Sign Out</a></li>
+					<li><a href='#'>Tip Link</a></li>
+
 					<li class='dropdown>'>
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
 						<ul class="dropdown-menu">

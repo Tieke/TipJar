@@ -64,18 +64,41 @@ RSpec.describe TipsController, type: :controller do
 		end
 	end
 
+
 	describe "#given" do
 		before do
 			@tipper = create(:tipper)
 			@user = @tipper.user
 			10.times { create( :tip, tipper_id: @tipper.id ) }
+			tips = Tip.all
+			givers = Tip.all.map { |tip| tip.tipper.user }
+			receivers = Tip.all.map { |tip| tip.tippee.user }
+			@expected_response = []
+
+			givers.length.times do | i |
+				@expected_response.push(
+					{
+						tip: tips[i],
+						giver: {
+							userName: givers[i].username,
+							id: givers[i].id,
+							image_url: givers[i].image_url
+						},
+						receiver: {
+							userName: receivers[i].username,
+							id: receivers[i].id,
+							image_url: receivers[i].image_url
+						}
+					}
+				)
+			end
 			get :given, user_id: @user.id
 		end
 
 		it { should respond_with(200) }
 
-		it "should return all the tips given out by a specified user as json" do
-			expect(response.body).to eq(@user.tipper.tips.to_json)
+		it "should return all the tips given out by a specified user, plus the giver and receiver objects, as json" do
+			expect(response.body).to eq(@expected_response.to_json)
 		end
 
 		it "should assign all the given tips to @tips_given" do
@@ -89,13 +112,35 @@ RSpec.describe TipsController, type: :controller do
 			@tippee = create(:tippee)
 			@user = @tippee.user
 			10.times { create( :tip, tippee_id: @tippee.id ) }
+			tips = Tip.all
+			givers = Tip.all.map { |tip| tip.tipper.user }
+			receivers = Tip.all.map { |tip| tip.tippee.user }
+			@expected_response = []
+
+			givers.length.times do | i |
+				@expected_response.push(
+					{
+						tip: tips[i],
+						giver: {
+							userName: givers[i].username,
+							id: givers[i].id,
+							image_url: givers[i].image_url
+						},
+						receiver: {
+							userName: receivers[i].username,
+							id: receivers[i].id,
+							image_url: receivers[i].image_url
+						}
+					}
+				)
+			end
 			get :received, user_id: @user.id
 		end
 
 		it { should respond_with(200) }
 
-		it "should return all the tips received out by a specified user as json" do
-			expect(response.body).to eq(@user.tippee.tips.to_json)
+		it "should return all the tips received by a specified user, along with giver and receiver objects, as json" do
+			expect(response.body).to eq(@expected_response.to_json)
 		end
 
 		it "should assign all the received tips to @tips_received" do
