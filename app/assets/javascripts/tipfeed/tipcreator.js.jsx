@@ -1,5 +1,6 @@
 var TipCreator = React.createClass({
   render: function() {
+    // console.log(this.props.data)
     var tipNodes = this.props.data.map(function(tip, index) {
       var receiverUrl = "/users/" + tip.receiver.id 
       var giverUrl = "/users/" + tip.giver.id

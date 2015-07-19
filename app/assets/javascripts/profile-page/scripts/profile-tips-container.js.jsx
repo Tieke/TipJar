@@ -26,15 +26,7 @@ var TipsContainer = React.createClass({
 	render: function() {
 		return (
 			<div className="tipsContainer">
-				<h3>{this.state.data.username}</h3>
-				<ul>
-					<li>derp</li>
-					<li>shlerp</li>
-					<li>hlerp</li>
-					<li>blerp</li>
-					<li>flerp</li>
-					<li>glerp</li>
-				</ul>
+				// <TipCreator data={this.state.data} />
 			</div>
 		);
 	}
