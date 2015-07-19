@@ -9,8 +9,8 @@ $(document).ready(function() {
 	  }
 	});
 
-	React.render(
-	  React.createElement(TipBox, null),
-	  document.getElementById('main_body')
-	);
+	// React.render(
+	//   React.createElement(TipBox, null),
+	//   document.getElementById('main_body')
+	// );
 });
