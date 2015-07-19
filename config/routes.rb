@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: "pages#home"
-
 
   resources :users, only: [:index, :show]
 
@@ -27,5 +26,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/token', to: 'tippees#token', as: :display_token
 
   resources :tippees, only: [:new, :create]
+
+  get '/auth/:provider/callback', to: 'sessions#create'
 
 end
