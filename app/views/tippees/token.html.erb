@@ -1,0 +1,7 @@
+<h1>Add TipJar to your Site or Post</h1>
+
+<% if !@tippee_token %>
+  <%= button_tag "Generate URL" %>
+<% else %>
+  <p><%= @tipUrl %><%= @tippee_token %></p>
+<% end %>
