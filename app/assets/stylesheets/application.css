@@ -44,7 +44,6 @@ body > .container {
 }
 
 .welcome_container {
-	background-color: blue;
 	width: 100%;
 	padding: 0 50px 60px;
 }
@@ -68,7 +67,8 @@ body > .container {
 }
 
 .recent_tips {
-	background-color: yellow;
+	background-color: #d0d0d0;
+	padding: 20px;
 }
 
 .sign_in,
@@ -92,8 +92,29 @@ body > .container {
 	padding: 5px 0 10px;
 }
 
+.sign_in input[type="check_box"],
+.sign_up input[type="check_box"] {
+	padding-right: 5px;
+}
+
 .clear {
 	clear: both;
+}
+
+input::-webkit-input-placeholder {
+  text-align:center;
+}
+
+:-moz-placeholder {
+  text-align:center;
+}
+
+::-moz-placeholder {
+  text-align:center;
+}
+
+:-ms-input-placeholder {
+  text-align:center;
 }
 
 /*----------------------------------HOME PAGE----------------------------------*/

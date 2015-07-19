@@ -1,4 +1,4 @@
-ticlass TipsController < ApplicationController
+class TipsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
