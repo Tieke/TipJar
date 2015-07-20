@@ -23,9 +23,6 @@ class TipsController < ApplicationController
 		render json: @tips_received
 	end
 
-	def new
-	end
-
 	def create
 		tipper = Tipper.find_or_create_by(user_id: current_user.id)
 		tippee = Tippee.find_by_tippee_token(params[:tippee_token])
@@ -34,12 +31,10 @@ class TipsController < ApplicationController
 		@tip = tipper.tips.new(tippee_id: tippee.id, amount: tipper.standard_tip_amount, url: referrer)
 
 		if @tip.save
-			redirect_to(@tip.url)
 			tipper.user.decrease_balance(tipper.standard_tip_amount)
 			tippee.user.increase_balance(tipper.standard_tip_amount)
-		else
-			render 'new', status: 400
 		end
+		redirect_to(@tip.url)
 	end
 
 end

@@ -17,8 +17,6 @@ Rails.application.routes.draw do
 
   get 'template', to: 'pages#page'
 
-  get 'tips/:recipient_id/new', to: 'tips#new'
-
   get 'tips/create/:tippee_token', to: 'tips#create'
 
   get 'users/:user_id/transactions', to: 'users#transactions'
@@ -28,6 +26,8 @@ Rails.application.routes.draw do
   get 'users/:user_id/tips/received', to: 'tips#received'
 
   get 'users/:user_id/token', to: 'tippees#token', as: :display_token
+
+  get 'users/:user_id/tip_settings', to: 'users#tip_settings', as: :tip_settings
 
   resources :tippees, only: [:new, :create]
 
