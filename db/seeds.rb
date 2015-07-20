@@ -70,7 +70,6 @@ random_urls = [
   "http://www.baidu.com/",
   "http://www.amazon.com/",
   "http://www.wikipedia.org/",
-  "http://www.taobao.com/",
   "http://www.twitter.com/",
   "http://www.qq.com/",
   "http://www.google.co.in/",
@@ -95,14 +94,17 @@ random_urls = [
 ]
 
 
-20.times do | i |
+10.times do | i |
   link = random_urls[i]
   object = LinkThumbnailer.generate(link)
   Tip.create(tipper_id: tipper_array.sample,
               tippee_id: tippee_array.sample,
-              url: Faker::Internet.url,
-              amount: rand(0.01..0.1)
-              )
+              url: link,
+              amount: rand(0.01..0.1),
+              link_title: object.title,
+              link_thumbnail: object.images.first.src.to_s,
+              link_description: object.description
+  )
 end
 
 

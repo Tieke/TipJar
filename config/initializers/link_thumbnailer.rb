@@ -32,6 +32,7 @@ LinkThumbnailer.configure do |config|
   # List of attributes you want LinkThumbnailer to fetch on a website.
   #
   # config.attributes = [:title, :images, :description, :videos, :favicon]
+  config.attributes = [:title, :images, :description]
 
   # List of procedures used to rate the website description. Add you custom class
   # here. See wiki for more details on how to build your own graders.
@@ -47,6 +48,7 @@ LinkThumbnailer.configure do |config|
   # Minimum description length for a website.
   #
   # config.description_min_length = 25
+  config.description_min_length = 25
 
   # Regex of words considered positive to rate website description.
   #
@@ -67,6 +69,7 @@ LinkThumbnailer.configure do |config|
   # does not have to fetch its size and type.
   #
   # config.image_stats = true
+  config.image_stats = false
   #
   # Whether you want LinkThumbnailer to raise an exception if the Content-Type of the HTTP request
   # is not an html or xml.
