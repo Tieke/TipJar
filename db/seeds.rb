@@ -63,38 +63,31 @@ tipper_array = Tipper.pluck(:id)
 
 
 random_urls = [
-  "http://www.google.com/",
-  "http://www.facebook.com/",
-  "http://www.youtube.com/",
-  "http://www.yahoo.com/",
-  "http://www.baidu.com/",
-  "http://www.amazon.com/",
-  "http://www.wikipedia.org/",
-  "http://www.twitter.com/",
-  "http://www.qq.com/",
-  "http://www.google.co.in/",
-  "http://www.live.com/",
-  "http://www.sina.com.cn/",
-  "http://www.linkedin.com/",
-  "http://www.weibo.com/",
-  "http://www.yahoo.co.jp/",
-  "http://www.tmall.com/",
-  "http://www.ebay.com/",
-  "http://www.google.co.jp/",
-  "http://www.blogspot.com/",
-  "http://www.yandex.ru/",
-  "http://www.google.de/",
-  "http://www.vk.com/",
-  "http://www.hao123.com/",
-  "http://www.bing.com/",
-  "http://www.t.co/",
-  "http://www.msn.com/",
-  "http://www.google.co.uk/",
-  "http://www.amazon.co.jp/"
+  "https://www.youtube.com/watch?v=cDaepLDC0oE",
+  "https://www.youtube.com/watch?v=Xs5IMWjI1SA",
+  "https://www.youtube.com/watch?v=ZtZVdzTdjBQ",
+  "https://www.youtube.com/watch?v=uR_8JuIXvpA",
+  "https://www.youtube.com/watch?v=_T2XcE9UhWI",
+  "https://www.pinterest.com/pin/53832158023475798/",
+  "https://www.pinterest.com/pin/269301252694607860/",
+  "https://www.pinterest.com/pin/546483736011610386/",
+  "https://www.pinterest.com/pin/301811612506221942/",
+  "http://www.stuff.co.nz/national/quizzes/daily-quizzes/12236967/Afternoon-trivia-quiz-July-20",
+  "http://www.stuff.co.nz/life-style/parenting/70358744/woman-gives-birth-to-baby-in-car-on-way-to-hospital",
+  "http://www.stuff.co.nz/national/quizzes/12230614/Daily-trivia-quiz-July-20",
+  "http://www.stuff.co.nz/auckland/local-news/manukau-courier/69876532/unusual-baggage-seized-at-border",
+  "https://soundcloud.com/beatkingkong-clubgod-amen/going-down-beatking-dirty",
+  "https://soundcloud.com/beatteamsupreme/jnthn-stein-true",
+  "https://soundcloud.com/sandpeoplecologne/sandpeople-x-made-in-m-bypassed",
+  "http://stackoverflow.com/questions/31511191/when-open-emoji-keyboard-uitextview-goes-up",
+  "http://stackoverflow.com/questions/31511195/import-scope-and-specify-path",
+  "http://stackoverflow.com/questions/31511196/does-web-scraping-have-patterns",
+  "http://stackoverflow.com/questions/31511112/c-sharp-named-pipes-in-message-mode-sometimes-merge-messages",
+  "http://stackoverflow.com/questions/31511200/looking-for-a-daydeal-plugin-with-custom-sorting-functionality"
 ]
 
 
-10.times do | i |
+20.times do | i |
   link = random_urls[i]
   object = LinkThumbnailer.generate(link)
   Tip.create(tipper_id: tipper_array.sample,
