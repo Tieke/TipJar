@@ -19,12 +19,12 @@ var ProfileInfoContainer = React.createClass({
 	},
 	componentDidMount: function() {
 		this.loadUserDetailsFromServer();
-		// setInterval(this.loadUserDetailsFromServer, 2000);
+		setInterval(this.loadUserDetailsFromServer, 2000);
 	},
 	render: function() {
 		if (this.state.data) {
 			return (
-				<div className="profileInfoContainer col-lg-8">
+				<div className="profile_info_container col-lg-12">
 					<PersonalInfoContainer data={this.state.data} />
 					<Following />
 					<Followers />

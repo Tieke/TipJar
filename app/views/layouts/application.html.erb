@@ -18,7 +18,7 @@
 <body>
 	<!-- NAVBAR -->
 	<nav class='navbar navbar-default navbar-fixed-top'>
-		<div class='container'>
+		<div class='container nav_container'>
 			<div class='navbar-header'></div>
 			<% if current_user%>
 				<a id='home_button' href='/browse' class="navbar-brand">Tip Jar</a>
@@ -27,12 +27,12 @@
 				<a id='signin_home_button' href='/' class="navbar-brand">Tip Jar</a>
 			<% end %>
 			<div id='navbar' class='collapse navbar-collapse'>
-				<ul class='nav navbar-nav'>
+				<ul class='nav navbar-nav unordered_list'>
 					<% if current_user %>
 						<li><a id='profile_button' href="/users/<%= current_user.id%>">Profile</a></li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete   %></li>
+						<li><a href="/users/<%= current_user.id%>/token">Tip Link</a></li>
 					<% end %>
-					<li><a href='#'>Tip Link</a></li>
 
 					<li class='dropdown>'>
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
