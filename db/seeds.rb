@@ -65,7 +65,7 @@ tipper_array = Tipper.pluck(:id)
 random_urls = [
   "https://www.youtube.com/watch?v=cDaepLDC0oE",
   "https://www.youtube.com/watch?v=Xs5IMWjI1SA",
-  "https://www.youtube.com/watch?v=ZtZVdzTdjBQ",
+  "http://music.quietentertainer.com/track/walkie-talkie-irn-mnky-beat-down-mix",
   "https://www.youtube.com/watch?v=uR_8JuIXvpA",
   "https://www.youtube.com/watch?v=_T2XcE9UhWI",
   "https://www.pinterest.com/pin/53832158023475798/",
@@ -73,7 +73,7 @@ random_urls = [
   "https://www.pinterest.com/pin/546483736011610386/",
   "https://www.pinterest.com/pin/301811612506221942/",
   "http://www.stuff.co.nz/national/quizzes/daily-quizzes/12236967/Afternoon-trivia-quiz-July-20",
-  "http://www.stuff.co.nz/life-style/parenting/70358744/woman-gives-birth-to-baby-in-car-on-way-to-hospital",
+  "http://djshadow.bandcamp.com/releases/",
   "http://www.stuff.co.nz/national/quizzes/12230614/Daily-trivia-quiz-July-20",
   "http://www.stuff.co.nz/auckland/local-news/manukau-courier/69876532/unusual-baggage-seized-at-border",
   "https://soundcloud.com/beatkingkong-clubgod-amen/going-down-beatking-dirty",

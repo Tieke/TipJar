@@ -141,7 +141,6 @@ input::-webkit-input-placeholder {
 
 /*----------------------------------HOME PAGE----------------------------------*/
 .single_tip_container{
-	background-color: #FFE582;
 	margin-bottom: 20px;
 	height: 300px;
 	padding-left: 10px;
@@ -149,12 +148,12 @@ input::-webkit-input-placeholder {
 }
 
 .single_tip_container:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(100, 100, 100, 0.9))); /* Chrome,Safari4+ */
-  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.16), transparent); /* Chrome10+,Safari5.1+ */
-  background-image: -moz-linear-gradient(top, rgba(100,100,100,.9), transparent); /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, rgba(100,100,100,.9), transparent); /* IE10+ */
-  background-image: -o-linear-gradient(top, rgba(100,100,100,.9), transparent); /* Opera 11.10+ */
-  background-image: linear-gradient(to bottom, rgba(100,100,100,0.9), transparent); /* W3C */    
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(100, 100, 100, 0.9))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.16), transparent); /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, rgba(100,100,100,.9), transparent); /* FF3.6+ */
+  background: -ms-linear-gradient(top, rgba(100,100,100,.9), transparent); /* IE10+ */
+  background: -o-linear-gradient(top, rgba(100,100,100,.9), transparent); /* Opera 11.10+ */
+  background: linear-gradient(to bottom, rgba(100,100,100,0.9), transparent); /* W3C */    
 }
 
 .tip_attributes {
