@@ -1,0 +1,16 @@
+<h2>Update Tip Amount</h2>
+
+<% if @tipper %>
+  <%= form_for(@tipper) do |f| %>
+    <div class="field">
+      <%= f.label :standard_tip_amount, "Default tip amount" %>
+      <%= f.text_field :standard_tip_amount %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update Amount" %>
+    </div>
+  <% end %>
+<% else %>
+  You'll need to make your first tip before you can change the tip amount.
+<% end %>

@@ -42,7 +42,44 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "has followers and followings" do
+    let(:jane) {create(:user, username: 'jane')}
+    let(:john) {create(:user, username: 'john')}
+
+    before do
+      @follow = Follow.create(follower_id: john.id, following_id: jane.id)
+    end
+
+    it { should have_many :follower_follows}
+
+    it 'has many follower follows' do
+      expect(john.follower_follows).to include(@follow)
+    end
+
+    it { should have_many :followings}
+
+    it 'has many followings' do
+      expect(john.followings).to include(jane)
+    end
+
+    it { should have_many :following_follows}
+
+    it 'has many following_follows' do
+      expect(jane.following_follows).to include(@follow)
+    end
+
+    it { should have_many :followers}
+
+    it 'has many follows' do
+      expect(jane.followers).to include(john)
+    end
+
+
+  end
+
+
   after do
+    Follow.destroy_all
     User.destroy_all
   end
 end

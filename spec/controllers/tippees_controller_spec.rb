@@ -8,51 +8,51 @@ RSpec.describe TippeesController, type: :controller do
     sign_in @user
   end
 
-  describe "#token" do
-    context "with tippee token" do
-      let!(:tippee) {create(:tippee, user_id: @user.id)}
+  # describe "#token" do
+  #   context "with tippee token" do
+  #     let!(:tippee) {create(:tippee, user_id: @user.id)}
 
-      before do
-        get :token, user_id: @user.id
-      end
+  #     before do
+  #       get :token, user_id: @user.id
+  #     end
 
-      it "should have a successful http status" do
-        expect(response).to have_http_status(:success)
-      end
+  #     it "should have a successful http status" do
+  #       expect(response).to have_http_status(:success)
+  #     end
 
-      it "should render the token template" do
-        expect(response).to render_template(:token)
-      end
-    end
+  #     it "should render the token template" do
+  #       expect(response).to render_template(:token)
+  #     end
+  #   end
 
-    context "without a tippee token" do
-      before do
-        get :token, user_id: @user.id
-      end
+  #   context "without a tippee token" do
+  #     before do
+  #       get :token, user_id: @user.id
+  #     end
 
-      it "should have a successful http status" do
-        expect(response).to have_http_status(:success)
-      end
+  #     it "should have a successful http status" do
+  #       expect(response).to have_http_status(:success)
+  #     end
 
-      it "should render the new template" do
-        expect(response).to render_template(:new)
-      end
-    end
-  end
+  #     it "should render the new template" do
+  #       expect(response).to render_template(:new)
+  #     end
+  #   end
+  # end
 
-  describe "#new" do
-    before do
-      get :new
-    end
+  # describe "#new" do
+  #   before do
+  #     get :new
+  #   end
 
-    it "should have a successful http status"  do
-      expect(response).to have_http_status(:success)
-    end
+  #   it "should have a successful http status"  do
+  #     expect(response).to have_http_status(:success)
+  #   end
 
-    it "renders the new template" do
-      expect(response).to render_template(:new)
-    end
-  end
+  #   it "renders the new template" do
+  #     expect(response).to render_template(:new)
+  #   end
+  # end
 
   describe "#create" do
 
@@ -68,8 +68,8 @@ RSpec.describe TippeesController, type: :controller do
       expect(response).to be_redirect
     end
 
-    it "redirects to the token screen" do
-      expect(response).to redirect_to(display_token_path(@user))
+    it "redirects to the tip settings screen" do
+      expect(response).to redirect_to(tip_settings_path(@user))
     end
 
   end

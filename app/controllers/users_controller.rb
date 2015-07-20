@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 	def index
 		@users = User.all
@@ -37,7 +37,16 @@ class UsersController < ApplicationController
   end
 
   def tip_settings
+    if current_user.tippee
+   		@tippee_token = current_user.tippee.tippee_token
+      @tipUrl = "http://localhost:3000/tips/create/"
+    else
+    	@tippee = Tippee.new(user_id: current_user.id)
+    end
 
+    @tipper = current_user.tipper
+
+    render :tip_settings
   end
 
 end

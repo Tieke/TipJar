@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # get 'users/:user_id/purchase', to: 'users#initiate_coinbase', as: :purchase
 
   # post 'users/:user_id/retrieve', to: 'users#retrieve_checkout'
+  get 'browse', to: 'pages#page'
 
   get 'users/:user_id/transfer', to: 'users#transfer'
 
@@ -30,5 +31,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/tip_settings', to: 'users#tip_settings', as: :tip_settings
 
   resources :tippees, only: [:new, :create]
+
+  resources :tippers, only: [:update]
 
 end
