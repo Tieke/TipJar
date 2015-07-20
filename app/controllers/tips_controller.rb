@@ -31,8 +31,16 @@ class TipsController < ApplicationController
 		tipper = Tipper.find_or_create_by(user_id: current_user.id)
 		tippee = Tippee.find_by_tippee_token(params[:tippee_token])
 		referrer = request.env["HTTP_REFERER"]
+		link_object = LinkThumbnailer.generate(referrer)
 
-		@tip = tipper.tips.new(tippee_id: tippee.id, amount: tipper.standard_tip_amount, url: referrer)
+		@tip = tipper.tips.new(
+			tippee_id: tippee.id,
+			amount: tipper.standard_tip_amount,
+			url: referrer,
+			link_title: link_object.title,
+      link_thumbnail: link_object.images.first.src.to_s,
+      link_description: link_object.description
+    )
 
 		if @tip.save
 			redirect_to(@tip.url)
@@ -65,7 +73,7 @@ class TipsController < ApplicationController
 					}
 				}
 			)
-		end	
+		end
 		outputData
 	end
 
