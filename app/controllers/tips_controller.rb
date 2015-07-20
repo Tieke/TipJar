@@ -13,9 +13,13 @@ class TipsController < ApplicationController
 	end
 
 	def given
-		@tips_given = User.find(params[:user_id]).tipper.tips
-		@data = formatTipsWithUsers(@tips_given)
-		render json: @data
+		if User.find(params[:user_id]).tipper
+			@tips_given = User.find(params[:user_id]).tipper.tips
+			@data = formatTipsWithUsers(@tips_given)
+			render json: @data
+		else
+			redirect_to browse_path
+		end
 	end
 
 	def received
