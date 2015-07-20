@@ -9,9 +9,11 @@ Rails.application.routes.draw do
 
   resources :tips, only: [:index, :show]
 
-  get 'users/:user_id/purchase', to: 'users#purchase_checkout', as: :purchase
+  get 'users/:user_id/purchase', to: 'users#initiate_coinbase', as: :purchase
 
   post 'users/:user_id/retrieve', to: 'users#retrieve_checkout'
+
+  get 'users/:user_id/transfer', to: 'users#transfer'
 
   get 'template', to: 'pages#page'
 

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 		render json: { "withdrawals" => @withdrawals, "deposits" => @deposits }
 	end
 
-	def purchase_checkout
+	def initiate_coinbase
 		p "*" * 40
 		redirect_to "https://sandbox.coinbase.com/oauth/authorize?response_type=code&client_id=#{ENV['COINBASE_CLIENT_ID']}&redirect_uri=http://localhost:3000/users/auth/coinbase/callback&scope=wallet:accounts:read"
 	end
@@ -31,6 +31,8 @@ class UsersController < ApplicationController
 		@user = current_user
 	end
 
-
+  def transfer
+  	p response = HTTParty.post("https://api.sandbox.coinbase.com/v2/accounts/#{current_user.coinbase_user_id}/transactions", headers: {"Content-Type" => "application/json", "Authorization" => "Bearer #{current_user.coinbase_access_token}"}, data: {"type" => "transfer", "to" => "ad08c2cd-dd4f-5462-8bc1-9e8d7b304c0c", "amount" => "0.01"})
+  end
 
 end
