@@ -11,6 +11,7 @@ $(document).ready(function(){
 		e.preventDefault()
 		var url = $(this).context.pathname
 		renderProfile(url)
+		// alert("YUP")
 	})
 
 	$(document).on('click', '.external_link', function(e) {
