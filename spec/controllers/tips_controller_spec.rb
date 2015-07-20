@@ -32,7 +32,7 @@ RSpec.describe TipsController, type: :controller do
 						}
 					}
 				)
-			end 
+			end
 			get :index
 		end
 
@@ -184,7 +184,7 @@ RSpec.describe TipsController, type: :controller do
 				@user2 = create(:user)
 				@tippee = create(:tippee, user_id: @user2.id)
 				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: "")
-				request.env["HTTP_REFERER"] = "http://testUrl.com"
+				request.env["HTTP_REFERER"] = "http://stackoverflow.com/questions/31509149/modifying-variables-with-the-inner-class-java"
 				get :create, {tippee_token: @tippee.tippee_token, tip: @tip_params}
 			end
 
@@ -192,7 +192,7 @@ RSpec.describe TipsController, type: :controller do
 
 			it "should redirect to the referring url" do
 				tip = Tip.find_by_tippee_id(@tippee.id)
-				expect(response).to redirect_to("http://testUrl.com")
+				expect(response).to redirect_to("http://stackoverflow.com/questions/31509149/modifying-variables-with-the-inner-class-java")
 			end
 
 			it "creates a new tip with specified params" do
@@ -216,7 +216,7 @@ RSpec.describe TipsController, type: :controller do
 				@tippee = create(:tippee, user_id: @user2.id)
 				@tipper = create(:tipper, user_id: @user.id)
 				@tip_params = attributes_for(:tip, tippee_id: @tippee.id, tipper_id: @tipper.id)
-				request.env["HTTP_REFERER"] = "http://testUrl.com"
+				request.env["HTTP_REFERER"] = "http://stackoverflow.com/questions/31509149/modifying-variables-with-the-inner-class-java"
 				get :create, {tippee_token: @tippee.tippee_token, tip: @tip_params}
 			end
 
@@ -224,7 +224,7 @@ RSpec.describe TipsController, type: :controller do
 
 			it "redirects to the referring url" do
 				tip = Tip.last
-				expect(response).to redirect_to("http://testUrl.com")
+				expect(response).to redirect_to("http://stackoverflow.com/questions/31509149/modifying-variables-with-the-inner-class-java")
 			end
 
 			it "creates a new tip" do
@@ -234,7 +234,7 @@ RSpec.describe TipsController, type: :controller do
 
 			it "creates a new tip with the referring url" do
 				tip = Tip.last
-				expect(tip.url).to eq("http://testUrl.com")
+				expect(tip.url).to eq("http://stackoverflow.com/questions/31509149/modifying-variables-with-the-inner-class-java")
 			end
 
 			it "creates a new tip associated with the tipper" do
