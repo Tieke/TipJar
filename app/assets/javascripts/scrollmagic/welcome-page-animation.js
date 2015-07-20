@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 	var controller = new ScrollMagic.Controller(
 		{
 			globalSceneOptions: {
@@ -34,7 +35,15 @@ $(document).ready(function() {
 	.addIndicators()
 	.addTo(controller);
 
-	
+	var welcomeTween = TweenMax.to('.welcome-sentence', 1,
+		{
+			scale: 2,
+			color: '#d0d0d0',
+			x: 200
+		}
+	);
+
+
 
 	var welcomeContainerScene = new ScrollMagic.Scene(
 		{
@@ -42,8 +51,10 @@ $(document).ready(function() {
 			offset: '115px'
 		}
 	)
+	.setTween(welcomeTween)
 	.setPin('.welcome_container')
 	.addIndicators()
 	.addTo(controller);
 
+	$("html,body").animate({scrollTop: 0}, 100)
 })

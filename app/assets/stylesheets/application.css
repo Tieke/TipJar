@@ -109,8 +109,10 @@ a:hover {
 }
 
 .header-cover {
-	/*padding: 30px;*/
 	background-color: white; 
+}
+
+.welcome-sentence {
 }
 
 
