@@ -15,9 +15,15 @@
  */
 
 /*----------------------------------GENERAL----------------------------------*/
+body {
+	height: 100%;
+	width: 100%;
+}
+
 body > .container {
 	height: 100%;
-	padding: 60px 0 0;
+	padding: 60px 40px 0;
+	background-color: white;
 }
 
 /*----------------------------------NAVAGATION----------------------------------*/
@@ -36,12 +42,55 @@ body > .container {
 
 /*----------------------------------WELCOME/SIGNUP/SIGNIN----------------------------------*/
 
-.page-header {
-	background-color: #FFD121;
-	text-align: center;
-	border-bottom: none;
-	height: 100px;
+.header-buffer {
+	width: 100%;
+	height: 20vh;
+	background-color: white;
 }
+
+#topper {
+    position: relative;
+    height: 80vh; /* 60% of viewport */
+    min-height: 300px !important; /* In case window becomes too narrow */
+    background-color: #111; /* Shows while the image is loading */
+    background-position: 50% 0; /* Best for responsive */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover; /* Covers the entire div */
+    background-repeat: no-repeat; /* No repeat */
+    background-image: url('header-background.svg');
+}
+
+#topper:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    content: ' ';
+    background: #000;
+    opacity: 0.4;
+}
+
+#topper .wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 15px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.header-cover {
+	/*padding: 30px;*/
+	background-color: white; 
+}
+
 
 .welcome_container {
 	width: 100%;

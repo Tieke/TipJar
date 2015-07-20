@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440px" height="865px" viewBox="0 0 1440 865" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>header-background</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="62" width="1440" height="646"></rect>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Tip-Jar-welcome-v1" sketch:type="MSArtboardGroup">
+            <g id="header-background" sketch:type="MSLayerGroup" transform="translate(0.000000, -62.000000)">
+                <g id="Rectangle-1">
+                    <use fill="none" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                    <use fill="#FFD121" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="Oval-1-+-Oval-1-Copy-4" transform="translate(790.486155, 754.876294) rotate(141.000000) translate(-790.486155, -754.876294) translate(581.643918, 619.515585)" sketch:type="MSShapeGroup">
+                    <ellipse id="Oval-1" fill="#EAB900" cx="208.842237" cy="125.692087" rx="208.842237" ry="125.692087"></ellipse>
+                    <ellipse id="Oval-1-Copy" fill="#FFE582" cx="208.842237" cy="145.029331" rx="208.842237" ry="125.692087"></ellipse>
+                </g>
+                <g id="Oval-1-+-Oval-1-Copy-2" transform="translate(1186.782093, 453.000000) rotate(141.000000) translate(-1186.782093, -453.000000) translate(1072.367152, 378.842168)" sketch:type="MSShapeGroup">
+                    <ellipse id="Oval-1" fill="#EAB900" cx="114.41494" cy="68.8608437" rx="114.41494" ry="68.8608437"></ellipse>
+                    <ellipse id="Oval-1-Copy" fill="#FFE582" cx="114.41494" cy="79.4548197" rx="114.41494" ry="68.8608437"></ellipse>
+                </g>
+                <g id="Oval-1-+-Oval-1-Copy" transform="translate(1272.000000, 178.500000) rotate(141.000000) translate(-1272.000000, -178.500000) translate(1200.000000, 132.000000)" sketch:type="MSShapeGroup">
+                    <ellipse id="Oval-1" fill="#EAB900" cx="72" cy="43.1785714" rx="72" ry="43.1785714"></ellipse>
+                    <ellipse id="Oval-1-Copy" fill="#FFE582" cx="72" cy="49.8214286" rx="72" ry="43.1785714"></ellipse>
+                </g>
+                <g id="Oval-1-+-Oval-1-Copy-3" transform="translate(1133.000000, 62.000000) rotate(141.000000) translate(-1133.000000, -62.000000) translate(1079.000000, 27.000000)" sketch:type="MSShapeGroup">
+                    <ellipse id="Oval-1" fill="#EAB900" cx="54" cy="32.5" rx="54" ry="32.5"></ellipse>
+                    <ellipse id="Oval-1-Copy" fill="#FFE582" cx="54" cy="37.5" rx="54" ry="32.5"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
