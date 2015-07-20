@@ -18,9 +18,8 @@ class UsersController < ApplicationController
 		render json: { "withdrawals" => @withdrawals, "deposits" => @deposits }
 	end
 
-	def initiate_coinbase
-		p "*" * 40
-		redirect_to "https://sandbox.coinbase.com/oauth/authorize?response_type=code&client_id=#{ENV['COINBASE_CLIENT_ID']}&redirect_uri=http://localhost:3000/users/auth/coinbase/callback&scope=wallet:transactions:transfer"
+	def initiate
+
 	end
 
 	def retrieve_checkout 
@@ -29,44 +28,25 @@ class UsersController < ApplicationController
 
 	def topup
 		@user = current_user
+  	client = BitPay::SDK::Client.new(api_uri: 'https://test.bitpay.com', pem: File.read("-----BEGIN EC PRIVATE KEY-----\nMHQCAQEEIAQv22QBdyErk/ADvCYslTHfHgdn8mb2BA40VymMarbAoAcGBSuBBAAK\noUQDQgAEY8So6hy2Bi5atSV59Jcp8b5gN9QSPsdjlgfjsX6fPpk0mo215+4bc3Wk\nkhxgzbR6RTiKVVuQNgJ16by/vhNIEg==\n-----END EC PRIVATE KEY-----\n")
+  	invoice = client.create_invoice(price: "5.00", currency: "USD", facade: "merchant")
+  	@invoice_url = invoice["url"]
 	end
 
   def transfer
-  	p "wallet"
-		p wallet = Coinbase::Client.new(api_key: "B38UjEXUmI5cun3a", api_secret: "eOyvBiMIjXTMt6cEx1q13VsTWLmQSWJ0", api_url: "https://api.sandbox.coinbase.com")
-		p "client"
-  	p client = Coinbase::OAuthClient.new(ENV['COINBASE_CLIENT_ID'], ENV['COINBASE_CLIENT_SECRET'], access_token: "88fc2d5d6ec1e31dcf17610aba71257947d11dd6a31736533f5ff0c695ee3232")
-  	p client.account
-  	# p user  = client.user(current_user.coinbase_user_id)
-  	# p user_accounts = user.accounts
-  	# p account = client.primary_account
-  	# account.send(to: <bitcoin address>, amount: "5.0", currency: "USD", description: "Your first bitcoin!")
-  	# p response = HTTParty.post("https://api.sandbox.coinbase.com/v2/accounts/#{current_user.coinbase_user_id}/transactions", query: {"type" => "send", "to" => "ad08c2cd-dd4f-5462-8bc1-9e8d7b304c0c", "amount" => "0.01", "currency" => "BTC"}, headers: {"Content-Type" => "application/json", "Authorization" => "Bearer #{current_user.coinbase_access_token}"})
-
   end
 
 end
 
-# curl https://api.coinbase.com/v2/accounts/2bbf394c-193b-5b2a-9155-3b4732659ede/transactions /
-#   -X POST \
-#   -H 'Content-Type: application/json' \
-#   -H 'Authorization: Bearer abd90df5f27a7b170cd775abf89d632b350b7c1c9d53e08b340cd9832ce52c2c' \
-#   -d '{
-#     "type": "transfer",
-#     "to": "58542935-67b5-56e1-a3f9-42686e07fa40",
-#     "amount": "1"
-#   }'
 
-# HTTParty.get("https://api.sandbox.coinbase.com/v2/accounts/0cd6131a-45da-5a15-9bef-5b976ee3352c", headers: {"Content-Type" => "application/json", "Authorization" => "Bearer 2328a7e18b7daccc3624ddb589de9a20d0c11ce701dfd17348fc58d9d7f3ab3e"})
-
-# HTTParty.post("https://api.sandbox.coinbase.com/v2/accounts/0cd6131a-45da-5a15-9bef-5b976ee3352c/transactions", query: {"type" => "send", "to" => "ad08c2cd-dd4f-5462-8bc1-9e8d7b304c0c", "amount" => "0.01", "currency" => "BTC"}, headers: {"Content-Type" => "application/json", "Authorization" => "Bearer 88fc2d5d6ec1e31dcf17610aba71257947d11dd6a31736533f5ff0c695ee3232"})
-
-# developer token 8a5898627b61eb3bc888c00d4cc1786b8acf7ff8d732977cd3b7b925c1bb2ccc
+# pem = BitPay::KeyUtils.generate_pem
+#  => "-----BEGIN EC PRIVATE KEY-----\nMHQCAQEEIAQv22QBdyErk/ADvCYslTHfHgdn8mb2BA40VymMarbAoAcGBSuBBAAK\noUQDQgAEY8So6hy2Bi5atSV59Jcp8b5gN9QSPsdjlgfjsX6fPpk0mo215+4bc3Wk\nkhxgzbR6RTiKVVuQNgJ16by/vhNIEg==\n-----END EC PRIVATE KEY-----\n" 
+# 2.2client = BitPay::SDK::Client.new(api_uri: 'https://test.bitpay.com', pem: pem)
+#  => #<BitPay::SDK::Client:0x007fbd91a56e68 @pem="-----BEGIN EC PRIVATE KEY-----\nMHQCAQEEIAQv22QBdyErk/ADvCYslTHfHgdn8mb2BA40VymMarbAoAcGBSuBBAAK\noUQDQgAEY8So6hy2Bi5atSV59Jcp8b5gN9QSPsdjlgfjsX6fPpk0mo215+4bc3Wk\nkhxgzbR6RTiKVVuQNgJ16by/vhNIEg==\n-----END EC PRIVATE KEY-----\n", @key=#<OpenSSL::PKey::EC:0x007fbd91a56e40 @group=#<OpenSSL::PKey::EC::Group:0x007fbd91a56d50 @key=#<OpenSSL::PKey::EC:0x007fbd91a56e40 ...>>>, @priv_key="42fdb640177212b93f003bc262c9531df1e0767f266f6040e3457298c6ab6c0", @pub_key="0263c4a8ea1cb6062e5ab52579f49729f1be6037d4123ec7639607e3b17e9f3e99", @client_id="TfERdhMsUHmtsD1cZ2tzPk49sCBM5rXu2L3", @uri=#<URI::HTTPS https://test.bitpay.com>, @user_agent="ruby-bitpay-sdk 2.4.4", @https=#<Net::HTTP test.bitpay.com:443 open=false>, @tokens={}> 
+# 2.2.0 :023 > client.pair_client()
+#  => [{"policies"=>[{"policy"=>"id", "method"=>"inactive", "params"=>["TfERdhMsUHmtsD1cZ2tzPk49sCBM5rXu2L3"]}], "token"=>"DZjwZntzQrCEtqqBJUVk2KufhFs3QtJjnqz41X5hgRxj", "dateCreated"=>1437371497231, "pairingExpiration"=>1437457897231, "pairingCode"=>"4DxL2TH"}] 
 
 
+# # HTTParty.post("https://test.bitpay.com/tokens", query: {"label" => "bitjar", "id" => "uvyHZeGcDkUBjsvA4Uc1XwdVHzrjzMX4Yi1nmKuSiuj", "facade" => "Point-of-Sale"})
 
-#duck id 0cd6131a-45da-5a15-9bef-5b976ee3352c
-#kyle id ad08c2cd-dd4f-5462-8bc1-9e8d7b304c0c
-
-# curl https://api.coinbase.com/v1/users/self/?access_token=88fc2d5d6ec1e31dcf17610aba71257947d11dd6a31736533f5ff0c695ee3232
-
+# # HTTParty.get("https://api.sandbox.coinbase.com/v2/user", headers: {"Authorization" => "Bearer #{current_user.coinbase_access_token}" })

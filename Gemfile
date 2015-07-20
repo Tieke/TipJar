@@ -15,8 +15,9 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'omniauth-coinbase'
-gem 'coinbase', 
+gem 'bitpay-sdk'
+gem 'bitpay-client', :require => 'bitpay'
+
 gem 'httparty'
 
 group :development, :test do
