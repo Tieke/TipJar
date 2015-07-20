@@ -10,9 +10,10 @@ $(document).ready(function() {
 
 	var topperTween = TweenMax.to('#topper', 1,
 		{
-			backgroundPosition: '50%' + $('#topper').height() * 0.4 + 'px',
+			backgroundPosition: '90%' + $('#topper').height() * 0.4 + 'px',
 			ease: Cubic.ease,
-			z: 1
+			z: 1,
+			opacity: 0
 		}
 	);
 
@@ -26,22 +27,23 @@ $(document).ready(function() {
     {
         triggerElement: '#topper',
         duration: '60%',
-        offset: '100px' /* Height of viewport */
+        offset: '100px'
     }
 	)
-	.setTween([topperTween, headingTween]) /* Array of animations occur */
-	.addIndicators() /* Enable dev mode */
-	.addTo(controller); /* Mix it all together */
+	.setTween([topperTween, headingTween])
+	.addIndicators()
+	.addTo(controller);
 
-	// var headerScene = new ScrollMagic.Scene(
-	// 	{
-	// 		triggerElement: '#topper',
-	// 		duration: '1500px',
-	// 		offset: '600px'
-	// 	}
-	// )
-	// .setPin('#topper')
-	// .addIndicators()
-	// .addTo(controller);
+	
+
+	var welcomeContainerScene = new ScrollMagic.Scene(
+		{
+			triggerElement: '.header-buffer',
+			offset: '115px'
+		}
+	)
+	.setPin('.welcome_container')
+	.addIndicators()
+	.addTo(controller);
 
 })

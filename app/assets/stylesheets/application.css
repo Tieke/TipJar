@@ -74,7 +74,7 @@ a:hover {
     position: relative;
     height: 80vh; /* 60% of viewport */
     min-height: 300px !important; /* In case window becomes too narrow */
-    background-color: #111; /* Shows while the image is loading */
+    background-color: #FFD121; /* Shows while the image is loading */
     background-position: 50% 0; /* Best for responsive */
     -webkit-background-size: cover;
     -moz-background-size: cover;
