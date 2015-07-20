@@ -18,7 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    unless current_user.coinbase_user_id
+    # unless current_user.coinbase_user_id
       p "*" * 30
       p "it fails"
       p response = HTTParty.post("https://api.sandbox.coinbase.com/oauth/token?grant_type=authorization_code&code=#{params[:code]}&redirect_uri=http://localhost:3000/users/auth/coinbase/callback&client_id=#{ENV['COINBASE_CLIENT_ID']}&client_secret=#{ENV['COINBASE_CLIENT_SECRET']}")
@@ -29,7 +29,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       current_user.coinbase_user_id = response["data"]["id"]
       current_user.save
       redirect_to root_path
-    end
+    # end
   end
 
 end

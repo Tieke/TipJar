@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth-coinbase'
-gem 'coinbase'
+gem 'coinbase', 
 gem 'httparty'
 
 group :development, :test do
