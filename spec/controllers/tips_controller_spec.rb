@@ -66,43 +66,61 @@ RSpec.describe TipsController, type: :controller do
 
 
 	describe "#given" do
-		before do
-			@tipper = create(:tipper)
-			@user = @tipper.user
-			10.times { create( :tip, tipper_id: @tipper.id ) }
-			tips = Tip.all
-			givers = Tip.all.map { |tip| tip.tipper.user }
-			receivers = Tip.all.map { |tip| tip.tippee.user }
-			@expected_response = []
 
-			givers.length.times do | i |
-				@expected_response.push(
-					{
-						tip: tips[i],
-						giver: {
-							userName: givers[i].username,
-							id: givers[i].id,
-							image_url: givers[i].image_url
-						},
-						receiver: {
-							userName: receivers[i].username,
-							id: receivers[i].id,
-							image_url: receivers[i].image_url
+		context "when current user has already made a tip/s" do
+
+			before do
+				@tipper = create(:tipper)
+				@user = @tipper.user
+				10.times { create( :tip, tipper_id: @tipper.id ) }
+				tips = Tip.all
+				givers = Tip.all.map { |tip| tip.tipper.user }
+				receivers = Tip.all.map { |tip| tip.tippee.user }
+				@expected_response = []
+
+				givers.length.times do | i |
+					@expected_response.push(
+						{
+							tip: tips[i],
+							giver: {
+								userName: givers[i].username,
+								id: givers[i].id,
+								image_url: givers[i].image_url
+							},
+							receiver: {
+								userName: receivers[i].username,
+								id: receivers[i].id,
+								image_url: receivers[i].image_url
+							}
 						}
-					}
-				)
+					)
+				end
+				get :given, user_id: @user.id
 			end
-			get :given, user_id: @user.id
+
+			it { should respond_with(200) }
+
+			it "should return all the tips given out by a specified user, plus the giver and receiver objects, as json" do
+				expect(response.body).to eq(@expected_response.to_json)
+			end
+
+			it "should assign all the given tips to @tips_given" do
+				expect(assigns(:tips_given)).to eq(@user.tipper.tips)
+			end
 		end
 
-		it { should respond_with(200) }
+		context "when current user has not yet made any tips" do
+			before do
+				@user = create(:user)
+				get :given, user_id: @user.id
+			end
 
-		it "should return all the tips given out by a specified user, plus the giver and receiver objects, as json" do
-			expect(response.body).to eq(@expected_response.to_json)
-		end
+			it { should respond_with(302) }
 
-		it "should assign all the given tips to @tips_given" do
-			expect(assigns(:tips_given)).to eq(@user.tipper.tips)
+
+			it "redirects to /browse" do
+				expect(response).to redirect_to('/browse')
+			end
 		end
 
 	end

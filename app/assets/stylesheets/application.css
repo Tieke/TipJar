@@ -134,62 +134,87 @@ input::-webkit-input-placeholder {
 }
 
 /*----------------------------------PROFILE PAGE----------------------------------*/
+.profile_page_container{
+	height: 1000px;
+	padding: 0;
+}
 
 .profile_info_container {
 	background-color: #FFD121;
-	text-align: center;
+	padding: 0;
+	/*text-align: center;*/
 	border-bottom: none;
-	height: 200px;
+	height: 250px;
+	clear: both;
 }
 
 .personal_info_container {
-	width: 50%;
-	height: 100px;
-	padding: 0 50px;
-	background-color: violet;
-	float: left;
+	/*width: 50%;*/
+	height: 250px;
+	padding: 0;
+	background-color: transparent;
+	position: relative;
 }
 
 .personal_info {
-	background-color: purple;
-	height: 50px;
+	background-color: #FFD121;
 	width:100%;
+	padding: 0;
+}
+
+.profile_image {
+	height: 200px;
+	width: 200px;
+	float: left;
+}
+
+.profile_name {
+	padding-left: 220px;
+}
+
+.profile_username {
+	padding-left: 220px;
 }
 
 .account_info {
-	height: 50px;
-	background-color: blue;
+	background-color: #D0D0D0;
 	width: 100%;
+	height: 50px;
+	
 }
 
 .following {
-	height: 100px;
-	background-color: pink;
+	height: 250px;
+	background-color: #D0D0D0;
 	float: right;
 }
 
 .followers {
-	height: 100px;
-	background-color: yellow;
+	height: 250px;
+	background-color: #EAB900;
 	float: right;
 }
 
 .tips_container {
-	background-color: red;
+	background-color: #D0D0D0;
 	height: 300px;
 	width: 100%;
+	margin-top: 40px;
+	padding: 0;
+	position: relative; 
+	clear: both;
 }
 
 .left_tips_container {
 	background-color: orange;
-	height: 100px;
-	width: 50%;
+	/*height: 100px;*/
+	/*width: 50%;*/
 	float: left;
 }
 
 .right_tips_container {
 	background-color: green;
-	height: 100px;
-	width: 50%;
+	/*height: 100px;*/
+	/*width: 50%;*/
 	float: right;
 }
