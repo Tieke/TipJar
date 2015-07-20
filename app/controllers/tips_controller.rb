@@ -1,11 +1,10 @@
-ticlass TipsController < ApplicationController
+class TipsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@tips = Tip.all.map do |tip|
-			tip[:giver] = tip.tipper.user
-		end
-		render json: @tips
+		@tips = Tip.all
+		@data = formatTipsWithUsers(@tips)
+		render json: @data
 	end
 
 	def show
@@ -15,12 +14,14 @@ ticlass TipsController < ApplicationController
 
 	def given
 		@tips_given = User.find(params[:user_id]).tipper.tips
-		render json: @tips_given
+		@data = formatTipsWithUsers(@tips_given)
+		render json: @data
 	end
 
 	def received
 		@tips_received = User.find(params[:user_id]).tippee.tips
-		render json: @tips_received
+		@data = formatTipsWithUsers(@tips_received)
+		render json: @data
 	end
 
 	def new
@@ -40,6 +41,32 @@ ticlass TipsController < ApplicationController
 		else
 			render 'new', status: 400
 		end
+	end
+
+	private
+
+	def formatTipsWithUsers(tips)
+		outputData = []
+		givers = tips.map { |tip| tip.tipper.user }
+		receivers = tips.map { |tip| tip.tippee.user }
+		givers.length.times do | i |
+			outputData.push(
+				{
+					tip: tips[i],
+					giver: {
+						userName: givers[i].username,
+						id: givers[i].id,
+						image_url: givers[i].image_url
+					},
+					receiver: {
+						userName: receivers[i].username,
+						id: receivers[i].id,
+						image_url: receivers[i].image_url
+					}
+				}
+			)
+		end	
+		outputData
 	end
 
 end
