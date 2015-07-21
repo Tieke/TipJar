@@ -7,7 +7,7 @@ class TipsController < ApplicationController
   end
 
 	def index
-		@tips = Tip.all
+		@tips = Tip.all.reverse
 		@data = formatTipsWithUsers(@tips)
 		render json: @data
 	end
@@ -19,7 +19,7 @@ class TipsController < ApplicationController
 
 	def given
 		if User.find(params[:user_id]).tipper
-			@tips_given = User.find(params[:user_id]).tipper.tips
+			@tips_given = User.find(params[:user_id]).tipper.tips.reverse
 			@data = formatTipsWithUsers(@tips_given)
 			render json: @data
 		else
@@ -28,7 +28,7 @@ class TipsController < ApplicationController
 	end
 
 	def received
-		@tips_received = User.find(params[:user_id]).tippee.tips
+		@tips_received = User.find(params[:user_id]).tippee.tips.reverse
 		@data = formatTipsWithUsers(@tips_received)
 		render json: @data
 	end
