@@ -15,21 +15,43 @@
  */
 
 /*----------------------------------GENERAL----------------------------------*/
+
 body > .container {
 	height: 100%;
-	padding: 60px 0 0;
+	padding: 60px 40px 0;
+	background-color: #FFFFF5;
 }
 
 body {
 	background-color: #FFFFF5;
 }
 
+a,
 a:hover {
 	text-decoration: none;
 	cursor: pointer;
 }
 
+p {
+	margin: 0;
+}
+
+@font-face {
+    font-family: "Nexa-Light";
+    src: url('nexa/Nexa Light.otf') format("truetype");
+}
+
+@font-face {
+    font-family: "Nexa-Bold";
+    src: url('nexa/Nexa Bold.otf') format("truetype");
+}
+
 /*----------------------------------NAVAGATION----------------------------------*/
+#nav_container {
+	background-color: #D0D0D0;
+	opacity: 0.9;
+}
+
 .unordered_list{
 	float: right;
 }
@@ -38,12 +60,25 @@ a:hover {
 	padding-left: 0;
 }
 
+#home_button:hover {
+	color: #EAB900;
+}
+
 #navbar {
 	padding-right: 0;
 }
 
 .nav_container {
 	padding-right: 0;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+	background-color: #EAB900;
+}
+
+.navbar-nav > li > .dropdown-menu {
+	background-color: #FFFFF5;
 }
 /*----------------------------------FOOTER----------------------------------*/
 .footer {
@@ -58,16 +93,79 @@ a:hover {
 
 /*----------------------------------WELCOME/SIGNUP/SIGNIN----------------------------------*/
 
-.page-header {
-	background-color: #FFD121;
-	text-align: center;
-	border-bottom: none;
-	height: 100px;
+.header-buffer {
+	width: 100%;
+	height: 20vh;
+	background-color: #FFFFF5;
 }
+
+.error-form {
+	margin: 20px 20%;
+	position: absolute;
+  width: 60%
+}
+
+.sign-in-form {
+	margin: 20px 30%;
+	width: 40%;
+}
+
+.notice, .alert {
+	position: fixed;
+	font-family: 'Nexa-Light';
+	color: red;
+	margin-top: 40px;
+}
+
+#error_explanation {
+	background-color: #d0d0d0;
+	margin-bottom: 0;
+	padding: 10px;
+}
+
+#error_explanation h2 {
+	color: red;
+}
+
+#topper {
+    position: relative;
+    height: 80vh; /* 60% of viewport */
+    min-height: 300px !important; /* In case window becomes too narrow */
+    background-color: #FFD121; /* Shows while the image is loading */
+    background-position: 50% 0; /* Best for responsive */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover; /* Covers the entire div */
+    background-repeat: no-repeat; /* No repeat */
+    background-image: url('header-background.svg');
+}
+
+#topper .wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 15px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.welcome_container, h2, li { 
+    font-family: "Nexa-Light", Verdana, Tahoma;
+}
+
+.welcome-sentence {
+	margin-top: 50px;
+}
+
 
 .welcome_container {
 	width: 100%;
-	padding: 0 50px 60px;
+	padding: 200px 50px 60px;
 }
 
 .left_welcome_container,
@@ -140,29 +238,65 @@ input::-webkit-input-placeholder {
 }
 
 /*----------------------------------HOME PAGE----------------------------------*/
-.single_tip_container{
-	margin-bottom: 20px;
+.single_tip_container {
+	margin-bottom: 80px;
+	height: 370px;
+	padding: 10px;
+}
+
+/*.single_tip_container:hover {
+	background-color: #FFD121;
+
+}
+
+.tip_attributes_container_image:hover {
+	opacity: 1;
+}*/
+
+.tip_attributes_container_image {
+	background-position: center;
 	height: 300px;
-	padding-left: 10px;
+	padding-top: 10px;
+	opacity: 0.7;
+	border-bottom: 1px solid #D0D0D0;
+}
+
+.tip_attributes_container {
+	background-color: #D0D0D0;
+	height: 80px;
+	margin-top: 210px;
+	opacity: 0.85;
+	display: none;
+}
+
+.tipper_attributes_container {
+	float: right;
+	padding-right: 20px;
 	padding-top: 10px;
 }
 
-.single_tip_container:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(100, 100, 100, 0.9))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0.16), transparent); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(top, rgba(100,100,100,.9), transparent); /* FF3.6+ */
-  background: -ms-linear-gradient(top, rgba(100,100,100,.9), transparent); /* IE10+ */
-  background: -o-linear-gradient(top, rgba(100,100,100,.9), transparent); /* Opera 11.10+ */
-  background: linear-gradient(to bottom, rgba(100,100,100,0.9), transparent); /* W3C */    
-}
-
 .tip_attributes {
+	font-family: "Nexa-Bold";
 	margin: 0;
-	color: #EAB900;
+	color: #646464;
+	opacity: 1;
 }
 
 .tip_attributes:hover {
-	color: #646464;
+	color: #EAB900;
+}
+
+.tippee_attributes_container {
+	padding-top: 10px;
+	padding-left: 20px;
+	float: left;
+}
+
+.link_description,
+.tipster,
+.time,
+.by {
+ color: #646464;
 }
 
 /*----------------------------------PROFILE PAGE----------------------------------*/
@@ -189,7 +323,7 @@ input::-webkit-input-placeholder {
 }
 
 .personal_info {
-	background-color: #FFD121;
+	background-color: #FFE582;
 	width:100%;
 	padding: 0;
 }
@@ -200,12 +334,19 @@ input::-webkit-input-placeholder {
 	float: left;
 }
 
-.profile_name {
+.profile_name,
+.profile_username,
+.about,
+.tip_stats,
+.member_since {
 	padding-left: 220px;
 }
 
-.profile_username {
-	padding-left: 220px;
+.profile_name,
+.tip_stats,
+.member_since,
+.balance {
+	font-family: "Nexa-Bold";
 }
 
 .account_info {
@@ -228,13 +369,19 @@ input::-webkit-input-placeholder {
 }
 
 .tips_container {
-	background-color: #D0D0D0;
 	height: 300px;
 	width: 100%;
 	margin-top: 40px;
 	padding: 0;
 	position: relative; 
 	clear: both;
+}
+
+.no_tips {
+	color: #EAB900;
+	font-size: 300%;
+	text-align: center;
+	font-family: "Nexa-Bold";
 }
 
 .left_tips_container {
