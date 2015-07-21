@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-	before_action :authenticate_user!, except: :random
+	# before_action :authenticate_user!, except: :random
 
   def random
     @tip = Tip.all.sample

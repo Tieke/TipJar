@@ -1,5 +1,5 @@
 var WelcomeTipBox = React.createClass({
-  loadTipsFromServer: function() {
+  loadTipFromServer: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -16,10 +16,12 @@ var WelcomeTipBox = React.createClass({
     return {data: []};
   },
   componentDidMount: function() {
-    this.loadTipsFromServer();
-    setInterval(this.loadTipsFromServer, this.props.pollInterval);
+    this.loadTipFromServer();
+    setInterval(this.loadTipFromServer, this.props.pollInterval);
   },
   render: function() {
+    console.log(this.state.data);
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     return (
       <div className="tipBox">
         <WelcomeTipCreator data={this.state.data} />
