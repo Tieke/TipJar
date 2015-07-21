@@ -38,9 +38,9 @@ class TipsController < ApplicationController
 			tippee_id: tippee.id,
 			amount: tipper.standard_tip_amount,
 			url: referrer,
-			link_title: link_object.title,
-      link_thumbnail: link_object.images.first.src.to_s,
-      link_description: link_object.description
+			link_title: (link_object.title) ? link_object.title : '',
+			link_thumbnail: (link_object.images.length > 0 ? link_object.images.first.src.to_s : 'http://www.saidaonline.com/en/newsgfx/space%20walk-saidaonline.jpg'),
+      link_description: link_object.description ? link_object.description : ''
     )
 
 		if @tip.save

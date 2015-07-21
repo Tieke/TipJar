@@ -31,7 +31,7 @@ var TipsContainer = React.createClass({
 				</div>
 			);
 		} else {
-			return <div className="tips_container col-lg-12">No tips yet... :(</div>
+			return <div className="tips_container col-lg-12 no_tips">No tips yet... :(</div>
 		} 
 	}
 })
