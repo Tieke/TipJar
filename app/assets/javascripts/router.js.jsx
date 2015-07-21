@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	// renderProfile();
 	//when we get /template
 

@@ -16,10 +16,10 @@
 
 /*----------------------------------GENERAL----------------------------------*/
 
-
 body > .container {
 	height: 100%;
-	padding: 60px 0 0;
+	padding: 60px 40px 0;
+	background-color: white;
 }
 
 body {
@@ -34,6 +34,11 @@ a:hover {
 
 p {
 	margin: 0;
+}
+
+@font-face {
+    font-family: "Nexa-Light";
+    src: url('nexa/Nexa Light.otf') format("truetype");
 }
 
 /*----------------------------------NAVAGATION----------------------------------*/
@@ -65,16 +70,83 @@ p {
 
 /*----------------------------------WELCOME/SIGNUP/SIGNIN----------------------------------*/
 
-.page-header {
-	background-color: #FFD121;
-	text-align: center;
-	border-bottom: none;
-	height: 100px;
+.header-buffer {
+	width: 100%;
+	height: 20vh;
+	background-color: white;
 }
+
+.error-form {
+	margin: 20px 20%;
+	position: absolute;
+  width: 60%
+}
+
+.sign-in-form {
+	margin: 20px 30%;
+	width: 40%;
+}
+
+.notice, .alert {
+	position: fixed;
+	font-family: 'Nexa-Light';
+	color: red;
+	margin-top: 40px;
+}
+
+#error_explanation {
+	background-color: #d0d0d0;
+	margin-bottom: 0;
+	padding: 10px;
+}
+
+#error_explanation h2 {
+	color: red;
+}
+
+.header-cover {
+
+}
+
+#topper {
+    position: relative;
+    height: 80vh; /* 60% of viewport */
+    min-height: 300px !important; /* In case window becomes too narrow */
+    background-color: #FFD121; /* Shows while the image is loading */
+    background-position: 50% 0; /* Best for responsive */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover; /* Covers the entire div */
+    background-repeat: no-repeat; /* No repeat */
+    background-image: url('header-background.svg');
+}
+
+#topper .wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 15px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.welcome_container, h2, li { 
+    font-family: "Nexa-Light", Verdana, Tahoma;
+}
+
+.welcome-sentence {
+	margin-top: 50px;
+}
+
 
 .welcome_container {
 	width: 100%;
-	padding: 0 50px 60px;
+	padding: 200px 50px 60px;
 }
 
 .left_welcome_container,
