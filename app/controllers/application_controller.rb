@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
 
   protected
   def set_user_params
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:full_name, :username, :coinbase_user_id, :coinbase_access_token, :terms_version, :terms_date, :admin, :image_url, :about, :balance, :email, :password) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:full_name, :username, :terms_version, :terms_date, :admin, :image_url, :about, :balance, :email, :password) }
   end
 end
