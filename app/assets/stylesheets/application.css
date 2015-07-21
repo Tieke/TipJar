@@ -20,9 +20,31 @@ body > .container {
 	padding: 60px 0 0;
 }
 
+body {
+	background-color: #FFFFF5;
+}
+
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
+
 /*----------------------------------NAVAGATION----------------------------------*/
+.unordered_list{
+	float: right;
+}
 
+#home_button {
+	padding-left: 0;
+}
 
+#navbar {
+	padding-right: 0;
+}
+
+.nav_container {
+	padding-right: 0;
+}
 /*----------------------------------FOOTER----------------------------------*/
 .footer {
 	clear: both;
@@ -118,68 +140,113 @@ input::-webkit-input-placeholder {
 }
 
 /*----------------------------------HOME PAGE----------------------------------*/
+.single_tip_container{
+	margin-bottom: 20px;
+	height: 300px;
+	padding-left: 10px;
+	padding-top: 10px;
+}
 
-.tips {
-	background-color: orange;
+.single_tip_container:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(100, 100, 100, 0.9))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.16), transparent); /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, rgba(100,100,100,.9), transparent); /* FF3.6+ */
+  background: -ms-linear-gradient(top, rgba(100,100,100,.9), transparent); /* IE10+ */
+  background: -o-linear-gradient(top, rgba(100,100,100,.9), transparent); /* Opera 11.10+ */
+  background: linear-gradient(to bottom, rgba(100,100,100,0.9), transparent); /* W3C */    
+}
+
+.tip_attributes {
+	margin: 0;
+	color: #EAB900;
+}
+
+.tip_attributes:hover {
+	color: #646464;
 }
 
 /*----------------------------------PROFILE PAGE----------------------------------*/
+.profile_page_container{
+	height: 1000px;
+	padding: 0;
+}
 
 .profile_info_container {
 	background-color: #FFD121;
-	text-align: center;
+	padding: 0;
+	/*text-align: center;*/
 	border-bottom: none;
-	height: 200px;
+	height: 250px;
+	clear: both;
 }
 
 .personal_info_container {
-	width: 50%;
-	height: 100px;
-	padding: 0 50px;
-	background-color: violet;
-	float: left;
+	/*width: 50%;*/
+	height: 250px;
+	padding: 0;
+	background-color: transparent;
+	position: relative;
 }
 
 .personal_info {
-	background-color: purple;
-	height: 50px;
+	background-color: #FFD121;
 	width:100%;
+	padding: 0;
+}
+
+.profile_image {
+	height: 200px;
+	width: 200px;
+	float: left;
+}
+
+.profile_name {
+	padding-left: 220px;
+}
+
+.profile_username {
+	padding-left: 220px;
 }
 
 .account_info {
-	height: 50px;
-	background-color: blue;
+	background-color: #D0D0D0;
 	width: 100%;
+	height: 50px;
+	
 }
 
 .following {
-	height: 100px;
-	background-color: pink;
+	height: 250px;
+	background-color: #D0D0D0;
 	float: right;
 }
 
 .followers {
-	height: 100px;
-	background-color: yellow;
+	height: 250px;
+	background-color: #EAB900;
 	float: right;
 }
 
 .tips_container {
-	background-color: red;
+	background-color: #D0D0D0;
 	height: 300px;
 	width: 100%;
+	margin-top: 40px;
+	padding: 0;
+	position: relative; 
+	clear: both;
 }
 
 .left_tips_container {
 	background-color: orange;
-	height: 100px;
-	width: 50%;
+	/*height: 100px;*/
+	/*width: 50%;*/
 	float: left;
 }
 
 .right_tips_container {
 	background-color: green;
-	height: 100px;
-	width: 50%;
+	/*height: 100px;*/
+	/*width: 50%;*/
 	float: right;
 }
