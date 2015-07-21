@@ -46,6 +46,8 @@ class UsersController < ApplicationController
 
     @tipper = current_user.tipper
 
+    @balance = current_user.balance
+
     render :tip_settings
   end
 
