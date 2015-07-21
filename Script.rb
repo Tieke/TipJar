@@ -15,7 +15,7 @@ gitMeister: 'did you remember to pull down from the master branch?'
 
 testress: 'run the specs and we"ll debug them one at a time'
 
-bigPictureGuy:  'thatll take too long. Try restarting the heroku dynamos'
+big_Picture_Guy:  'thatll take too long. Try restarting the heroku dynamos'
 
 the_Cool_Collected_One: 'maybe theres a stack overflow'
 
@@ -33,7 +33,7 @@ the_Cool_Collected_One: 'Maybe we should ask one of the coaches for some assista
 
 acting_is_reacting: 'we cant do that now. lets just run it in local host'
 
-bigPictureGuy: 'maybe I should show everyone some 3D drones in the meantime?'
+big_Picture_Guy: 'maybe I should show everyone some 3D drones in the meantime?'
 
 testress: 'I think I found something...'
 
