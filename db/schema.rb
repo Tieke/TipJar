@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20150721202654) do
     t.integer  "followed_id"
   end
 
-  add_index "follows", ["following_id"], name: "index_follows_on_following_id", using: :btree
-
   create_table "tippees", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",   null: false
