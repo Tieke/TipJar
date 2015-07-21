@@ -1,0 +1,11 @@
+<h2>Withdraw money from your Tip Jar</h2>
+
+<%= form_tag("/users/withdraw", method: 'get') do %>
+  <%= label_tag(:amount) %>
+  <%= text_field_tag(:amount, sprintf('%.2f', @balance)) %>
+
+  <%= label_tag(:currency) %>
+  <%= select_tag(:currency, options_for_select([['USD - US Dollar', 'USD'], ['NZD - NZ Dollar', 'NZD'], ['AUD - Australian Dollar', 'AUD'], ['CAD - Canadian Dollar', 'CAD'], ['CHF - Swiss Franc', 'CHF'], ['CNY - Chinese Yuan Renminbi', 'CNY'], ['EUR - Euro', 'EUR'], ['GBP - British Pound', 'GBP'], ['INR - Indian Rupee', 'INR'], ['JPY - Japanese Yen', 'JPY'], ['MYR - Malaysian Ringgit', 'MYR'], ['SGD - Singapore Dollar', 'SGD']])) %>
+
+  <%= submit_tag("Withdraw") %>
+<% end %>

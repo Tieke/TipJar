@@ -184,16 +184,6 @@ RSpec.describe TipsController, type: :controller do
 
 	end
 
-	describe "#new" do
-		before do
-			user2 = create(:user)
-			get :new, {recipient_id: user2.id}
-		end
-
-		it { should respond_with(200) }
-		it { should render_template(:new) }
-	end
-
 	describe "#create" do
 
 		context 'with tipper not created' do
