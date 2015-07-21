@@ -1,93 +1,96 @@
 $(document).ready(function() {
 
-// --------------------- controller -------------------------
+if (window.location.pathname === '/') {
 
-	var controller = new ScrollMagic.Controller(
-		{
-			globalSceneOptions: {
-				triggerHook: 'onLeave'
-			}	
-		}
-	);
+	// --------------------- controller -------------------------
 
-// --------------------- header  -------------------------
+		var controller = new ScrollMagic.Controller(
+			{
+				globalSceneOptions: {
+					triggerHook: 'onLeave'
+				}	
+			}
+		);
 
-	var topperTween = TweenMax.to('#topper', 1,
-		{
-			backgroundPosition: '50% '+ '-'+$('#topper').height() * 0.3 + 'px',
-			ease: Cubic.ease,
-			z: 1,
-			opacity: 0
-		}
-	);
+	// --------------------- header  -------------------------
 
-	var headingTween = TweenMax.to('#topper img, #topper p', 1,
-    {
-        y: 300
-    }
-	);
+		var topperTween = TweenMax.to('#topper', 1,
+			{
+				backgroundPosition: '50% '+ '-'+$('#topper').height() * 0.3 + 'px',
+				ease: Cubic.ease,
+				z: 1,
+				opacity: 0
+			}
+		);
 
-	var logoScene = new ScrollMagic.Scene(
-    {
-        triggerElement: '#topper',
-        duration: '50%',
-        // offset: '80px'
-    }
-	)
-	.setTween([topperTween, headingTween])
-	.addIndicators()
-	.addTo(controller);
-	
+		var headingTween = TweenMax.to('#topper img, #topper p', 1,
+	    {
+	        y: 300
+	    }
+		);
 
-// --------------------- welcome container  -------------------------
-	
-	var welcomeContainerTween = TweenMax.to('.welcome_container', 1.4,
-		{
-			y: -500
-		}
-	);
-	
-	var welcomeSlideScene = new ScrollMagic.Scene(
-		{
-			triggerElement: '#topper',
-			offset: '250px',
-			// duration: '20%'
-		}
-	)
-	.setTween(welcomeContainerTween)
-	.addIndicators()
-	.addTo(controller);
+		var logoScene = new ScrollMagic.Scene(
+	    {
+	        triggerElement: '#topper',
+	        duration: '50%',
+	        // offset: '80px'
+	    }
+		)
+		.setTween([topperTween, headingTween])
+		.addIndicators()
+		.addTo(controller);
+		
 
-	// var welcomeTween = TweenMax.to('.welcome-sentence', 1,
-	// 	{
-	// 		scale: 1.5,
-	// 		color: '#d0d0d0',
-	// 		// x: 200
-	// 	}
-	// );
-	
-	var welcomLogoTween = TweenMax.to('.welcome-logo', 1,
-		{
-			// width: '100px',
-			// height: '100px',
-			scale: 5
-		}
-	)
+	// --------------------- welcome container  -------------------------
+		
+		var welcomeContainerTween = TweenMax.to('.welcome_container', 1.4,
+			{
+				y: -500
+			}
+		);
+		
+		var welcomeSlideScene = new ScrollMagic.Scene(
+			{
+				triggerElement: '#topper',
+				offset: '250px',
+				// duration: '20%'
+			}
+		)
+		.setTween(welcomeContainerTween)
+		.addIndicators()
+		.addTo(controller);
 
-
-	var welcomeContainerScene = new ScrollMagic.Scene(
-		{
-			triggerElement: '.wrap',
-			offset: '270px'
-		}
-	)
-	// .setTween(welcomeLogoTween)
-	.setPin('.welcome_container')
-	.addIndicators()
-	.addTo(controller);
+		// var welcomeTween = TweenMax.to('.welcome-sentence', 1,
+		// 	{
+		// 		scale: 1.5,
+		// 		color: '#d0d0d0',
+		// 		// x: 200
+		// 	}
+		// );
+		
+		var welcomLogoTween = TweenMax.to('.welcome-logo', 1,
+			{
+				// width: '100px',
+				// height: '100px',
+				scale: 5
+			}
+		)
 
 
-	// --------------------- force scroll to top  -------------------------
+		var welcomeContainerScene = new ScrollMagic.Scene(
+			{
+				triggerElement: '.wrap',
+				offset: '270px'
+			}
+		)
+		// .setTween(welcomeLogoTween)
+		.setPin('.welcome_container')
+		.addIndicators()
+		.addTo(controller);
 
-	$("html,body").animate({scrollTop: 0}, 100)
+
+		// --------------------- force scroll to top  -------------------------
+
+		$("html,body").animate({scrollTop: 0}, 100)
+	}
 })
