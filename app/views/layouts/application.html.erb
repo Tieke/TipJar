@@ -34,14 +34,9 @@
 						<li class='dropdown>'>
 							<a href="#" class="dropdown-toggle settings" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-	              <li><a href="#">Edit Profile</a></li>
-	              <li><a href="#">Top Up</a></li>
-	              <li><a href="#">Withdraw</a></li>
+	              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
 	              <li role="separator" class="divider"></li>
-	              <li class="dropdown-header">Tip Settings</li>
-	              <li><a href="#">Edit Tip</a></li>
-								<li><a href='#'>Tip Link</a></li>
-	              <li><a href="#">One more separated link</a></li>
+	              <li><a href="/users/<%= current_user.id %>/tip_settings">Edit Tip Settings</a></li>
 	            </ul>
 	          </li>
 					</ul>
