@@ -11,7 +11,6 @@ $(document).ready(function(){
 		e.preventDefault()
 		var url = $(this).context.pathname
 		renderProfile(url)
-		// alert("YUP")
 	})
 
 	$(document).on('click', '.external_link', function(e) {
@@ -29,6 +28,14 @@ $(document).ready(function(){
 		e.preventDefault()
 		var url = $(this).context.pathname
 		renderProfile(url)
+	})
+
+	$(document).on('mouseover', '.single_tip_container', function() {
+		$(this).find(".tip_attributes_container").show("slide", {"direction":"down"}, 500)
+	})
+
+	$(document).on('mouseleave', '.single_tip_container', function() {
+		$(this).find(".tip_attributes_container").hide("slide", {"direction":"down"}, 500)
 	})
 
 

@@ -7,12 +7,22 @@ var TipCreator = React.createClass({
         backgroundImage: 'url(' + tip.tip.link_thumbnail + ')'
       }
       return (
-        <div className='single_tip_container' style={tipImage} receiver={tip.receiver.userName} key={index}>
+        <div className='single_tip_container' receiver={tip.receiver.userName} key={index}>
           <a className='external_link' href={tip.tip.url}><h2 className="tip_attributes external_link">{tip.tip.link_title}</h2></a>
           <p className="tip_attributes link_description">{tip.tip.link_description}</p>
-          <a className='profile_link' href={receiverUrl}><h2 className="tip_attributes profile_link">{tip.receiver.userName}</h2></a>
-          <a className='profile_link' href={giverUrl}><h4 className="tip_attributes profile_link">{tip.giver.userName}</h4></a>
-          <p className="tip_attributes time">{tip.tip.created_at}</p> 
+          <div className='tip_attributes_container_image' style={tipImage}>
+            <div className='tip_attributes_container'>
+              <div className='tippee_attributes_container'>
+                <p>By</p>
+                <a className='tippee_profile_link profile_link' href={receiverUrl}><h2 className="tip_attributes tippee_username">{tip.receiver.userName}</h2></a>
+              </div>  
+              <div className='tipper_attributes_container'>
+                <p className='tipster'>Tipster</p>
+                <a className='tipper_profile_link profile_link' href={giverUrl}><h4 className="tip_attributes">{tip.giver.userName}</h4></a>
+                <p className="time">{tip.tip.created_at}</p> 
+              </div>
+            </div>  
+          </div>
         </div>
       );
     });
