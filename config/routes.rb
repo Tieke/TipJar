@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :tips, only: [:index, :show]
 
+  resources :bit_pay_clients
+
   # get 'users/:user_id/purchase', to: 'users#initiate_coinbase', as: :purchase
 
   # post 'users/:user_id/retrieve', to: 'users#retrieve_checkout'

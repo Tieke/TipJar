@@ -47,13 +47,11 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bitpay-client (2.0.1)
-      commander
-      ecdsa
-      json
-      rack
     bitpay-key-utils (2.0.1)
       ecdsa (~> 1.2)
+    bitpay-rails (2.3.2)
+      bitpay-sdk (~> 2.4.0)
+      rails (~> 4.2.1)
     bitpay-sdk (2.4.4)
       bitpay-key-utils (~> 2.0.0)
       json (~> 1.8)
@@ -78,8 +76,6 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
-    commander (4.3.4)
-      highline (~> 1.7.2)
     connection_pool (2.2.0)
     debug_inspector (0.0.2)
     devise (3.5.1)
@@ -106,7 +102,6 @@ GEM
     ffi (1.9.10)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    highline (1.7.2)
     htmlentities (4.3.4)
     httparty (0.13.5)
       json (~> 1.8)
@@ -254,8 +249,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bitpay-client
-  bitpay-sdk
+  bitpay-rails
   byebug
   capybara (~> 2.4.4)
   chromedriver-helper
