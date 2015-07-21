@@ -28,9 +28,6 @@ class TipsController < ApplicationController
 		render json: @data
 	end
 
-	def new
-	end
-
 	def create
 		tipper = Tipper.find_or_create_by(user_id: current_user.id)
 		tippee = Tippee.find_by_tippee_token(params[:tippee_token])
@@ -41,18 +38,16 @@ class TipsController < ApplicationController
 			tippee_id: tippee.id,
 			amount: tipper.standard_tip_amount,
 			url: referrer,
-			link_title: link_object.title,
-      link_thumbnail: link_object.images.first.src.to_s,
-      link_description: link_object.description
+			link_title: (link_object.title) ? link_object.title : '',
+			link_thumbnail: (link_object.images.length > 0 ? link_object.images.first.src.to_s : 'http://www.saidaonline.com/en/newsgfx/space%20walk-saidaonline.jpg'),
+      link_description: link_object.description ? link_object.description : ''
     )
 
 		if @tip.save
-			redirect_to(@tip.url)
 			tipper.user.decrease_balance(tipper.standard_tip_amount)
 			tippee.user.increase_balance(tipper.standard_tip_amount)
-		else
-			render 'new', status: 400
 		end
+		redirect_to(@tip.url)
 	end
 
 	private

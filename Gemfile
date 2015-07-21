@@ -13,9 +13,15 @@ gem 'react-rails'
 gem 'link_thumbnailer'
 
 gem 'jquery-rails'
-gem 'turbolinks'
+
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# gem 'bitpay-sdk'
+# gem 'bitpay-client', :require => 'bitpay'
+gem 'bitpay-rails', :require => 'bit_pay_rails'
+
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug'

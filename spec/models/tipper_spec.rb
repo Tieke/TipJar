@@ -13,6 +13,13 @@ RSpec.describe Tipper, type: :model do
     end
   end
 
+  describe "#update_standard_tip_amount" do
+    it "updates the tip amount by the specified value" do
+      tipper.update_standard_tip_amount(0.05)
+      expect(tipper.standard_tip_amount).to eq(0.05)
+    end
+  end
+
   after do
     Tipper.destroy_all
   end
