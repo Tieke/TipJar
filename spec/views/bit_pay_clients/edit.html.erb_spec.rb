@@ -7,7 +7,7 @@ RSpec.describe "bit_pay_clients/edit", type: :view do
     ))
   end
 
-  it "renders the edit bit_pay_client form" do
+  xit "renders the edit bit_pay_client form" do
     render
 
     assert_select "form[action=?][method=?]", bit_pay_client_path(@bit_pay_client), "post" do
