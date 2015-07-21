@@ -129,7 +129,7 @@ p {
 
 #topper {
     position: relative;
-    height: 80vh; /* 60% of viewport */
+    height: 90vh; /* 60% of viewport */
     min-height: 300px !important; /* In case window becomes too narrow */
     background-color: #FFD121; /* Shows while the image is loading */
     background-position: 50% 0; /* Best for responsive */
@@ -236,6 +236,8 @@ input::-webkit-input-placeholder {
 :-ms-input-placeholder {
   text-align:center;
 }
+
+/*-------------------------------FORGOT PASSWORD--------------------------------*/
 
 /*----------------------------------HOME PAGE----------------------------------*/
 .single_tip_container {

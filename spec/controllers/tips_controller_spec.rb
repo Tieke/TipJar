@@ -8,6 +8,23 @@ RSpec.describe TipsController, type: :controller do
 		sign_in @user
 	end
 
+	describe "#random" do
+		before do
+				@tip = create(:tip)
+				get :random
+		end
+
+		it { should respond_with(200) }
+
+		it "should return a random tip in last response body, as json" do
+			expect(response.body).to eq(@tip.to_json)
+		end
+
+		it "should assign specified tip to @tip" do
+			expect(assigns(:tip)).to eq(@tip)
+		end
+	end
+
 	describe "#index" do
 		before do
 			10.times { create(:tip) }
@@ -38,12 +55,12 @@ RSpec.describe TipsController, type: :controller do
 
 		it { should respond_with(200) }
 
-		it "should expect the body of the last response to be all the tips, plus the giver and reveiver objects, as json" do
-			expect(response.body).to eq(@expected_response.to_json)
+		it "should expect the body of the last response to be all the tips, plus the giver and reveiver objects, and reversed, as json" do
+			expect(response.body).to eq(@expected_response.reverse.to_json)
 		end
 
-		it "should assign @tips to all tips in the DB" do
-			expect(assigns(:tips)).to eq(Tip.all)
+		it "should assign @tips to all tips in the DB, and reversed" do
+			expect(assigns(:tips)).to eq(Tip.all.reverse)
 		end
 	end
 
@@ -100,12 +117,12 @@ RSpec.describe TipsController, type: :controller do
 
 			it { should respond_with(200) }
 
-			it "should return all the tips given out by a specified user, plus the giver and receiver objects, as json" do
-				expect(response.body).to eq(@expected_response.to_json)
+			it "should return all the tips given out by a specified user, plus the giver and receiver objects, and reversed, as json" do
+				expect(response.body).to eq(@expected_response.reverse.to_json)
 			end
 
-			it "should assign all the given tips to @tips_given" do
-				expect(assigns(:tips_given)).to eq(@user.tipper.tips)
+			it "should assign all the given tips to @tips_given, and reversed" do
+				expect(assigns(:tips_given)).to eq(@user.tipper.tips.reverse)
 			end
 		end
 
@@ -157,24 +174,14 @@ RSpec.describe TipsController, type: :controller do
 
 		it { should respond_with(200) }
 
-		it "should return all the tips received by a specified user, along with giver and receiver objects, as json" do
-			expect(response.body).to eq(@expected_response.to_json)
+		it "should return all the tips received by a specified user, along with giver and receiver objects, but reversed, as json" do
+			expect(response.body).to eq(@expected_response.reverse.to_json)
 		end
 
-		it "should assign all the received tips to @tips_received" do
-			expect(assigns(:tips_received)).to eq(@user.tippee.tips)
+		it "should assign all the received tips to @tips_received, and reversed" do
+			expect(assigns(:tips_received)).to eq(@user.tippee.tips.reverse)
 		end
 
-	end
-
-	describe "#new" do
-		before do
-			user2 = create(:user)
-			get :new, {recipient_id: user2.id}
-		end
-
-		it { should respond_with(200) }
-		it { should render_template(:new) }
 	end
 
 	describe "#create" do

@@ -1,8 +1,13 @@
 class TipsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: :random
+
+  def random
+    @tip = Tip.all.sample
+    render json: @tip
+  end
 
 	def index
-		@tips = Tip.all
+		@tips = Tip.all.reverse
 		@data = formatTipsWithUsers(@tips)
 		render json: @data
 	end
@@ -14,7 +19,7 @@ class TipsController < ApplicationController
 
 	def given
 		if User.find(params[:user_id]).tipper
-			@tips_given = User.find(params[:user_id]).tipper.tips
+			@tips_given = User.find(params[:user_id]).tipper.tips.reverse
 			@data = formatTipsWithUsers(@tips_given)
 			render json: @data
 		else
@@ -23,12 +28,9 @@ class TipsController < ApplicationController
 	end
 
 	def received
-		@tips_received = User.find(params[:user_id]).tippee.tips
+		@tips_received = User.find(params[:user_id]).tippee.tips.reverse
 		@data = formatTipsWithUsers(@tips_received)
 		render json: @data
-	end
-
-	def new
 	end
 
 	def create
@@ -47,12 +49,10 @@ class TipsController < ApplicationController
     )
 
 		if @tip.save
-			redirect_to(@tip.url)
 			tipper.user.decrease_balance(tipper.standard_tip_amount)
 			tippee.user.increase_balance(tipper.standard_tip_amount)
-		else
-			render 'new', status: 400
 		end
+		redirect_to(@tip.url)
 	end
 
 	private

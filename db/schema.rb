@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150721080353) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "invoice_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -38,8 +39,11 @@ ActiveRecord::Schema.define(version: 20150721080353) do
     t.integer  "followed_id"
   end
 
+<<<<<<< HEAD
   add_index "follows", ["following_id"], name: "index_follows_on_following_id", using: :btree
 
+=======
+>>>>>>> origin/master
   create_table "tippees", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",   null: false

@@ -1,0 +1,12 @@
+<h2>Add TipJar to your Site or Post</h2>
+<h3> Simply copy this link, and post it anywhere on the internet. Pretty soon, you'll feel the love.</h3>
+
+<% if @tippee_token %>
+  <p><%= @tipUrl %><%= @tippee_token %></p>
+<% else %>
+  <%= form_for @tippee do |f| %>
+    <div class="actions">
+      <%= f.submit "Generate URL" %>
+    </div>
+  <% end %>
+<% end %>

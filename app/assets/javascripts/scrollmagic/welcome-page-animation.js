@@ -37,7 +37,7 @@ if (window.location.pathname === '/') {
 	    }
 		)
 		.setTween([topperTween, headingTween])
-		.addIndicators()
+		// .addIndicators()
 		.addTo(controller);
 		
 
@@ -52,13 +52,13 @@ if (window.location.pathname === '/') {
 		var welcomeSlideScene = new ScrollMagic.Scene(
 			{
 				triggerElement: '#topper',
-				offset: '250px',
+				offset: '170px',
 				// duration: '20%'
 			}
 		)
 		.setTween(welcomeContainerTween)
-		.setPin('.welcome_container')
-		.addIndicators()
+		// .setPin('.welcome_container')
+		// .addIndicators()
 		.addTo(controller);
 
 		// var welcomeTween = TweenMax.to('.welcome-sentence', 1,
@@ -78,16 +78,16 @@ if (window.location.pathname === '/') {
 		// )
 
 
-		// var welcomeContainerScene = new ScrollMagic.Scene(
-		// 	{
-		// 		triggerElement: '.wrap',
-		// 		offset: '290px'
-		// 	}
-		// )
+		var welcomeContainerScene = new ScrollMagic.Scene(
+			{
+				triggerElement: '.wrap',
+				offset: '160px'
+			}
+		)
 		// .setTween(welcomeSentenceTween)
-		// .setPin('.welcome_container')
+		.setPin('.welcome_container')
 		// .addIndicators()
-		// .addTo(controller);
+		.addTo(controller);
 
 
 		// --------------------- force scroll to top  -------------------------
