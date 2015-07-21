@@ -52,12 +52,12 @@ if (window.location.pathname === '/') {
 		var welcomeSlideScene = new ScrollMagic.Scene(
 			{
 				triggerElement: '#topper',
-				offset: '250px',
+				offset: '170px',
 				// duration: '20%'
 			}
 		)
 		.setTween(welcomeContainerTween)
-		.setPin('.welcome_container')
+		// .setPin('.welcome_container')
 		.addIndicators()
 		.addTo(controller);
 
@@ -78,16 +78,16 @@ if (window.location.pathname === '/') {
 		// )
 
 
-		// var welcomeContainerScene = new ScrollMagic.Scene(
-		// 	{
-		// 		triggerElement: '.wrap',
-		// 		offset: '290px'
-		// 	}
-		// )
+		var welcomeContainerScene = new ScrollMagic.Scene(
+			{
+				triggerElement: '.wrap',
+				offset: '160px'
+			}
+		)
 		// .setTween(welcomeSentenceTween)
-		// .setPin('.welcome_container')
-		// .addIndicators()
-		// .addTo(controller);
+		.setPin('.welcome_container')
+		.addIndicators()
+		.addTo(controller);
 
 
 		// --------------------- force scroll to top  -------------------------
