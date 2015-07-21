@@ -7,11 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-
-  <%= stylesheet_link_tag    'normalize', media: 'all' %>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.js"></script>
@@ -19,7 +14,6 @@
   <%= stylesheet_link_tag    'normalize', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -28,7 +22,7 @@
 <body>
 	<!-- NAVBAR -->
 
-	<% if current_user %>
+		<% if current_user %>
 		<nav id="nav_container" class='navbar navbar-default navbar-fixed-top'>
 			<div class='container'>
 				<div class='navbar-header'></div>
@@ -37,7 +31,7 @@
 					<ul class='nav navbar-nav unordered_list'>
 							<li><a id='profile_button' href="/users/<%= current_user.id%>">Profile</a></li>
 							<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete   %></li>
-						<li class='dropdown>'>
+						<li class='dropdown'>
 							<a href="#" class="dropdown-toggle settings" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 	              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
