@@ -73,10 +73,21 @@ a:hover {
 }
 
 .error-form {
-	margin: 20px 10%;
+	margin: 20px 20%;
 	position: absolute;
-  width: 80%
+  width: 60%
+}
 
+.sign-in-form {
+	margin: 20px 30%;
+	width: 40%;
+}
+
+.notice, .alert {
+	position: fixed;
+	font-family: 'Nexa-Light';
+	color: red;
+	margin-top: 40px;
 }
 
 #error_explanation {
