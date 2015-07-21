@@ -15,6 +15,8 @@ gitMeister: 'did you remember to pull down from the master branch?'
 
 testress: 'run the specs and we"ll debug them one at a time'
 
+	- run rspec, watch wall of red -
+
 big_Picture_Guy:  'thatll take too long. Try restarting the heroku dynamos'
 
 the_Cool_Collected_One: 'maybe theres a stack overflow'
