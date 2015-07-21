@@ -17,8 +17,9 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bitpay-sdk'
-gem 'bitpay-client', :require => 'bitpay'
+# gem 'bitpay-sdk'
+# gem 'bitpay-client', :require => 'bitpay'
+gem 'bitpay-rails', :require => 'bit_pay_rails'
 
 gem 'httparty'
 
