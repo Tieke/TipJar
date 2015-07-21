@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :follow do
-    user
-    user
+    user username: "jess"
+    user username: "dave"
   end
 
 end
