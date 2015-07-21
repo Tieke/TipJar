@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721080353) do
+ActiveRecord::Schema.define(version: 20150721202654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20150721080353) do
     t.datetime "updated_at",                           null: false
     t.string   "coinbase_access_token"
     t.string   "coinbase_user_id"
+    t.text     "about"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
