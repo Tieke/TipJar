@@ -72,6 +72,23 @@ a:hover {
 	background-color: white;
 }
 
+.error-form {
+	margin: 20px 10%;
+	position: absolute;
+  width: 80%
+
+}
+
+#error_explanation {
+	background-color: #d0d0d0;
+	margin-bottom: 0;
+	padding: 10px;
+}
+
+#error_explanation h2 {
+	color: red;
+}
+
 .header-cover {
 
 }
@@ -103,7 +120,7 @@ a:hover {
 }
 
 
-.welcome_container, h2 { 
+.welcome_container, h2, li { 
     font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
