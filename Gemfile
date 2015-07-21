@@ -23,6 +23,8 @@ gem 'bitpay-rails', :require => 'bit_pay_rails'
 
 gem 'httparty'
 
+gem 'figaro'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
