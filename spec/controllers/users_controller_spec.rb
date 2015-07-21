@@ -89,16 +89,6 @@ RSpec.describe UsersController, type: :controller do
 
 	end
 
-
-	describe '#purchase' do
-		context 'valid params' do
-			before do
-				@user = create(:user)
-			end
-
-		end
-	end
-
 	describe 'follow' do
 
 		before do
@@ -119,18 +109,17 @@ RSpec.describe UsersController, type: :controller do
 	describe 'unfollow' do
 		before do
 			@user2 = create(:user)
-			get :follow, user_id: @user2.id
+			Follow.create(followed_id: @user2.id, following_id: @user.id)
 		end
 
 		it "reduces the number of follows by one" do
 			expect{get :unfollow, user_id: @user2.id}.to change{Follow.count}.by(-1)
 		end
 
-		before do
+		it "returns http status 200" do
 			get :unfollow, user_id: @user2.id
+			expect(response).to have_http_status(200)
 		end
-
-		it { should respond_with(200) }
 	end
 
 	describe "followers" do
@@ -145,7 +134,20 @@ RSpec.describe UsersController, type: :controller do
 		it "returns a list of followers for the specified user" do
 			expect(response.body).to eq(@user.followed_follows.to_json)
 		end
+	end
 
+	describe "following" do
+		before do
+			@user2 = create(:user)
+			get :follow, user_id: @user2.id
+			get :following, user_id: @user.id
+		end
+
+		it { should respond_with(200) }
+
+		it "returns a list of followings for the specified user" do
+			expect(response.body).to eq(@user.following_follows.to_json)
+		end
 	end
 
 	after do
