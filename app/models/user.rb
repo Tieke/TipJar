@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true
-  validates :password, presence: true, length: {minimum: 5, maximum: 120}, on: :create
-  validates :password, length: {minimum: 5, maximum: 120}, on: :update, allow_blank: true
+  validates :password, presence: true, length: {minimum: 5, maximum: 120}#, on: :create
+  #validates :password, length: {minimum: 5, maximum: 120}, on: :update, allow_blank: true
 
   def increase_balance(amount)
     self.balance += amount
@@ -36,5 +36,5 @@ class User < ActiveRecord::Base
   #     user.create_credentials! :user => user, :credentials => auth.credentials
   #   end
   # end
- 
+
 end

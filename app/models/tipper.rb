@@ -7,5 +7,9 @@ class Tipper < ActiveRecord::Base
    before_create do
     self.standard_tip_amount = 100
   end
-  
+
+  def update_standard_tip_amount(amount)
+    self.standard_tip_amount = amount
+    self.save
+  end
 end
