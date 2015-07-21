@@ -37,7 +37,7 @@ if (window.location.pathname === '/') {
 	    }
 		)
 		.setTween([topperTween, headingTween])
-		.addIndicators()
+		// .addIndicators()
 		.addTo(controller);
 		
 
@@ -58,7 +58,7 @@ if (window.location.pathname === '/') {
 		)
 		.setTween(welcomeContainerTween)
 		// .setPin('.welcome_container')
-		.addIndicators()
+		// .addIndicators()
 		.addTo(controller);
 
 		// var welcomeTween = TweenMax.to('.welcome-sentence', 1,
@@ -86,7 +86,7 @@ if (window.location.pathname === '/') {
 		)
 		// .setTween(welcomeSentenceTween)
 		.setPin('.welcome_container')
-		.addIndicators()
+		// .addIndicators()
 		.addTo(controller);
 
 
