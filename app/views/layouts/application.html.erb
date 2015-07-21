@@ -51,27 +51,23 @@
 
 <!-- NAVBAR -->
 
-	<% if !current_user %>
-		<div id="topper">
-			<div class="wrap">
-			  <img id="logo-image" src="assets/tipjar-logo.svg">		  
-		  </div>
-		</div>
-		<div class="header-cover">
+	<% if current_user %>
+		
+	 	<div class='container col-lg-12' id='main_body'>
+
 	<% end %>
 
 <!-- MAIN BODY -->
 
- 	<div class='container col-lg-12' id='main_body'>
 
 	<%= yield %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-	</div>
 
 <!-- MAIN BODY -->
-	<% if !current_user %>
-		</div>
+	<% if current_user %>
+		
+	</div>
 	<% end %>
 		
 

@@ -15,10 +15,6 @@
  */
 
 /*----------------------------------GENERAL----------------------------------*/
-body {
-	height: 100%;
-	width: 100%;
-}
 
 body > .container {
 	height: 100%;
@@ -34,6 +30,12 @@ a:hover {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+@font-face {
+    font-family: "Nexa-Light";
+    src: url('nexa/Nexa Light.otf') format("truetype");
+}
+
 
 /*----------------------------------NAVAGATION----------------------------------*/
 .unordered_list{
@@ -83,18 +85,6 @@ a:hover {
     background-image: url('header-background.svg');
 }
 
-#topper:before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    display: block;
-    content: ' ';
-    background: #000;
-    opacity: 0.4;
-}
-
 #topper .wrap {
     position: absolute;
     left: 50%;
@@ -108,17 +98,21 @@ a:hover {
     text-align: center;
 }
 
-.header-cover {
-	background-color: white; 
+
+.welcome_message h2, p { 
+    font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
-.welcome-sentence {
+.welcome-logo {
+	width: 10px;
+	height: 10px;
+	clear: left;
 }
 
 
 .welcome_container {
 	width: 100%;
-	padding: 0 50px 60px;
+	padding: 200px 50px 60px;
 }
 
 .left_welcome_container,

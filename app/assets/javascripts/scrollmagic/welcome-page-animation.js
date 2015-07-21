@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+// --------------------- controller -------------------------
 
 	var controller = new ScrollMagic.Controller(
 		{
@@ -9,9 +10,11 @@ $(document).ready(function() {
 		}
 	);
 
+// --------------------- header  -------------------------
+
 	var topperTween = TweenMax.to('#topper', 1,
 		{
-			backgroundPosition: '90%' + $('#topper').height() * 0.4 + 'px',
+			backgroundPosition: '50% '+ '-'+$('#topper').height() * 0.3 + 'px',
 			ease: Cubic.ease,
 			z: 1,
 			opacity: 0
@@ -20,41 +23,71 @@ $(document).ready(function() {
 
 	var headingTween = TweenMax.to('#topper img, #topper p', 1,
     {
-        y: 450
+        y: 300
     }
 	);
 
 	var logoScene = new ScrollMagic.Scene(
     {
         triggerElement: '#topper',
-        duration: '60%',
-        offset: '100px'
+        duration: '50%',
+        // offset: '80px'
     }
 	)
 	.setTween([topperTween, headingTween])
 	.addIndicators()
 	.addTo(controller);
+	
 
-	var welcomeTween = TweenMax.to('.welcome-sentence', 1,
+// --------------------- welcome container  -------------------------
+	
+	var welcomeContainerTween = TweenMax.to('.welcome_container', 1.4,
 		{
-			scale: 2,
-			color: '#d0d0d0',
-			x: 200
+			y: -500
 		}
 	);
+	
+	var welcomeSlideScene = new ScrollMagic.Scene(
+		{
+			triggerElement: '#topper',
+			offset: '250px',
+			// duration: '20%'
+		}
+	)
+	.setTween(welcomeContainerTween)
+	.addIndicators()
+	.addTo(controller);
 
+	// var welcomeTween = TweenMax.to('.welcome-sentence', 1,
+	// 	{
+	// 		scale: 1.5,
+	// 		color: '#d0d0d0',
+	// 		// x: 200
+	// 	}
+	// );
+	
+	var welcomLogoTween = TweenMax.to('.welcome-logo', 1,
+		{
+			// width: '100px',
+			// height: '100px',
+			scale: 5
+		}
+	)
 
 
 	var welcomeContainerScene = new ScrollMagic.Scene(
 		{
-			triggerElement: '.header-buffer',
-			offset: '115px'
+			triggerElement: '.wrap',
+			offset: '270px'
 		}
 	)
-	.setTween(welcomeTween)
+	// .setTween(welcomeLogoTween)
 	.setPin('.welcome_container')
 	.addIndicators()
 	.addTo(controller);
+
+
+	// --------------------- force scroll to top  -------------------------
 
 	$("html,body").animate({scrollTop: 0}, 100)
 })
