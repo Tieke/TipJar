@@ -9,11 +9,11 @@ var TipCreator = React.createClass({
       return (
         <div className='single_tip_container' receiver={tip.receiver.userName} key={index}>
           <a className='external_link' href={tip.tip.url}><h2 className="tip_attributes external_link">{tip.tip.link_title}</h2></a>
-          <p className="tip_attributes link_description">{tip.tip.link_description}</p>
+          <p className="link_description">{tip.tip.link_description}</p>
           <div className='tip_attributes_container_image' style={tipImage}>
             <div className='tip_attributes_container'>
               <div className='tippee_attributes_container'>
-                <p>By</p>
+                <p className='by'>By</p>
                 <a className='tippee_profile_link profile_link' href={receiverUrl}><h2 className="tip_attributes tippee_username">{tip.receiver.userName}</h2></a>
               </div>  
               <div className='tipper_attributes_container'>

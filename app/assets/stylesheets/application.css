@@ -15,6 +15,8 @@
  */
 
 /*----------------------------------GENERAL----------------------------------*/
+
+
 body > .container {
 	height: 100%;
 	padding: 60px 0 0;
@@ -145,26 +147,34 @@ input::-webkit-input-placeholder {
 }
 
 /*----------------------------------HOME PAGE----------------------------------*/
-.single_tip_container{
-	margin-bottom: 100px;
-	height: 300px;
-	padding-left: 10px;
-	padding-top: 10px;
+.single_tip_container {
+	margin-bottom: 80px;
+	height: 370px;
+	padding: 10px;
 }
+
+/*.single_tip_container:hover {
+	background-color: #FFD121;
+
+}
+
+.tip_attributes_container_image:hover {
+	opacity: 1;
+}*/
 
 .tip_attributes_container_image {
 	background-position: center;
 	height: 300px;
 	padding-top: 10px;
 	opacity: 0.7;
-
+	border-bottom: 1px solid #D0D0D0;
 }
 
 .tip_attributes_container {
 	background-color: #D0D0D0;
 	height: 80px;
 	margin-top: 210px;
-	opacity: 0.9;
+	opacity: 0.85;
 	display: none;
 }
 
@@ -190,6 +200,12 @@ input::-webkit-input-placeholder {
 	float: left;
 }
 
+.link_description,
+.tipster,
+.time,
+.by {
+ color: #646464;
+}
 
 /*----------------------------------PROFILE PAGE----------------------------------*/
 .profile_page_container{
@@ -215,7 +231,7 @@ input::-webkit-input-placeholder {
 }
 
 .personal_info {
-	background-color: #FFD121;
+	background-color: #FFE582;
 	width:100%;
 	padding: 0;
 }

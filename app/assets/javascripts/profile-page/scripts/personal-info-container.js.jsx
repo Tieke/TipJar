@@ -10,7 +10,7 @@ var PersonalInfoContainer = React.createClass({
 						<h4 className='profile_username'>{this.props.data.username}</h4>
 					</div>
 					<div className="account_info col-lg-3">
-						<h4> Account Info </h4>
+						<h4>Current Balance:</h4>
 					</div>
 				</div>
 			);
