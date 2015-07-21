@@ -72,6 +72,10 @@ a:hover {
 	background-color: white;
 }
 
+.header-cover {
+
+}
+
 #topper {
     position: relative;
     height: 80vh; /* 60% of viewport */
@@ -99,14 +103,12 @@ a:hover {
 }
 
 
-.welcome_message h2, p { 
+.welcome_container, h2 { 
     font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
-.welcome-logo {
-	width: 10px;
-	height: 10px;
-	clear: left;
+.welcome-sentence {
+	margin-top: 50px;
 }
 
 

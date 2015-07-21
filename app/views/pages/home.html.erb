@@ -1,38 +1,36 @@
 <div id="topper">
-      <!-- <img id="coin-background" src="assets/coin-header-background.svg">  -->
-      <div class="wrap">
-        <img id="logo-image" src="assets/tipjar-logo.svg">      
+  <div class="wrap">
+    <img id="logo-image" src="assets/tipjar-logo.svg">      
+  </div>
+</div>
+
+<div class="header-cover container col-lg-12" id='main_body'>
+
+  <div class="header-buffer"></div>
+  <div class='welcome_container col-md-8'>
+    <div class='left_welcome_container col-md-6'>
+      <div class='welcome_message'>
+        <h2 class="welcome-sentence">Welcome to Tip Jar,</h2>
+        <p class="welcome-sentence">an easy, convenient and fast way to express your appreciation on the web.</p>
       </div>
-    </div>
-    <div class="container col-lg-12" id='main_body'>
 
-<div class="header-buffer"></div>
-<div class='welcome_container col-md-8'>
-  <div class='left_welcome_container col-md-6'>
-    <div class='welcome_message'>
-      <h2 class="welcome-sentence">Welcome to</h2>
-      <!-- <img class="welcome-logo" src="assets/tipjar-logo.svg"> -->
-      <h2>Tip Jar,</h2>
-      <p>an easy, convenient and fast way to express your appreciation on the web.</p>
+    <div class='recent_tips'>
+      <p>Recent tips</p>
+    </div>
+  </div>
+
+  <div class='right_welcome_container col-md-6'>
+    <div class='sign_in'>
+      <%= render partial: "devise/sessions/form" %>
     </div>
 
-  <div class='recent_tips'>
-    <p>Recent tips</p>
-  </div>
-</div>
-
-<div class='right_welcome_container col-md-6'>
-  <div class='sign_in'>
-    <%= render partial: "devise/sessions/form" %>
+    <div class='sign_up'>
+      <%= render partial: "devise/registrations/form" %>
+    </div>
   </div>
 
-  <div class='sign_up'>
-    <%= render partial: "devise/registrations/form" %>
+  <div class="clear">
   </div>
-</div>
-
-<div class="clear">
-</div>
 
 
 </div>

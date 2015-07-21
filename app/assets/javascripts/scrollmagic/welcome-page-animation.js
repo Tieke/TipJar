@@ -45,7 +45,7 @@ if (window.location.pathname === '/') {
 		
 		var welcomeContainerTween = TweenMax.to('.welcome_container', 1.4,
 			{
-				y: -500
+				y: -650
 			}
 		);
 		
@@ -57,6 +57,7 @@ if (window.location.pathname === '/') {
 			}
 		)
 		.setTween(welcomeContainerTween)
+		.setPin('.welcome_container')
 		.addIndicators()
 		.addTo(controller);
 
@@ -68,25 +69,25 @@ if (window.location.pathname === '/') {
 		// 	}
 		// );
 		
-		var welcomLogoTween = TweenMax.to('.welcome-logo', 1,
-			{
-				// width: '100px',
-				// height: '100px',
-				scale: 5
-			}
-		)
+		// var welcomeSentenceTween = TweenMax.to('.welcome-sentence', 1.5,
+		// 	{
+		// 		// width: '100px',
+		// 		// height: '100px',
+		// 		y: -45
+		// 	}
+		// )
 
 
-		var welcomeContainerScene = new ScrollMagic.Scene(
-			{
-				triggerElement: '.wrap',
-				offset: '270px'
-			}
-		)
-		// .setTween(welcomeLogoTween)
-		.setPin('.welcome_container')
-		.addIndicators()
-		.addTo(controller);
+		// var welcomeContainerScene = new ScrollMagic.Scene(
+		// 	{
+		// 		triggerElement: '.wrap',
+		// 		offset: '290px'
+		// 	}
+		// )
+		// .setTween(welcomeSentenceTween)
+		// .setPin('.welcome_container')
+		// .addIndicators()
+		// .addTo(controller);
 
 
 		// --------------------- force scroll to top  -------------------------
