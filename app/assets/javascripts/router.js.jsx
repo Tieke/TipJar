@@ -7,6 +7,10 @@ $(document).ready(function(){
 		renderFeed();
 	}
 
+	if (window.location.pathname === '/') {
+		renderWelcomeTips();
+	}
+
 	$(document).on('click', '.profile_link', function(e) {
 		e.preventDefault()
 		var url = $(this).context.pathname

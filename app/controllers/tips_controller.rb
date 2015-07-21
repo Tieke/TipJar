@@ -1,5 +1,10 @@
 class TipsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: :random
+
+  def random
+    @tip = Tip.all.sample
+    render json: @tip
+  end
 
 	def index
 		@tips = Tip.all
