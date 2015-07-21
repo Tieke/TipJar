@@ -17,6 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bitpay-client', :require => 'bitpay'
 gem 'bitpay-rails', :require => 'bit_pay_rails'
 gem 'httparty'
+gem 'faker'
 
 
 group :development, :test do
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
-  gem 'faker'
 end
 
 group :test do
