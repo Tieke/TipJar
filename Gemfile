@@ -10,6 +10,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 gem 'react-rails'
 
+gem 'link_thumbnailer'
+
 gem 'jquery-rails'
 
 gem 'jbuilder', '~> 2.0'

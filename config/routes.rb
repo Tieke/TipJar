@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'template', to: 'pages#page'
 
+  get 'browse', to: 'pages#page'
+
   get 'tips/:recipient_id/new', to: 'tips#new'
 
   get 'tips/create/:tippee_token', to: 'tips#create'

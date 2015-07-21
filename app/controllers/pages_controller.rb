@@ -4,6 +4,11 @@ class PagesController < ApplicationController
   end
 
   def home
+  	if current_user
+  		redirect_to browse_path
+  	else
+  		render :home
+  	end
   end
 
 end
