@@ -6,8 +6,11 @@ var TipBox = React.createClass({
       cache: false,
       success: function(data) {
         this.setState({data: data});
+        alert('YUS')
+        console.log(data)
       }.bind(this),
       error: function(xhr, status, err) {
+        alert('FOK')
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -17,12 +20,15 @@ var TipBox = React.createClass({
   },
   componentDidMount: function() {
     this.loadTipsFromServer();
-    setInterval(this.loadTipsFromServer, this.props.pollInterval);
+    // setInterval(this.loadTipsFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
       <div className="tipBox">
-        <TipCreator data={this.state.data} />
+        <form>
+          <input type='submit' className='home_filter' value='Following'/>
+        </form>
+        // <TipCreator data={this.state.data} />
       </div>
     );
   }

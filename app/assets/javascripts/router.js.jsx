@@ -3,8 +3,31 @@ $(document).ready(function(){
 	//when we get /template
 
 	if (window.location.pathname === '/browse') {
-		renderFeed();
+		renderFeed('/tips');
+		// $('#main-body').removeClass('.col-lg-12').css({
+		// 	'width' : '100%'
+		// });
 	}
+
+
+  $(document).on('click', '.home_filter',  function(e){
+  	e.preventDefault();
+    var clicks = $(this).data('clicks');
+    var url = $("#profile_button")[0].pathname
+
+    if (clicks){
+    	renderFeed("/tips")
+ 			$(this).attr('value', 'Following')
+    } else {
+			renderFeed(url+"/following_tips")
+    	$(this).attr('value', 'All')
+    }
+    $(this).data("clicks", !clicks);
+  })
+
+	// jQuery listener on our filter button
+		// when we hit 'all' we want to call renderFeed('/tips')
+		// when we hit 'following' we want to call 
 
 	if (window.location.pathname === '/') {
 		renderWelcomeTips();
