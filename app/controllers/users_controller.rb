@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		render json: @user
-	end
+end
 
 	def transactions
 		@user = User.find(params[:user_id])
@@ -19,12 +19,12 @@ class UsersController < ApplicationController
 	end
 
 	def topup
-		p client = BitPayClient.last
-  	p invoice = client.create_invoice(price: params[:price], currency: params[:currency], facade: "merchant")
+		client = BitPayClient.last
+  	p invoice = client.create_invoice(price: params[:amount].to_f, currency: params[:currency], facade: "merchant", flags: {refundable: true})
   	@invoice_url = invoice["url"]
-  	@bits_purchased = invoice["btcPrice"]*1_000_000
-  	deposit = Deposit.create(user_id: current_user.id, amount: @bits_purchased, invoice_id: invoice["id"])
-  	current_user.increase_balance(@bits_purchased)
+  	# p @bits_purchased = invoice["btcPrice"].to_f*1_000_000
+  	p deposit = Deposit.create(user_id: current_user.id, amount: params[:amount].to_f, invoice_id: invoice["id"])
+  	p current_user.increase_balance(params[:amount].to_f)
 	#background job starts
 		#check invoice["status"] every 2 minutes until status == paid || pending
 			#if it us, update balance with amount converted to standarized currency
@@ -33,13 +33,19 @@ class UsersController < ApplicationController
 	end
 
   def withdraw
-  	client = BitPayClient.last
-  	last_invoice_id = Deposit.find_by_user_id(current_user.id).invoice_id
-  	last_invoice = client.get_invoice(id: last_invoice_id)
-  	@bits_refunded = invoice["btcPrice"]*1_000_000
-  	refund = refund_invoice(id: last_invoice["id"], params: {amount: params[:amount], currency: params[:currency]})
-  	withdrawal = Withdrawal.create(user_id: current_user.id, amount: @bits_refunded, invoice_id: invoice["id"])
-  	current_user.decrease_balance(@bits_refunded)
+  	# client = BitPayClient.last
+  	# p last_invoice_id = Deposit.where(user_id: current_user.id).last.invoice_id
+  	# p invoice = client.get_invoice(id: last_invoice_id)
+  	# p refund = client.refund_invoice(id: invoice["id"], params: {bitcoinAddress: "n4JvFCnA1WRFiEreWnLLLm8xrsMzRmL6hZ", amount: params[:amount].to_f, currency: params[:currency]})
+  	# withdrawal = Withdrawal.create(user_id: current_user.id, amount: refund["btcPrice"].to_f*1_000_000)
+  	# current_user.decrease_balance(@bits_refunded)
+
+  	withdraw = Withdrawal.create(user_id: current_user.id, amount: params[:amount])
+  	current_user.decrease_balance(params[:amount].to_f)
+  	redirect_to withdraw_confirmation_path
+  end
+
+  def withdraw_confirmation
   end
 
   def tip_settings

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'users/withdraw', to: 'users#withdraw'
 
+  get 'users/withdraw_confirmation', to: 'users#withdraw_confirmation', as: :withdraw_confirmation
+
   resources :users, only: [:index, :show]
 
   resources :tips, only: [:index, :show]
