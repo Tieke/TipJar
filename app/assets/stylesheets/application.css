@@ -47,6 +47,11 @@ p {
 }
 
 /*----------------------------------NAVAGATION----------------------------------*/
+#nav_container {
+	background-color: #D0D0D0;
+	opacity: 0.9;
+}
+
 .unordered_list{
 	float: right;
 }
@@ -55,12 +60,25 @@ p {
 	padding-left: 0;
 }
 
+#home_button:hover {
+	color: #EAB900;
+}
+
 #navbar {
 	padding-right: 0;
 }
 
 .nav_container {
 	padding-right: 0;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+	background-color: #EAB900;
+}
+
+.navbar-nav > li > .dropdown-menu {
+	background-color: #FFFFF5;
 }
 /*----------------------------------FOOTER----------------------------------*/
 .footer {
@@ -260,6 +278,7 @@ input::-webkit-input-placeholder {
 }
 
 .tip_attributes {
+	font-family: "Nexa-Bold";
 	margin: 0;
 	color: #646464;
 	opacity: 1;
@@ -317,12 +336,19 @@ input::-webkit-input-placeholder {
 	float: left;
 }
 
-.profile_name {
+.profile_name,
+.profile_username,
+.about,
+.tip_stats,
+.member_since {
 	padding-left: 220px;
 }
 
-.profile_username {
-	padding-left: 220px;
+.profile_name,
+.tip_stats,
+.member_since,
+.balance {
+	font-family: "Nexa-Bold";
 }
 
 .account_info {
@@ -351,6 +377,13 @@ input::-webkit-input-placeholder {
 	padding: 0;
 	position: relative; 
 	clear: both;
+}
+
+.no_tips {
+	color: #EAB900;
+	font-size: 300%;
+	text-align: center;
+	font-family: "Nexa-Bold";
 }
 
 .left_tips_container {

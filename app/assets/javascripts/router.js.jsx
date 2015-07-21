@@ -37,6 +37,8 @@ $(document).ready(function(){
 		$(this).find(".tip_attributes_container").hide("slide", {"direction":"down"}, 500)
 	})
 
+	
+
 
 });
 
