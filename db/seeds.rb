@@ -84,7 +84,7 @@ random_urls = [
   "http://stackoverflow.com/questions/31511196/does-web-scraping-have-patterns",
   "http://stackoverflow.com/questions/31511112/c-sharp-named-pipes-in-message-mode-sometimes-merge-messages",
   "http://stackoverflow.com/questions/31511200/looking-for-a-daydeal-plugin-with-custom-sorting-functionality"
-]
+].shuffle
 
 
 20.times do | i |
