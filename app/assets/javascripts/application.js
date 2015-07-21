@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require es5-shim
 //= require react
