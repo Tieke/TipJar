@@ -35,7 +35,7 @@ RSpec.describe UsersController, type: :controller do
 
 		it "should return specified user in last response body, as json" do
 			expect(response.body).to eq(@user.to_json)
-		end 
+		end
 
 		it "should assign specified user to @user" do
 			expect(assigns(:user)).to eq(@user)
@@ -50,7 +50,7 @@ RSpec.describe UsersController, type: :controller do
 				create(:withdrawal, user_id: @user.id)
 				get :transactions, user_id: @user.id
 			end
-			
+
 			it { should respond_with(200) }
 
 			it 'should return a users withdrawals as json' do
@@ -64,7 +64,7 @@ RSpec.describe UsersController, type: :controller do
 				create(:deposit, user_id: @user.id)
 				get :transactions, user_id: @user.id
 			end
-			
+
 			it { should respond_with(200) }
 
 			it 'should return a users deposits as json' do
@@ -79,7 +79,7 @@ RSpec.describe UsersController, type: :controller do
 				create(:withdrawal, user_id: @user.id)
 				get :transactions, user_id: @user.id
 			end
-			
+
 			it { should respond_with(200) }
 
 			it 'should return a users deposits and withdrawals, as json' do
@@ -87,10 +87,56 @@ RSpec.describe UsersController, type: :controller do
 			end
 		end
 
-
 	end
 
+	describe 'follow' do
 
+		before do
+			@user2 = create(:user)
+		end
+
+		it "increases the number of follows by one" do
+			expect{get :follow, user_id: @user2.id}.to change{Follow.count}.by(1)
+		end
+
+		before do
+			get :follow, user_id: @user2.id
+		end
+
+		it { should respond_with(200) }
+	end
+
+	describe 'unfollow' do
+		before do
+			@user2 = create(:user)
+			get :follow, user_id: @user2.id
+		end
+
+		it "reduces the number of follows by one" do
+			expect{get :unfollow, user_id: @user2.id}.to change{Follow.count}.by(-1)
+		end
+
+		before do
+			get :unfollow, user_id: @user2.id
+		end
+
+		it { should respond_with(200) }
+	end
+
+	describe "followers" do
+		before do
+			@user2 = create(:user)
+			get :follow, user_id: @user2.id
+			get :followers, user_id: @user.id
+		end
+
+		it { should respond_with(200) }
+
+		it "returns a list of followers for the specified user" do
+			expect(response.body).to eq(@user.followed_follows.to_json)
+		end
+
+	end
 
 
 	# xdescribe '#edit' do
@@ -167,5 +213,12 @@ RSpec.describe UsersController, type: :controller do
 
 	# 	end
 	# end
+
+	after do
+		User.destroy_all
+		Follow.destroy_all
+		Deposit.destroy_all
+		Withdrawal.destroy_all
+	end
 
 end

@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720041453) do
+ActiveRecord::Schema.define(version: 20150721080353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bit_pay_clients", force: :cascade do |t|
+    t.string   "api_uri"
+    t.string   "pem"
+    t.string   "facade",     default: "merchant"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "deposits", force: :cascade do |t|
     t.decimal  "amount"
@@ -24,13 +32,12 @@ ActiveRecord::Schema.define(version: 20150720041453) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer  "follower_id"
     t.integer  "following_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "followed_id"
   end
 
-  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
   add_index "follows", ["following_id"], name: "index_follows_on_following_id", using: :btree
 
   create_table "tippees", force: :cascade do |t|
@@ -80,6 +87,8 @@ ActiveRecord::Schema.define(version: 20150720041453) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "coinbase_access_token"
+    t.string   "coinbase_user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
