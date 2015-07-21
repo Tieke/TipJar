@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 	def topup
 		@user = current_user
   	client = BitPay::SDK::Client.new(api_uri: 'https://test.bitpay.com', pem: "-----BEGIN EC PRIVATE KEY-----\nMHQCAQEEIAQv22QBdyErk/ADvCYslTHfHgdn8mb2BA40VymMarbAoAcGBSuBBAAK\noUQDQgAEY8So6hy2Bi5atSV59Jcp8b5gN9QSPsdjlgfjsX6fPpk0mo215+4bc3Wk\nkhxgzbR6RTiKVVuQNgJ16by/vhNIEg==\n-----END EC PRIVATE KEY-----\n")
-  	invoice = client.create_invoice(price: "5.00", currency: "USD", facade: "merchant")
+  	invoice = client.create_invoice(price: params[:amount], currency: params[:currency], facade: "merchant")
   	@invoice_url = invoice["url"]
 	end
 
