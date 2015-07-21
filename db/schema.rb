@@ -11,16 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720041453) do
+ActiveRecord::Schema.define(version: 20150721050450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bit_pay_clients", force: :cascade do |t|
+    t.string   "api_uri"
+    t.string   "pem"
+    t.string   "facade",     default: "merchant"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "deposits", force: :cascade do |t|
     t.decimal  "amount"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "invoice_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -80,6 +89,8 @@ ActiveRecord::Schema.define(version: 20150720041453) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "coinbase_access_token"
+    t.string   "coinbase_user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
