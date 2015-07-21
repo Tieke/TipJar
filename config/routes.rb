@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'users/topup', to: 'users#topup'
 
+  get 'users/withdraw', to: 'users#withdraw'
+
   resources :users, only: [:index, :show]
 
   resources :tips, only: [:index, :show]
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
 
   # post 'users/:user_id/retrieve', to: 'users#retrieve_checkout'
 
-  get 'users/:user_id/transfer', to: 'users#transfer'
+  # get 'users/:user_id/transfer', to: 'users#transfer'
 
   get 'template', to: 'pages#page'
 

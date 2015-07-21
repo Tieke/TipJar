@@ -20,10 +20,12 @@ class UsersController < ApplicationController
 	end
 
 	def topup
-		p @user = current_user
   	p client = BitPayClient.last
-  	p invoice = client.create_invoice(price: "5.00", currency: "USD", facade: "merchant")
+  	p invoice = client.create_invoice(price: params[:price], currency: params[:currency], facade: "merchant")
   	@invoice_url = invoice["url"]
+  	@bits_purchased = invoice["btcPrice"]*1_000_000
+  	deposit = Deposit.create(user_id: current_user.id, amount: @bits_purchased, invoice_id: invoice["id"])
+  	current_user.increase_balance(@bits_purchased)
 	#background job starts
 		#check invoice["status"] every 2 minutes until status == paid || pending
 			#if it us, update balance with amount converted to standarized currency
@@ -32,13 +34,20 @@ class UsersController < ApplicationController
 	end
 
   def withdraw
-  	@user = current_user
   	client = BitPayClient.last
-  	payout_response = HTTParty.post("https://test.bitpay.com/payouts", query: {'amount'=>1.00,'currency'=>'USD','account'=>'TewzSJHWriVowxFYgAsa1TrZzkxnegawhcc', 'address'=>'n4JvFCnA1WRFiEreWnLLLm8xrsMzRmL6hZ', 'instructions'=>['test instructions'], 'effectiveDate'=>"#{Date.today}"})
+  	last_invoice_id = Deposit.find_by_user_id(current_user.id).invoice_id
+  	last_invoice = client.get_invoice(id: last_invoice_id)
+  	@bits_refunded = invoice["btcPrice"]*1_000_000
+
+  	refund = refund_invoice(id: last_invoice["id"], params: {amount: params[:amount], currency: params[:currency]})
+  	withdrawal = Withdrawal.create(user_id: current_user.id, amount: @bits_refunded, invoice_id: invoice["id"])
+  	current_user.decrease_balance(@bits_refunded)
+  	
+  	# payout_response = HTTParty.post("https://test.bitpay.com/payouts", query: {'amount'=>1.00,'currency'=>'USD','account'=>'TewzSJHWriVowxFYgAsa1TrZzkxnegawhcc', 'address'=>'n4JvFCnA1WRFiEreWnLLLm8xrsMzRmL6hZ', 'instructions'=>['test instructions'], 'effectiveDate'=>"#{Date.today}"})
 
 		# payout_response = HTTParty.post("https://test.bitpay.com/payouts", query: {'amount'=>params[:amount],'currency'=>params[:currency],'account'=>'TewzSJHWriVowxFYgAsa1TrZzkxnegawhcc', 'address'=>params[:address], 'facade'=>'Merchant', 'instructions'=>[], 'effectiveDate'=>Date.today})
   end
 
 end
 
-HTTParty.post("test.bitpay.com/tokens", query: {'label'=>'TipJar', 'id'=>'TewzSJHWriVowxFYgAsa1TrZzkxnegawhcc', 'pairingCode'=>'bpsPdGQ'})
+# HTTParty.post("https://test.bitpay.com/tokens", query: {'label'=>'TipJar', 'id'=>'TewzSJHWriVowxFYgAsa1TrZzkxnegawhcc', 'pairingCode'=>'bpsPdGQ'})
