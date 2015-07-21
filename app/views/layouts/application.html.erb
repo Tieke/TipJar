@@ -23,24 +23,24 @@
 	<!-- NAVBAR -->
 
 	<% if current_user %>
-		<nav class='navbar navbar-default navbar-fixed-top'>
+		<nav id="nav_container" class='navbar navbar-default navbar-fixed-top'>
 			<div class='container'>
 				<div class='navbar-header'></div>
 					<a id='home_button' href='/browse' class="navbar-brand">Tip Jar</a>
 				<div id='navbar' class='collapse navbar-collapse'>
-					<ul class='nav navbar-nav'>
+					<ul class='nav navbar-nav unordered_list'>
 							<li><a id='profile_button' href="/users/<%= current_user.id%>">Profile</a></li>
 							<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete   %></li>
-						<li><a href='#'>Tip Link</a></li>
 						<li class='dropdown>'>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle settings" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-	              <li><a href="#">Action</a></li>
-	              <li><a href="#">Another action</a></li>
-	              <li><a href="#">Something else here</a></li>
+	              <li><a href="#">Edit Profile</a></li>
+	              <li><a href="#">Top Up</a></li>
+	              <li><a href="#">Withdraw</a></li>
 	              <li role="separator" class="divider"></li>
-	              <li class="dropdown-header">Nav header</li>
-	              <li><a href="#">Separated link</a></li>
+	              <li class="dropdown-header">Tip Settings</li>
+	              <li><a href="#">Edit Tip</a></li>
+								<li><a href='#'>Tip Link</a></li>
 	              <li><a href="#">One more separated link</a></li>
 	            </ul>
 	          </li>
