@@ -1,5 +1,3 @@
-require 'faker'
-
 # Create users
 User.destroy_all
 Tipper.destroy_all
