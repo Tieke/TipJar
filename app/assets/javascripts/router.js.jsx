@@ -22,6 +22,26 @@ $(document).ready(function(){
     $(this).data("clicks", !clicks);
   })
 
+  $(document).on('click', '.follow_button',  function(e){
+  	e.preventDefault();
+    var clicks = $(this).data('clicks');
+    var url = $(".follow_button").attr('id')
+    if (clicks){
+    	handleFollowSubmit(url, '/unfollow')
+ 			$(this).attr('value', 'Follow')
+    } else {
+    	handleFollowSubmit(url, '/follow')
+    	$(this).attr('value', 'Unfollow')
+    }
+    $(this).data("clicks", !clicks);
+  })
+
+  $(document).on('click', '.follow_link', function(e){
+  	e.preventDefault();
+  	var user_id = $(e.target).attr('id')
+  	renderProfile('/users/'+user_id, '/tips/given')
+  })
+
   // var another_users_pathname 
 
   // $(document).on('click', '.profile_filter',  function(e){
@@ -37,24 +57,6 @@ $(document).ready(function(){
   //   }
   //   $(this).data("clicks", !clicks);
   // })
-
-
-  // $(document).on('click', '.follow_botton',  function(e){
-  // 	e.preventDefault();
-  //   var clicks = $(this).data('clicks');
-  //   var url = $("#profile_button")[0].pathname
-
-  //   if (clicks){
-  //   	//destroy
- 	// 		$(this).attr('value', 'Follow')
-  //   } else {
-  //   	//create
-  //   	$(this).attr('value', 'Unfollow')
-  //   }
-  //   $(this).data("clicks", !clicks);
-  // })
-
-
 
 	if (window.location.pathname === '/') {
 		renderWelcomeTips();
@@ -91,9 +93,5 @@ $(document).ready(function(){
 	$(document).on('mouseleave', '.single_tip_container', function() {
 		$(this).find(".tip_attributes_container").hide("slide", {"direction":"down"}, 500)
 	})
-
-	
-
-
 });
 

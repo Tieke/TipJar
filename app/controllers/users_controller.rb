@@ -35,12 +35,20 @@ end
 
 	def followers
 		user = User.find(params[:user_id])
-		render json: user.followed_follows
+		users_followers = []
+		user.followed_follows.each do |user|
+			users_followers << User.find(user.following_id)
+		end
+		render json: users_followers.first(9)
 	end
 
 	def following
 		user = User.find(params[:user_id])
-		render json: user.following_follows
+		users_following = []
+		user.following_follows.each do |user|
+			users_following << User.find(user.followed_id)
+		end
+		render json: users_following
 	end
 
 	def following_tips

@@ -1,9 +1,4 @@
 var PersonalInfoContainer = React.createClass({
-	handleSubmit: function(e) {
-		e.preventDefault();
-		this.props.onFollowSubmit(this.props.userUrl);
-		return;
-	},
 	render: function() {
 		if (this.props.userUrl === $("#profile_button")[0].pathname ) {
 			return (
@@ -34,8 +29,8 @@ var PersonalInfoContainer = React.createClass({
 						<p className='tip_stats'>Tips Received</p>
 						<p className='member_since'>Member Since</p>
 					</div>
-					<form className="account_info col-lg-3" onSubmit={this.handleSubmit}> 
-						<input className="follow-submit" type="submit" value="Follow" />
+					<form className="account_info col-lg-3" > 
+						<input className="follow_button" id={this.props.userUrl} type="submit" value='Follow'/>
 					</form>
 				</div>
 			)

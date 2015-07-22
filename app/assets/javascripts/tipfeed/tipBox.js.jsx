@@ -21,15 +21,14 @@ var TipBox = React.createClass({
     setInterval(this.loadTipsFromServer, this.props.pollInterval);
   },
   render: function() {
-        return (
-          <div className="tipBox">
-            <form>
-              <input type='submit' className='home_filter' />
-            </form>
-            <TipCreator data={this.state.data} />
-          </div>
-        );
-      }
-  
+    return (
+      <div className="tipBox">
+        <form>
+          <input type='submit' className='home_filter' />
+        </form>
+        <TipCreator data={this.state.data} />
+      </div>
+    );
+  } 
 });
 

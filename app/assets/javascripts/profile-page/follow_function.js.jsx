@@ -5,7 +5,7 @@ createFollow = function(){
     cache: false,
     success: function(data) {
       this.setState({data: data});
-      alert('YUS')
+
       console.log(data)
     }.bind(this),
     error: function(xhr, status, err) {

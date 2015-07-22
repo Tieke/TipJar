@@ -451,6 +451,15 @@ input::-webkit-input-placeholder {
 	float: right;
 }
 
+.follow_image {
+	height: 50px;
+	width: 50px;
+	float:left;
+}
+
+.follow_username{
+	float:left;
+}
 /*-------------------------------TIP SETTINGS PAGE----------------------------------*/
 
 .settings-panel h4,
