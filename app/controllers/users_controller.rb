@@ -55,7 +55,7 @@ end
 
 	def topup
 		client = BitPayClient.last
-  	p invoice = client.create_invoice(price: params[:amount].to_f, currency: params[:currency], facade: "merchant", flags: {refundable: true})
+  	p invoice = client.create_invoice(price: params[:amount].to_f, currency: "USD", facade: "merchant", flags: {refundable: true})
   	@invoice_url = invoice["url"]
   	# p @bits_purchased = invoice["btcPrice"].to_f*1_000_000
   	p deposit = Deposit.create(user_id: current_user.id, amount: params[:amount].to_f, invoice_id: invoice["id"])
