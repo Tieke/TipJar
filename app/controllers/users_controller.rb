@@ -43,6 +43,16 @@ end
 		render json: user.following_follows
 	end
 
+	def following_tips
+		user = user.find(params[:user_id])
+		tips_of_people_user_follows = []
+		user_followings = user.following_follows
+		user_followings.each do |user|
+			tips_of_people_user_follows << user.tipper.tips
+		end
+		render json: tips_of_people_user_follows
+	end
+
 	def topup
 		client = BitPayClient.last
   	p invoice = client.create_invoice(price: params[:amount].to_f, currency: params[:currency], facade: "merchant", flags: {refundable: true})
