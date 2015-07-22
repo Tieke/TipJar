@@ -1,7 +1,7 @@
 <div class="col-lg-12" id="main-body">
-  <div class="error-form col-md-8">
+  <div class="new_user_form col-md-8">
     <%= devise_error_messages! %>
-    <div class="sign_up">
+    <div class="sign_up" id="devise-form-style">
       <h2>Sign up</h2>
 
       <%= form_for("user", url: user_registration_path) do |f| %>
