@@ -92,6 +92,11 @@ p {
 }
 
 /*----------------------------------WELCOME/SIGNUP/SIGNIN----------------------------------*/
+.home_filter {
+	margin-left: 20px;
+	position: fixed;
+	left: 0;
+}
 
 .header-buffer {
 	width: 100%;
@@ -189,7 +194,7 @@ p {
 
 .welcome_container {
 	width: 100%;
-	padding: 200px 50px 60px;
+	/*padding: 200px 50px 60px;*/
 }
 
 .left_welcome_container,
@@ -212,7 +217,11 @@ p {
 
 .recent_tips {
 	background-color: #d0d0d0;
-	padding: 20px;
+}
+
+.recent_tips_container {
+	margin: 0;
+	height: 390px;
 }
 
 .sign_in,
@@ -467,6 +476,15 @@ input::-webkit-input-placeholder {
 	float: right;
 }
 
+.follow_image {
+	height: 50px;
+	width: 50px;
+	float:left;
+}
+
+.follow_username{
+	float:left;
+}
 /*-------------------------------TIP SETTINGS PAGE----------------------------------*/
 
 .settings-panel h4,

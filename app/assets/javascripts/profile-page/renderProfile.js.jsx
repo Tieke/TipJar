@@ -1,7 +1,8 @@
-renderProfile = function(profileUrl) {
+renderProfile = function(profileUrl, filterParam) {
 	React.render(
-		<ProfilePageContainer url={profileUrl} />,
+		<ProfilePageContainer url={profileUrl} filterParam={filterParam} />,
 		document.getElementById('main_body')
 	);
 }
+
 
