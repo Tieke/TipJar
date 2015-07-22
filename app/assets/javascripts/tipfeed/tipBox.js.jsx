@@ -8,6 +8,7 @@ var TipBox = React.createClass({
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
+        alert('FOK')
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -22,9 +23,12 @@ var TipBox = React.createClass({
   render: function() {
     return (
       <div className="tipBox">
+        <form>
+          <input type='submit' className='home_filter' />
+        </form>
         <TipCreator data={this.state.data} />
       </div>
     );
-  }
+  } 
 });
 
