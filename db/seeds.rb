@@ -3,6 +3,7 @@ User.destroy_all
 Tipper.destroy_all
 Tippee.destroy_all
 Tip.destroy_all
+Follow.destroy_all
 
 5.times do
   user = User.create(full_name: Faker::Name.name,
@@ -56,6 +57,7 @@ User.create(full_name: "Harry the horse", email: "h@horse.ho", username: "harry"
   balance: rand(3..10),
   terms_version: "1.0")
 
+user_array = User.pluck(:id)
 tippee_array = Tippee.pluck(:id)
 tipper_array = Tipper.pluck(:id)
 
@@ -107,39 +109,49 @@ end
 
 
 
-
-User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
+te = User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
   password: "qwerty123",
   image_url: "https://avatars3.githubusercontent.com/u/9012942?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Liz McKoy", email: "liz@team.squad", username: "Liz",
+liz = User.create(full_name: "Liz McKoy", email: "liz@team.squad", username: "Liz",
   password: "qwerty123",
   image_url: "https://avatars0.githubusercontent.com/u/11071977?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Kyle Black Snow", email: "kyle@team.squad", username: "Kyle",
+kyle = User.create(full_name: "Kyle Black Snow", email: "kyle@team.squad", username: "Kyle",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11069001?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Kelly Munro", email: "kelly@team.squad", username: "Kelly",
+kelly = User.create(full_name: "Kelly Munro", email: "kelly@team.squad", username: "Kelly",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11514966?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Will Sklenars", email: "will@team.squad", username: "Will",
+will = User.create(full_name: "Will Sklenars", email: "will@team.squad", username: "Will",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11266273?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Rhys Portegys", email: "rhys@team.squad", username: "Rhys",
+rhys = User.create(full_name: "Rhys Portegys", email: "rhys@team.squad", username: "Rhys",
   password: "qwerty123",
   image_url: "https://avatars0.githubusercontent.com/u/11514884?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
+
+tieke = [te,liz,kyle,kelly,will,rhys]
+
+tieke.each do | member |
+  Tipper.create(user_id: member.id)
+  Tippee.create(user_id: member.id)
+  user_array.each do | user_id | 
+    Follow.create(followed_id: member.id , following_id: user_id)    
+  end
+end
+
