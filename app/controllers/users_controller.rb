@@ -114,6 +114,9 @@ end
     @user = User.find(params[:user_id])
     if @user.tipper
       @num_of_tips_given = @user.tipper.tips.count
+      puts "*********************************"
+      p @num_of_tips_given
+      puts "*********************************"
     else
       @num_of_tips_given = 0
     end

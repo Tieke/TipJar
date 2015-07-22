@@ -24,7 +24,6 @@ var TipsContainer = React.createClass({
 	},
 	render: function() {
 		if (this.state.data instanceof Array && this.state.data.length > 0) {
-			console.log("this.state.data: ", this.state.data)
 			return (
 				<div className="tips_container col-lg-12">
 					<ProfileTipCreator data={this.state.data} />
