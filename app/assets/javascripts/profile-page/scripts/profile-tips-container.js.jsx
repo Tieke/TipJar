@@ -28,8 +28,7 @@ var TipsContainer = React.createClass({
 			return (
 				<div className="tips_container col-lg-12">
 					<ProfileTipCreator data={this.state.data} />
-				</div>
-			);
+				</div>			);
 		} else {
 			return <div className="tips_container col-lg-12 no_tips">No tips yet... :(</div>
 		} 
