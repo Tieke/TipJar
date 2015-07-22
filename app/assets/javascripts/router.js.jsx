@@ -42,21 +42,21 @@ $(document).ready(function(){
   	renderProfile('/users/'+user_id, '/tips/given')
   })
 
-  // var another_users_pathname 
+  var another_users_pathname 
 
-  // $(document).on('click', '.profile_filter',  function(e){
-  // 	e.preventDefault();
-  //   var clicks = $(this).data('clicks');
-
-  //   if (clicks){
-  //   	renderProfile(another_users_pathname, "/tips/received")
- 	// 		$(this).attr('value', 'Tips Given')
-  //   } else {
-		// 	renderProfile(another_users_pathname, "/tips/given")
-  //   	$(this).attr('value', 'Tips Received')
-  //   }
-  //   $(this).data("clicks", !clicks);
-  // })
+  $(document).on('click', '.profile_filter',  function(e){
+  	e.preventDefault();
+    var clicks = $(this).data('clicks');
+    another_users_pathname = $('.profile_filter').attr('id')
+    if (clicks){
+			renderProfile(another_users_pathname, "/tips/given")
+    	$(this).attr('value', 'Tips Received')
+    } else {
+    	renderProfile(another_users_pathname, "/tips/received")
+ 			$(this).attr('value', 'Tips Given')
+    }
+    $(this).data("clicks", !clicks);
+  })
 
 	if (window.location.pathname === '/') {
 		renderWelcomeTips();

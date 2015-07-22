@@ -1,5 +1,6 @@
 var TipsContainer = React.createClass({
 	loadTipsFromServer: function() {
+		console.log(this.props.url, this.props.filterParam)
 		var tips_url = this.props.url + this.props.filterParam
 		$.ajax({
 			url: tips_url,
