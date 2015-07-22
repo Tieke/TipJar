@@ -22,4 +22,5 @@ RSpec.describe TippersController, type: :controller do
       expect(response).to redirect_to(tip_settings_path(@user))
     end
   end
+
 end
