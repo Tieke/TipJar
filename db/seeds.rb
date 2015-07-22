@@ -93,11 +93,10 @@ random_urls = [
 ].shuffle
 
 
-
-20.times do | i |
-  link = random_urls[i]
-  object = LinkThumbnailer.generate(link)
-  rand(5..10).times do
+2.times do
+  20.times do | i |
+    link = random_urls[i]
+    object = LinkThumbnailer.generate(link)
     Tip.create(
       tipper_id: tipper_array.sample,
       tippee_id: tippee_array.sample,
@@ -109,7 +108,6 @@ random_urls = [
     )
   end
 end
-
 # Our stuff after here
 
 te = User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
@@ -165,7 +163,7 @@ tieke.each do | member |
 end
 
 tieke.each do | member |
-  8.times do 
+  rand(4..8).times do 
     link = random_urls.sample
     object = LinkThumbnailer.generate(link)
     Tip.create(
@@ -195,7 +193,7 @@ will_links = [
 will_links.each do | link |
   temp_tipper_array = tipper_array.shuffle.dup
   object = LinkThumbnailer.generate(link)
-  5.times do 
+  rand(1..4).times do 
     Tip.create(
       tipper_id: temp_tipper_array.pop,
       tippee_id: will.tippee.id,
@@ -219,7 +217,7 @@ kelly_links = [
 kelly_links.each do | link |
   temp_tipper_array = tipper_array.shuffle.dup
   object = LinkThumbnailer.generate(link)
-  5.times do 
+  rand(1..4).times do 
     Tip.create(
       tipper_id: temp_tipper_array.pop,
       tippee_id: kelly.tippee.id,
@@ -241,7 +239,7 @@ liz_links = [
 liz_links.each do | link |
   temp_tipper_array = tipper_array.shuffle.dup
   object = LinkThumbnailer.generate(link)
-  5.times do 
+  rand(1..4).times do 
     Tip.create(
       tipper_id: temp_tipper_array.pop,
       tippee_id: liz.tippee.id,
@@ -264,7 +262,7 @@ te_links = [
 te_links.each do | link |
   temp_tipper_array = tipper_array.shuffle.dup
   object = LinkThumbnailer.generate(link)
-  5.times do 
+  rand(1..4).times do 
     Tip.create(
       tipper_id: temp_tipper_array.pop,
       tippee_id: te.tippee.id,
@@ -285,7 +283,7 @@ rhys_links = [
 rhys_links.each do | link |
   temp_tipper_array = tipper_array.shuffle.dup
   object = LinkThumbnailer.generate(link)
-  15.times do 
+  rand(1..4).times do 
     Tip.create(
       tipper_id: temp_tipper_array.pop,
       tippee_id: rhys.tippee.id,
@@ -306,7 +304,7 @@ kyle_links = [
 kyle_links.each do | link |
   temp_tipper_array = tipper_array.shuffle.dup
   object = LinkThumbnailer.generate(link)
-  5.times do 
+  rand(1..4).times do 
     Tip.create(
       tipper_id: temp_tipper_array.pop,
       tippee_id: kyle.tippee.id,
