@@ -1,4 +1,7 @@
-<h1>Your withdrawal has been confirmed. Thank you for using Tip Jar.</h1>
+<div class="withdrawal-confirm">
+  <h2>Your withdrawal has been confirmed. Thank you for using Tip Jar.</h2>
 
+  <h4><%= link_to "back home", root_path %></h4>
 
-<h3> 	<%= link_to "back home", root_path %> </h3>
+  <h4><%= link_to "back to tip settings", tip_settings_(current_user) %></h4>
+</div>
