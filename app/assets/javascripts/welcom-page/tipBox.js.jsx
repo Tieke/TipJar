@@ -20,8 +20,7 @@ var WelcomeTipBox = React.createClass({
     setInterval(this.loadTipFromServer, this.props.pollInterval);
   },
   render: function() {
-    console.log(this.state.data);
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+    // console.log(this.state.data);
     return (
       <div className="tipBox">
         <WelcomeTipCreator data={this.state.data} />
