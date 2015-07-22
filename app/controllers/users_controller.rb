@@ -84,6 +84,25 @@ end
     @balance = current_user.balance
     render :tip_settings
   end
+
+    def stats
+    @user = User.find(params[:user_id])
+    if @user.tipper
+      @num_of_tips_given = @user.tipper.tips.count
+    else
+      @num_of_tips_given = 0
+    end
+    if @user.tippee
+      @num_of_tips_recieved = @user.tippee.tips.count
+    else
+      @num_of_tips_recieved = 0
+    end
+
+    # @user.tipper ? @user.tipper.count : 0 
+    # @num_of_tips_recieved = @user.tippee.count
+    render json: { "num_of_tips_given" => @num_of_tips_given, 
+                    "num_of_tips_recieved" => @num_of_tips_recieved }
+  end
 end
 
 # HTTParty.post("https://test.bitpay.com/tokens", query: {'label'=>'TipJar', 'id'=>'TewzSJHWriVowxFYgAsa1TrZzkxnegawhcc', 'pairingCode'=>'bpsPdGQ'})
