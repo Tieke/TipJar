@@ -23,18 +23,8 @@ RSpec.describe User, type: :model do
       expect(user).to validate_presence_of(:email)
     end
 
-    context "password" do
-      it "has a password on create" do
-        expect(user).to validate_presence_of(:password).on(:create)
-      end
-
-      it "must be at least characters long" do
-        expect(user).to validate_length_of(:password).is_at_least(5)
-      end
-
-      it "must be 120 characters or less" do
-        expect(user).to validate_length_of(:password).is_at_most(120)
-      end
+    it "has a password" do
+      expect(user).to validate_presence_of(:password)
     end
   end
 
@@ -83,6 +73,8 @@ RSpec.describe User, type: :model do
     it 'has many follows' do
       expect(jane.followeds).to include(john)
     end
+
+
   end
 
 

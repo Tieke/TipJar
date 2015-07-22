@@ -38,12 +38,12 @@ p {
 
 @font-face {
     font-family: "Nexa-Light";
-    src: url('https://s3-ap-southeast-2.amazonaws.com/tipjarwellington/fonts/nexa/Nexa+Light.otf') format("truetype");
+    src: url('nexa/Nexa Light.otf') format("truetype");
 }
 
 @font-face {
     font-family: "Nexa-Bold";
-    src: url('https://s3-ap-southeast-2.amazonaws.com/tipjarwellington/fonts/nexa/Nexa+Bold.otf') format("truetype");
+    src: url('nexa/Nexa Bold.otf') format("truetype");
 }
 
 /*----------------------------------NAVAGATION----------------------------------*/
@@ -137,7 +137,7 @@ p {
     -moz-background-size: cover;
     background-size: cover; /* Covers the entire div */
     background-repeat: no-repeat; /* No repeat */
-    background-image: url('https://s3-ap-southeast-2.amazonaws.com/tipjarwellington/images/header-background.svg');
+    background-image: url('header-background.svg');
 }
 
 #topper .wrap {
