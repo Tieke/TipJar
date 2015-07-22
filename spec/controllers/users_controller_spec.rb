@@ -150,6 +150,19 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
+	describe "#following_tips" do
+		let!(:tipper) { create(:tipper) }
+
+		before do
+			@user2 = tipper.user
+			tip = create(:tip, tipper_id: tipper.id)
+			get :follow, user_id: @user2.id
+			get :following_tips, user_id: @user2.id
+		end
+
+		it { should respond_with(200) }
+	end
+
 	describe "stats" do
 		context 'no tips given or received' do
 			before do
