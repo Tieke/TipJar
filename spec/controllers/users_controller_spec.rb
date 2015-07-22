@@ -150,11 +150,83 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
-	after do
-		User.destroy_all
-		Follow.destroy_all
-		Deposit.destroy_all
-		Withdrawal.destroy_all
+	describe "stats" do
+		context 'no tips given or received' do
+			before do
+				@user = create(:user)
+				get :stats, user_id: @user.id
+			end
+
+			it { should respond_with(200) }
+
+			it "should assign specified user to @user" do
+				expect(assigns(:user)).to eq(@user)
+			end
+
+			it "returns a hash with zero tips given and received for the specified user" do
+				expect(response.body).to eq({"num_of_tips_given":0,"num_of_tips_recieved":0}.to_json)
+			end
+		end
+
+		context 'tips given no tips received' do
+			before do
+				@tipper = create(:tipper)
+				@user = @tipper.user
+				10.times { create( :tip, tipper_id: @tipper.id ) }
+				get :stats, user_id: @user.id
+			end
+
+			it { should respond_with(200) }
+
+			it "should assign specified user to @user" do
+				expect(assigns(:user)).to eq(@user)
+			end
+
+			it "returns a hash with 10 tips given and zero received for the specified user" do
+				expect(response.body).to eq({"num_of_tips_given":10,"num_of_tips_recieved":0}.to_json)
+			end
+		end
+
+		context 'no tips given 10 tips received' do
+			before do
+				@tippee = create(:tippee)
+				@user = @tippee.user
+				10.times { create( :tip, tippee_id: @tippee.id ) }
+				get :stats, user_id: @user.id
+			end
+
+			it { should respond_with(200) }
+
+			it "should assign specified user to @user" do
+				expect(assigns(:user)).to eq(@user)
+			end
+
+			it "returns a hash with 10 tips given and zero received for the specified user" do
+				expect(response.body).to eq({"num_of_tips_given":0,"num_of_tips_recieved":10}.to_json)
+			end
+		end
+
+
+		context '10 tips given 10 tips received' do
+			before do
+				@tippee = create(:tippee)
+				@user = @tippee.user
+				@tipper = create(:tipper, user_id: @user.id)
+				10.times { create( :tip, tippee_id: @tippee.id, tipper_id: @tipper.id ) }
+				get :stats, user_id: @user.id
+			end
+
+			it { should respond_with(200) }
+
+			it "should assign specified user to @user" do
+				expect(assigns(:user)).to eq(@user)
+			end
+
+			it "returns a hash with 10 tips given and zero received for the specified user" do
+				expect(response.body).to eq({"num_of_tips_given":10,"num_of_tips_recieved":10}.to_json)
+			end
+		end
+
 	end
 
 end

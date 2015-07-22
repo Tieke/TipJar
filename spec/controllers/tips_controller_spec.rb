@@ -257,11 +257,4 @@ RSpec.describe TipsController, type: :controller do
 		end
 	end
 
-	after do
-		Tip.destroy_all
-		User.destroy_all
-		Tippee.destroy_all
-		Tipper.destroy_all
-	end
-
 end

@@ -12,5 +12,4 @@ RSpec.describe PagesController, type: :controller do
 
     it { should render_template(:page) }
   end
-
 end

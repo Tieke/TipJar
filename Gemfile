@@ -33,4 +33,6 @@ group :test do
   gem 'chromedriver-helper'
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'simplecov', :require => false
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end

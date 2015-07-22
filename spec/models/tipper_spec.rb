@@ -20,7 +20,4 @@ RSpec.describe Tipper, type: :model do
     end
   end
 
-  after do
-    Tipper.destroy_all
-  end
 end

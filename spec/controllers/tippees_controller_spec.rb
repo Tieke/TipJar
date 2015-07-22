@@ -25,6 +25,5 @@ RSpec.describe TippeesController, type: :controller do
     it "redirects to the tip settings screen" do
       expect(response).to redirect_to(tip_settings_path(@user))
     end
-
   end
 end

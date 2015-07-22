@@ -143,3 +143,4 @@ User.create(full_name: "Rhys Portegys", email: "rhys@team.squad", username: "Rhy
   image_url: "https://avatars0.githubusercontent.com/u/11514884?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
+
