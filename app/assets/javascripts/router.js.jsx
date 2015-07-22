@@ -66,6 +66,7 @@ $(document).ready(function(){
 		e.preventDefault()
 		another_users_pathname = $(this).context.pathname
 		renderProfile(another_users_pathname, "/tips/given")
+    $("body").animate({scrollTop: 0}, 100)
 	})
 
 	$(document).on('click', '.external_link', function(e) {
