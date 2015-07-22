@@ -37,13 +37,13 @@ p {
 }
 
 @font-face {
-    font-family: "Nexa-Light";
-    src: url('nexa/Nexa Light.otf') format("truetype");
+  font-family: "Nexa-Light";
+  src: url('nexa/Nexa Light.otf') format("truetype");
 }
 
 @font-face {
-    font-family: "Nexa-Bold";
-    src: url('nexa/Nexa Bold.otf') format("truetype");
+  font-family: "Nexa-Bold";
+  src: url('nexa/Nexa Bold.otf') format("truetype");
 }
 
 /*----------------------------------NAVAGATION----------------------------------*/
@@ -157,34 +157,34 @@ p {
 }
 
 #topper {
-    position: relative;
-    height: 90vh; /* 60% of viewport */
-    min-height: 300px !important; /* In case window becomes too narrow */
-    background-color: #FFD121; /* Shows while the image is loading */
-    background-position: 50% 0; /* Best for responsive */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover; /* Covers the entire div */
-    background-repeat: no-repeat; /* No repeat */
-    background-image: url('header-background.svg');
+  position: relative;
+  height: 90vh; /* 60% of viewport */
+  min-height: 300px !important; /* In case window becomes too narrow */
+  background-color: #FFD121; /* Shows while the image is loading */
+  background-position: 50% 0; /* Best for responsive */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover; /* Covers the entire div */
+  background-repeat: no-repeat; /* No repeat */
+  background-image: url('header-background.svg');
 }
 
 #topper .wrap {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 15px;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 15px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 
 .welcome_container, .topup-confirm, .withdrawal-confirm, h2, h3, h4, li {
-    font-family: "Nexa-Light", Verdana, Tahoma;
+  font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
 .welcome-sentence {
@@ -322,15 +322,6 @@ input::-webkit-input-placeholder {
 	padding: 10px;
 }
 
-/*.single_tip_container:hover {
-	background-color: #FFD121;
-
-}
-
-.tip_attributes_container_image:hover {
-	opacity: 1;
-}*/
-
 .tip_attributes_container_image {
 	background-position: center;
 	height: 300px;
@@ -386,15 +377,13 @@ input::-webkit-input-placeholder {
 .profile_info_container {
 	background-color: #FFD121;
 	padding: 0;
-	/*text-align: center;*/
 	border-bottom: none;
-	height: 250px;
+	height: 260px;
 	clear: both;
 }
 
 .personal_info_container {
-	/*width: 50%;*/
-	height: 250px;
+	height: 260px;
 	padding: 0;
 	background-color: transparent;
 	position: relative;
@@ -402,13 +391,14 @@ input::-webkit-input-placeholder {
 
 .personal_info {
 	background-color: #FFE582;
-	width:100%;
+	width: 610px;
+	height: 220px;
 	padding: 0;
 }
 
 .profile_image {
-	height: 200px;
-	width: 200px;
+	height: 220px;
+	width: 220px;
 	float: left;
 }
 
@@ -417,7 +407,7 @@ input::-webkit-input-placeholder {
 .about,
 .tip_stats,
 .member_since {
-	padding-left: 220px;
+	padding-left: 240px;
 }
 
 .profile_name,
@@ -429,19 +419,22 @@ input::-webkit-input-placeholder {
 
 .account_info {
 	background-color: #D0D0D0;
-	width: 100%;
-	height: 50px;
-
+	width: 610px;
+	height: 40px;
 }
 
 .following {
-	height: 250px;
+	height: 260px;
+	width: 240px;
+	padding: 0;
 	background-color: #D0D0D0;
 	float: right;
 }
 
 .followers {
-	height: 250px;
+	height: 260px;
+	width: 240px;
+	padding: 0;
 	background-color: #EAB900;
 	float: right;
 }
@@ -462,28 +455,27 @@ input::-webkit-input-placeholder {
 	font-family: "Nexa-Bold";
 }
 
-.left_tips_container {
-	background-color: orange;
-	/*height: 100px;*/
-	/*width: 50%;*/
-	float: left;
-}
-
-.right_tips_container {
-	background-color: green;
-	/*height: 100px;*/
-	/*width: 50%;*/
-	float: right;
-}
-
 .follow_image {
-	height: 50px;
-	width: 50px;
+	height: 80px;
+	width: 80px;
 	float:left;
+	background-size: cover;
+	opacity: 0.8;
 }
 
 .follow_username{
 	float:left;
+	color: #646464;
+	padding-left: 5px;
+	font-size: 0.9em;
+}
+
+.follow_attributes_container {
+	background-color: #D0D0D0;
+	height: 20px;
+	margin-top: 60px;
+	opacity: 0.85;
+	display: none;
 }
 /*-------------------------------TIP SETTINGS PAGE----------------------------------*/
 
