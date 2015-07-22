@@ -63,7 +63,7 @@ tipper_array = Tipper.pluck(:id)
 random_urls = [
   "https://www.youtube.com/watch?v=cDaepLDC0oE",
   "https://www.youtube.com/watch?v=Xs5IMWjI1SA",
-  "https://music.quietentertainer.com/track/walkie-talkie-irn-mnky-beat-down-mix",
+  "http://music.quietentertainer.com/track/walkie-talkie-irn-mnky-beat-down-mix",
   "https://www.youtube.com/watch?v=uR_8JuIXvpA",
   "https://www.youtube.com/watch?v=_T2XcE9UhWI",
   "https://www.pinterest.com/pin/53832158023475798/",
