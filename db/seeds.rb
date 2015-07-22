@@ -149,7 +149,7 @@ will = User.create(full_name: "Will Sklenars", email: "will@team.squad", usernam
 rhys = User.create(full_name: "Rhys Portegys", email: "rhys@team.squad", username: "Rhys",
   password: "qwerty123",
   image_url: "https://avatars0.githubusercontent.com/u/11514884?v=3&s=460",
-  balance: rand(3..10),
+  balance: rand(100..500),
   terms_version: "1.0")
 
 tieke = [te,liz,kyle,kelly,will,rhys]
@@ -170,62 +170,146 @@ end
 
 
 
-# #will
-# will_links = [
-#   "https://vimeo.com/55444380",
-#   "https://vimeo.com/91825051",
-#   "https://www.youtube.com/watch?v=-OTGYDp7vsM",
-#   "http://skwynethpaltrow.github.io/",
-#   "http://willandreece.bandcamp.com/releases"
-# ]
+#will
+will_links = [
+  "https://vimeo.com/55444380",
+  "https://vimeo.com/91825051",
+  "https://www.youtube.com/watch?v=-OTGYDp7vsM",
+  "http://skwynethpaltrow.github.io/",
+  "http://willandreece.bandcamp.com/releases"
+]
 
 
-# will_links.each do | link |
-#   temp_tipper_array = tipper_array.shuffle.dup
-#   object = LinkThumbnailer.generate(link)
-#   5.times do 
-#     Tip.create(
-#       tipper_id: temp_tipper_array.pop,
-#       tippee_id: Tippee.find(user_id: will.id),
-#       url: link,
-#       amount: rand(0.01..0.1),
-#       link_title: object.title,
-#       link_thumbnail: object.images.first.src.to_s,
-#       link_description: object.description
-#     )
-#   end
-# end
+will_links.each do | link |
+  temp_tipper_array = tipper_array.shuffle.dup
+  object = LinkThumbnailer.generate(link)
+  5.times do 
+    Tip.create(
+      tipper_id: temp_tipper_array.pop,
+      tippee_id: will.tippee.id,
+      url: link,
+      amount: rand(0.01..0.1),
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description
+    )
+  end
+end
 
-# # kyle
-# kyle_links = [
-#   "kylesnowschwartz.github.io",
-#   "kylesnowschwartz.github.io/keyboardography",
-#   "https://kylesnowschwartz.github.io/conway_js/",
-#   "https://kylesnowschwartz.github.io/marmitegasm/",
-#   "https://cute-animals-in-space.herokuapp.com/",
-#   "https://eda-quick-draw.herokuapp.com/",
-#   "https://www.ethereum.org/"
-# ]
-# # kelly
-# kelly_links = [
-#   "http://kellymdev.github.io/",
-#   "http://kellymdev.github.io/wildlife/",
-#   "http://www.kellymunro.com/blog/",
-#   "https://acronyms.herokuapp.com/",
-#   "https://www.flickr.com/photos/kelstar-nz"
-# ]
-# # liz
-# liz_links = [
-#   "https://www.youtube.com/watch?v=qq4n0ioRbvs"
-# ]
-# # te
-# te_links = [
-# "https://soundcloud.com/teaihebutler",
-# "http://teaiheb.github.io/",
-# "https://www.facebook.com/teaiheb/videos/499550278097/?l=3409557855951914178"
-# ]
-# # rhys
-# rhys_links = [
-#   "http://rhyseda.github.io/"
-# ]
+# kelly
+kelly_links = [
+  "http://kellymdev.github.io/",
+  "http://kellymdev.github.io/wildlife/",
+  "http://www.kellymunro.com/blog/",
+  "https://acronyms.herokuapp.com/",
+  "https://www.flickr.com/photos/kelstar-nz"
+]
 
+kelly_links.each do | link |
+  temp_tipper_array = tipper_array.shuffle.dup
+  object = LinkThumbnailer.generate(link)
+  5.times do 
+    Tip.create(
+      tipper_id: temp_tipper_array.pop,
+      tippee_id: kelly.tippee.id,
+      url: link,
+      amount: rand(0.01..0.1),
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description
+    )
+  end
+end
+
+# liz
+liz_links = [
+  "https://www.youtube.com/watch?v=qq4n0ioRbvs",
+  "https://elisamckoy.github.io/index.html"
+]
+
+liz_links.each do | link |
+  temp_tipper_array = tipper_array.shuffle.dup
+  object = LinkThumbnailer.generate(link)
+  5.times do 
+    Tip.create(
+      tipper_id: temp_tipper_array.pop,
+      tippee_id: liz.tippee.id,
+      url: link,
+      amount: rand(0.01..0.1),
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description
+    )
+  end
+end
+
+# te
+te_links = [
+"https://soundcloud.com/teaihebutler",
+"http://teaiheb.github.io/",
+"https://www.facebook.com/teaiheb/videos/499550278097/?l=3409557855951914178"
+]
+
+te_links.each do | link |
+  temp_tipper_array = tipper_array.shuffle.dup
+  object = LinkThumbnailer.generate(link)
+  5.times do 
+    Tip.create(
+      tipper_id: temp_tipper_array.pop,
+      tippee_id: te.tippee.id,
+      url: link,
+      amount: rand(0.01..0.1),
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description
+    )
+  end
+end
+
+# rhys
+rhys_links = [
+  "http://rhyseda.github.io/"
+]
+
+rhys_links.each do | link |
+  temp_tipper_array = tipper_array.shuffle.dup
+  object = LinkThumbnailer.generate(link)
+  15.times do 
+    Tip.create(
+      tipper_id: temp_tipper_array.pop,
+      tippee_id: rhys.tippee.id,
+      url: link,
+      amount: rand(0.01..0.1),
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description
+    )
+  end
+end
+
+# kyle
+kyle_links = [
+  "http://kylesnowschwartz.github.io",
+  "http://kylesnowschwartz.github.io/keyboardography",
+  "https://kylesnowschwartz.github.io/conway_js/",
+  "https://kylesnowschwartz.github.io/marmitegasm/",
+  "https://cute-animals-in-space.herokuapp.com/",
+  "https://eda-quick-draw.herokuapp.com/",
+  "https://www.ethereum.org/"
+]
+
+kyle_links.each do | link |
+  temp_tipper_array = tipper_array.shuffle.dup
+  object = LinkThumbnailer.generate(link)
+  5.times do 
+    Tip.create(
+      tipper_id: temp_tipper_array.pop,
+      tippee_id: kyle.tippee.id,
+      url: link,
+      amount: rand(0.01..0.1),
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description
+    )
+  end
+end
