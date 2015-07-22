@@ -4,6 +4,9 @@ Tipper.destroy_all
 Tippee.destroy_all
 Tip.destroy_all
 
+client = BitPayClient.create(api_uri: "https://test.bitpay.com", pem: "ays3eS9iMUc0QTZ3Y09QdER0NVVnVFFKQ0RkamRVamNpdUI3Y2FyelNaU3h1QTR5c2Zqb3NqTGpFL1JFRW9HMEMwSThFQy9LV3ZSNXlxSWswbXpUL25VVlArNWRrUFNucjBMVWJWTDRyMTJWSHppcWJRSnk0c2lYUmhhVnd3MElOS1F4RkJ5djNnTVAxOGNOQzRtSjFERVRWdlhzSE1QQWkxSmdFQm5sM1k3L1hPN2FqeGtDbktyQ0ZTbGowYkJ0SWtSLzRLLzlTblBkNFVJdTAxYW1TeWtGNHYzYzEvYit1V2oranJ6TlNqZmx5aE9NRDJ1Zm11U0xXT2VzeUFFR0R3b0dOZS9sNU9ZMy83eEVsQmsvb0dKNEFCWk1iWjJtV0tqWWtMV2JuVlY1d3ExQ1dqYVBKTFpWd2dhRkFwdEstLXVqeE1hZjBoZTZWaUVGZDUvOUxqa0E9PQ==--c41929e00277b9bf6e0ecae9a35b71766a820052", facade: "merchant")
+
+
 5.times do
   user = User.create(full_name: Faker::Name.name,
               email: Faker::Internet.email,
