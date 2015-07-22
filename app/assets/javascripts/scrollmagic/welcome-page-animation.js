@@ -32,12 +32,11 @@ if (window.location.pathname === '/') {
 		var logoScene = new ScrollMagic.Scene(
 	    {
 	        triggerElement: '#topper',
-	        duration: '50%',
-	        // offset: '80px'
+	        duration: '50%'
 	    }
 		)
 		.setTween([topperTween, headingTween])
-		// .addIndicators()
+		.addIndicators()
 		.addTo(controller);
 		
 
@@ -45,7 +44,7 @@ if (window.location.pathname === '/') {
 		
 		var welcomeContainerTween = TweenMax.to('.welcome_container', 1.4,
 			{
-				y: -650
+				y: -450
 			}
 		);
 		
@@ -58,7 +57,7 @@ if (window.location.pathname === '/') {
 		)
 		.setTween(welcomeContainerTween)
 		// .setPin('.welcome_container')
-		// .addIndicators()
+		.addIndicators()
 		.addTo(controller);
 
 		// var welcomeTween = TweenMax.to('.welcome-sentence', 1,
@@ -86,7 +85,7 @@ if (window.location.pathname === '/') {
 		)
 		// .setTween(welcomeSentenceTween)
 		.setPin('.welcome_container')
-		// .addIndicators()
+		.addIndicators()
 		.addTo(controller);
 
 
