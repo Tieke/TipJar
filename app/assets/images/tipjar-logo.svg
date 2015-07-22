@@ -4,6 +4,14 @@
     <title>Rectangle 1 + Jar + Tip</title>
     <desc>Created with Sketch.</desc>
     <defs>
+        <style type="text/css">
+           <![CDATA[
+            @font-face {
+                font-family: Nexa;
+                src: url('https://s3-ap-southeast-2.amazonaws.com/tipjarwellington/fonts/nexa/Nexa+Bold.otf');
+            }
+           ]]>
+         </style>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
             <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
