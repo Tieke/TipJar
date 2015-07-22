@@ -44,7 +44,7 @@ end
 	end
 
 	def following_tips
-		user = user.find(params[:user_id])
+		user = User.find(params[:user_id])
 		tips_of_people_user_follows = []
 		user_followings = user.following_follows
 		user_followings.each do |user|
@@ -93,6 +93,25 @@ end
     @tipper = current_user.tipper
     @balance = current_user.balance
     render :tip_settings
+  end
+
+    def stats
+    @user = User.find(params[:user_id])
+    if @user.tipper
+      @num_of_tips_given = @user.tipper.tips.count
+    else
+      @num_of_tips_given = 0
+    end
+    if @user.tippee
+      @num_of_tips_recieved = @user.tippee.tips.count
+    else
+      @num_of_tips_recieved = 0
+    end
+
+    # @user.tipper ? @user.tipper.count : 0
+    # @num_of_tips_recieved = @user.tippee.count
+    render json: { "num_of_tips_given" => @num_of_tips_given,
+                    "num_of_tips_recieved" => @num_of_tips_recieved }
   end
 end
 

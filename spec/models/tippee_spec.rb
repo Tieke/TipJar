@@ -18,4 +18,5 @@ RSpec.describe Tippee, type: :model do
       tippee.generate_tippee_token
     end
   end
+
 end
