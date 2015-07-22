@@ -6,7 +6,6 @@ var TipBox = React.createClass({
       cache: false,
       success: function(data) {
         this.setState({data: data});
-        alert('YUS')
         console.log(data)
       }.bind(this),
       error: function(xhr, status, err) {
@@ -20,17 +19,18 @@ var TipBox = React.createClass({
   },
   componentDidMount: function() {
     this.loadTipsFromServer();
-    // setInterval(this.loadTipsFromServer, this.props.pollInterval);
+    setInterval(this.loadTipsFromServer, this.props.pollInterval);
   },
   render: function() {
-    return (
-      <div className="tipBox">
-        <form>
-          <input type='submit' className='home_filter' value='Following'/>
-        </form>
-        // <TipCreator data={this.state.data} />
-      </div>
-    );
-  }
+        return (
+          <div className="tipBox">
+            <form>
+              <input type='submit' className='home_filter' />
+            </form>
+            <TipCreator data={this.state.data} />
+          </div>
+        );
+      }
+  
 });
 

@@ -1,12 +1,9 @@
 $(document).ready(function(){
-	// renderProfile();
-	//when we get /template
+
 
 	if (window.location.pathname === '/browse') {
 		renderFeed('/tips');
-		// $('#main-body').removeClass('.col-lg-12').css({
-		// 	'width' : '100%'
-		// });
+		$('.home_filter').attr('value', 'Following')
 	}
 
 
@@ -57,9 +54,7 @@ $(document).ready(function(){
   //   $(this).data("clicks", !clicks);
   // })
 
-	// jQuery listener on our filter button
-		// when we hit 'all' we want to call renderFeed('/tips')
-		// when we hit 'following' we want to call 
+
 
 	if (window.location.pathname === '/') {
 		renderWelcomeTips();
