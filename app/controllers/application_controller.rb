@@ -5,18 +5,6 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   skip_before_action :verify_authenticity_token
 
-  def resource_name
-    :user
-  end
-
-  def resource
-    @resource ||= User.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
-  end
-
   protected
   def set_user_params
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:full_name, :username, :coinbase_user_id, :coinbase_access_token, :terms_version, :terms_date, :admin, :image_url, :about, :balance, :email, :password) }
