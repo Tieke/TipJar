@@ -98,6 +98,3 @@ random_urls = [
   )
 end
 
-
-
-
