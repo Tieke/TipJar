@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'tips/random', to: 'tips#random', as: :tips_random
 
+  get 'users/:user_id/stats', to: 'users#stats', as: :user_stats
+
   resources :tips, only: [:index, :show]
 
   resources :bit_pay_clients
@@ -29,7 +31,6 @@ Rails.application.routes.draw do
   get 'tips/:recipient_id/new', to: 'tips#new'
 
   get 'tips/create/:tippee_token', to: 'tips#create'
-
 
   get 'users/:user_id/transactions', to: 'users#transactions'
 
