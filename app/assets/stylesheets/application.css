@@ -92,11 +92,6 @@ p {
 }
 
 /*----------------------------------WELCOME/SIGNUP/SIGNIN----------------------------------*/
-.home_filter {
-	margin-left: 20px;
-	position: fixed;
-	left: 0;
-}
 
 .header-buffer {
 	width: 100%;
@@ -110,33 +105,9 @@ p {
   width: 60%
 }
 
-.sign-in-form,
-.edit-user-form,
-.password_form,
-.new_user_form {
+.sign-in-form {
 	margin: 20px 30%;
 	width: 40%;
-  font-family: "Nexa-Light", Verdana, Tahoma;
-}
-
-.sign-in-form input[type="text"],
-.sign-in-form input[type="email"],
-.sign-in-form input[type="password"],
-.edit-user-form input[type="text"],
-.edit-user-form input[type="email"],
-.edit-user-form input[type="password"],
-.password_form input[type="email"],
-.new_user_form input[type="text"],
-.new_user_form input[type="email"],
-.new_user_form input[type="password"] {
-  text-align: center;
-}
-
-.sign-in-form input[type="submit"],
-.edit-user-form input[type="submit"],
-.password_form input[type="submit"],
-.new_user_form input[type="submit"] {
-  margin-bottom: 15px;
 }
 
 .notice, .alert {
@@ -158,7 +129,7 @@ p {
 
 #topper {
     position: relative;
-    height: 90vh; /* 60% of viewport */
+    height: 85vh; /* 60% of viewport */
     min-height: 300px !important; /* In case window becomes too narrow */
     background-color: #FFD121; /* Shows while the image is loading */
     background-position: 50% 0; /* Best for responsive */
@@ -183,18 +154,18 @@ p {
 }
 
 
-.welcome_container, .topup-confirm, .withdrawal-confirm, h2, h3, h4, li {
+.welcome_container, h2, li { 
     font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
 .welcome-sentence {
-	margin-top: 25px;
+	margin-top: 50px;
 }
 
 
 .welcome_container {
 	width: 100%;
-	/*padding: 200px 50px 60px;*/
+	padding: 200px 50px 60px;
 }
 
 .left_welcome_container,
@@ -217,26 +188,16 @@ p {
 
 .recent_tips {
 	background-color: #d0d0d0;
-}
-
-.recent_tips_container {
-	margin: 0;
-	height: 390px;
+	padding: 20px;
 }
 
 .sign_in,
-.sign_up,
-.edit_user,
-.password_form,
-.new_user_form {
+.sign_up {
 	text-align: center;
 	padding: 20px 20px 30px;
 }
 
-.sign_in,
-.edit_user,
-.password_form,
-#devise-form-style {
+.sign_in {
 	background-color: #d0d0d0;
 	margin-bottom: 0;
 }
@@ -247,48 +208,13 @@ p {
 }
 
 .sign_in .field,
-.sign_up .field,
-.edit_user .field,
-.password_form .field,
-.new_user_form .field {
+.sign_up .field {
 	padding: 5px 0 10px;
 }
 
-.sign_in input[type="text"],
-.sign_up input[type="text"],
-.edit_user input[type="text"],
-.new_user_form input[type="text"],
-.sign_in input[type="email"],
-.sign_up input[type="email"],
-.new_user_form input[type="email"],
-.edit_user input[type="email"],
-.sign_in input[type="password"],
-.sign_up input[type="password"],
-.edit_user input[type="password"],
-.new_user_form input[type="password"],
-.edit_user textarea,
-.new_user_form textarea {
-  text-align: center;
-  width: 65%;
-}
-
-.password_form input[type="email"] {
-  width: 70%;
-}
-
 .sign_in input[type="check_box"],
-.sign_up input[type="check_box"],
-.edit_user input[type="check_box"],
-.edit_user textarea {
+.sign_up input[type="check_box"] {
 	padding-right: 5px;
-}
-
-.sign_in input[type="submit"],
-.sign_up input[type="submit"],
-.edit_user input[type="submit"],
-.password_form input[type="submit"],
-.new_user_form input[type="submit"] {
-  padding: 5px 10px;
 }
 
 .clear {
@@ -310,8 +236,6 @@ input::-webkit-input-placeholder {
 :-ms-input-placeholder {
   text-align:center;
 }
-
-
 
 /*-------------------------------FORGOT PASSWORD--------------------------------*/
 
@@ -431,7 +355,7 @@ input::-webkit-input-placeholder {
 	background-color: #D0D0D0;
 	width: 100%;
 	height: 50px;
-
+	
 }
 
 .following {
@@ -451,7 +375,7 @@ input::-webkit-input-placeholder {
 	width: 100%;
 	margin-top: 40px;
 	padding: 0;
-	position: relative;
+	position: relative; 
 	clear: both;
 }
 
@@ -474,47 +398,4 @@ input::-webkit-input-placeholder {
 	/*height: 100px;*/
 	/*width: 50%;*/
 	float: right;
-}
-
-.follow_image {
-	height: 50px;
-	width: 50px;
-	float:left;
-}
-
-.follow_username{
-	float:left;
-}
-/*-------------------------------TIP SETTINGS PAGE----------------------------------*/
-
-.settings-panel h4,
-.tip-settings p,
-.settings-panel input[type="submit"],
-.settings-panel label,
-.settings-panel input[type="text"],
-.settings-panel select option {
-    font-family: "Nexa-Light", Verdana, Tahoma;
-}
-
-.settings-panel {
-  border-bottom: 1px solid #d0d0d0;
-  padding: 20px 20px 60px;
-}
-
-.settings-panel input[type="text"] {
-  padding: 3px;
-}
-
-.settings-panel input[type="submit"] {
-  padding: 5px 10px;
-  margin-top: 20px;
-}
-
-.settings-panel label {
-  margin-top: 15px;
-}
-
-.settings-panel label,
-.settings-panel select {
-  display: block;
 }
