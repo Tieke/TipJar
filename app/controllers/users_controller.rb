@@ -58,7 +58,7 @@ end
 		p params
 		p client = BitPayClient.last
 		p "$" * 30
-  	p invoice = client.create_invoice(price: params[:amount].to_f, currency: "USD", facade: "merchant", flags: {refundable: true})
+  	p invoice = client.create_invoice(price: params[:amount].to_f, currency: "USD", facade: "merchant")
 		p "@" * 30
   	p @invoice_url = invoice["url"]
   	# p @bits_purchased = invoice["btcPrice"].to_f*1_000_000
