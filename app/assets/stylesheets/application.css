@@ -107,7 +107,8 @@ p {
 
 .sign-in-form,
 .edit-user-form,
-.password_form {
+.password_form,
+.new_user_form {
 	margin: 20px 30%;
 	width: 40%;
   font-family: "Nexa-Light", Verdana, Tahoma;
@@ -119,13 +120,17 @@ p {
 .edit-user-form input[type="text"],
 .edit-user-form input[type="email"],
 .edit-user-form input[type="password"],
-.password_form input[type="email"] {
+.password_form input[type="email"],
+.new_user_form input[type="text"],
+.new_user_form input[type="email"],
+.new_user_form input[type="password"] {
   text-align: center;
 }
 
 .sign-in-form input[type="submit"],
 .edit-user-form input[type="submit"],
-.password_form input[type="submit"] {
+.password_form input[type="submit"],
+.new_user_form input[type="submit"] {
   margin-bottom: 15px;
 }
 
@@ -213,14 +218,16 @@ p {
 .sign_in,
 .sign_up,
 .edit_user,
-.password_form {
+.password_form,
+.new_user_form {
 	text-align: center;
 	padding: 20px 20px 30px;
 }
 
 .sign_in,
 .edit_user,
-.password_form {
+.password_form,
+#devise-form-style {
 	background-color: #d0d0d0;
 	margin-bottom: 0;
 }
@@ -233,20 +240,25 @@ p {
 .sign_in .field,
 .sign_up .field,
 .edit_user .field,
-.password_form .field {
+.password_form .field,
+.new_user_form .field {
 	padding: 5px 0 10px;
 }
 
 .sign_in input[type="text"],
 .sign_up input[type="text"],
 .edit_user input[type="text"],
+.new_user_form input[type="text"],
 .sign_in input[type="email"],
 .sign_up input[type="email"],
+.new_user_form input[type="email"],
 .edit_user input[type="email"],
 .sign_in input[type="password"],
 .sign_up input[type="password"],
 .edit_user input[type="password"],
-.edit_user textarea {
+.new_user_form input[type="password"],
+.edit_user textarea,
+.new_user_form textarea {
   text-align: center;
   width: 65%;
 }
@@ -265,7 +277,8 @@ p {
 .sign_in input[type="submit"],
 .sign_up input[type="submit"],
 .edit_user input[type="submit"],
-.password_form input[type="submit"] {
+.password_form input[type="submit"],
+.new_user_form input[type="submit"] {
   padding: 5px 10px;
 }
 
@@ -288,6 +301,7 @@ input::-webkit-input-placeholder {
 :-ms-input-placeholder {
   text-align:center;
 }
+
 
 
 /*-------------------------------FORGOT PASSWORD--------------------------------*/
