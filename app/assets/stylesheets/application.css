@@ -96,6 +96,7 @@ p {
 	margin-left: 20px;
 	position: fixed;
 	left: 0;
+	font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
 .header-buffer {
@@ -410,6 +411,10 @@ input::-webkit-input-placeholder {
 	height: 200px;
 	width: 200px;
 	float: left;
+}
+
+.profile_filter {
+	font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
 .profile_name,
