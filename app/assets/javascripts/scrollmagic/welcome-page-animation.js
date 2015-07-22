@@ -43,7 +43,7 @@ if (window.location.pathname === '/') {
 		
 		var welcomeContainerTween = TweenMax.to('.welcome_container', 1.4,
 			{
-				y: '-105%'
+				y: '-120%'
 			}
 		);
 		
