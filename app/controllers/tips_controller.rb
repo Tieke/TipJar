@@ -28,9 +28,13 @@ class TipsController < ApplicationController
 	end
 
 	def received
-		@tips_received = User.find(params[:user_id]).tippee.tips.reverse
-		@data = formatTipsWithUsers(@tips_received)
-		render json: @data
+		if User.find(params[:user_id]).tippee 
+			@tips_received = User.find(params[:user_id]).tippee.tips.reverse
+			@data = formatTipsWithUsers(@tips_received)
+			render json: @data
+		else
+			redirect_to browse_path
+		end
 	end
 
 	def create

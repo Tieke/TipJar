@@ -9,7 +9,7 @@ var ProfileInfoContainer = React.createClass({
 
 			}.bind(this),
 			error: function(err) {
-				console.log('NOPE: ', err)
+				console.log('NO: ', err)
 			}.bind(this)
 		});
 	},
@@ -20,7 +20,6 @@ var ProfileInfoContainer = React.createClass({
 			cache: false,
 			success: function(data) {
 				this.setState({stats: data});
-				// console.log(data)
 			}.bind(this),
 			error: function(err) {
 				console.log('NOPE: ', err)

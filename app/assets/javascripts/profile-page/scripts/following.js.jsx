@@ -18,7 +18,6 @@ var Following = React.createClass({
 	getInitialState: function() {
 		return { data: [] }
 	},
-	// user id, image, name
 	render: function() {
 		var imageNodes = this.state.data.map(function(user){
 			return(
