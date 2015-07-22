@@ -25,37 +25,37 @@ $(document).ready(function(){
     $(this).data("clicks", !clicks);
   })
 
-  var another_users_pathname 
+  // var another_users_pathname 
 
-  $(document).on('click', '.profile_filter',  function(e){
-  	e.preventDefault();
-    var clicks = $(this).data('clicks');
+  // $(document).on('click', '.profile_filter',  function(e){
+  // 	e.preventDefault();
+  //   var clicks = $(this).data('clicks');
 
-    if (clicks){
-    	renderProfile(another_users_pathname, "/tips/received")
- 			$(this).attr('value', 'Tips Given')
-    } else {
-			renderProfile(another_users_pathname, "/tips/given")
-    	$(this).attr('value', 'Tips Received')
-    }
-    $(this).data("clicks", !clicks);
-  })
+  //   if (clicks){
+  //   	renderProfile(another_users_pathname, "/tips/received")
+ 	// 		$(this).attr('value', 'Tips Given')
+  //   } else {
+		// 	renderProfile(another_users_pathname, "/tips/given")
+  //   	$(this).attr('value', 'Tips Received')
+  //   }
+  //   $(this).data("clicks", !clicks);
+  // })
 
 
-  $(document).on('click', '.follow_botton',  function(e){
-  	e.preventDefault();
-    var clicks = $(this).data('clicks');
-    var url = $("#profile_button")[0].pathname
+  // $(document).on('click', '.follow_botton',  function(e){
+  // 	e.preventDefault();
+  //   var clicks = $(this).data('clicks');
+  //   var url = $("#profile_button")[0].pathname
 
-    if (clicks){
-    	//destroy
- 			$(this).attr('value', 'Follow')
-    } else {
-    	//create
-    	$(this).attr('value', 'Unfollow')
-    }
-    $(this).data("clicks", !clicks);
-  })
+  //   if (clicks){
+  //   	//destroy
+ 	// 		$(this).attr('value', 'Follow')
+  //   } else {
+  //   	//create
+  //   	$(this).attr('value', 'Unfollow')
+  //   }
+  //   $(this).data("clicks", !clicks);
+  // })
 
 	// jQuery listener on our filter button
 		// when we hit 'all' we want to call renderFeed('/tips')
