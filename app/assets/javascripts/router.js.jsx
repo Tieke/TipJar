@@ -40,7 +40,6 @@ $(document).ready(function(){
   	e.preventDefault();
   	var user_id = $(e.target).attr('id')
   	renderProfile('/users/'+user_id, '/tips/given')
-    $("html,body").animate({scrollTop: 0}, 100)
   })
 
   var another_users_pathname 
@@ -86,7 +85,6 @@ $(document).ready(function(){
 		e.preventDefault()
 		var url = $(this).context.pathname
 		renderProfile(url)
-    $("html,body").animate({scrollTop: 0}, 100)
 	})
 
 	$(document).on('mouseover', '.single_tip_container', function() {
