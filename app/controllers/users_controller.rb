@@ -92,7 +92,7 @@ end
   def tip_settings
     if current_user.tippee
    		@tippee_token = current_user.tippee.tippee_token
-      @tipUrl = "http://localhost:3000/tips/create/"
+      @tipUrl = "https://tipjarwellington.herokuapp.com/tips/create/"
     else
     	@tippee = Tippee.new(user_id: current_user.id)
     end
