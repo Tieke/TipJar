@@ -1,7 +1,19 @@
-<%= render partial: "tippees/token_form" %>
+<div class="tip-settings">
 
-<%= render partial: "tippers/tipper_amount_form" %>
+  <div class="settings-panel">
+    <%= render partial: "tippees/token_form" %>
+  </div>
 
-<%= render partial: "deposit_form" %>
+  <div class="settings-panel">
+    <%= render partial: "tippers/tipper_amount_form" %>
+  </div>
 
-<%= render partial: "withdrawal_form" %>
+  <div class="settings-panel">
+    <%= render partial: "deposit_form" %>
+  </div>
+
+  <div class="settings-panel">
+    <%= render partial: "withdrawal_form" %>
+  </div>
+
+</div>
