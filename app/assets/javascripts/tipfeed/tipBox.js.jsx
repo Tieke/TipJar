@@ -23,14 +23,18 @@ var TipBox = React.createClass({
     // setInterval(this.loadTipsFromServer, this.props.pollInterval);
   },
   render: function() {
-    return (
-      <div className="tipBox">
-        <form>
-          <input type='submit' className='home_filter' value='Following'/>
-        </form>
-        // <TipCreator data={this.state.data} />
-      </div>
-    );
+    if (this.state.data.length > 0) {
+      return (
+        <div className="tipBox">
+          <form>
+            <input type='submit' className='home_filter' value='Following'/>
+          </form>
+          <TipCreator data={this.state.data} />
+        </div>
+      );
+    } else {
+      <div>You are currently not following anyone.</div>
+    }
   }
 });
 
