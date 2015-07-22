@@ -37,13 +37,13 @@ p {
 }
 
 @font-face {
-    font-family: "Nexa-Light";
-    src: url('nexa/Nexa Light.otf') format("truetype");
+  font-family: "Nexa-Light";
+  src: url('nexa/Nexa Light.otf') format("truetype");
 }
 
 @font-face {
-    font-family: "Nexa-Bold";
-    src: url('nexa/Nexa Bold.otf') format("truetype");
+  font-family: "Nexa-Bold";
+  src: url('nexa/Nexa Bold.otf') format("truetype");
 }
 
 /*----------------------------------NAVAGATION----------------------------------*/
@@ -92,6 +92,12 @@ p {
 }
 
 /*----------------------------------WELCOME/SIGNUP/SIGNIN----------------------------------*/
+.home_filter {
+	margin-left: 20px;
+	position: fixed;
+	left: 0;
+	font-family: "Nexa-Light", Verdana, Tahoma;
+}
 
 .header-buffer {
 	width: 100%;
@@ -105,9 +111,33 @@ p {
   width: 60%
 }
 
-.sign-in-form {
+.sign-in-form,
+.edit-user-form,
+.password_form,
+.new_user_form {
 	margin: 20px 30%;
 	width: 40%;
+  font-family: "Nexa-Light", Verdana, Tahoma;
+}
+
+.sign-in-form input[type="text"],
+.sign-in-form input[type="email"],
+.sign-in-form input[type="password"],
+.edit-user-form input[type="text"],
+.edit-user-form input[type="email"],
+.edit-user-form input[type="password"],
+.password_form input[type="email"],
+.new_user_form input[type="text"],
+.new_user_form input[type="email"],
+.new_user_form input[type="password"] {
+  text-align: center;
+}
+
+.sign-in-form input[type="submit"],
+.edit-user-form input[type="submit"],
+.password_form input[type="submit"],
+.new_user_form input[type="submit"] {
+  margin-bottom: 15px;
 }
 
 .notice, .alert {
@@ -128,44 +158,44 @@ p {
 }
 
 #topper {
-    position: relative;
-    height: 85vh; /* 60% of viewport */
-    min-height: 300px !important; /* In case window becomes too narrow */
-    background-color: #FFD121; /* Shows while the image is loading */
-    background-position: 50% 0; /* Best for responsive */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover; /* Covers the entire div */
-    background-repeat: no-repeat; /* No repeat */
-    background-image: url('header-background.svg');
+  position: relative;
+  height: 90vh; /* 60% of viewport */
+  min-height: 300px !important; /* In case window becomes too narrow */
+  background-color: #FFD121; /* Shows while the image is loading */
+  background-position: 50% 0; /* Best for responsive */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover; /* Covers the entire div */
+  background-repeat: no-repeat; /* No repeat */
+  background-image: url('header-background.svg');
 }
 
 #topper .wrap {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 15px;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 15px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 
-.welcome_container, h2, li { 
-    font-family: "Nexa-Light", Verdana, Tahoma;
+.welcome_container, .topup-confirm, .withdrawal-confirm, h2, h3, h4, li {
+  font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
 .welcome-sentence {
-	margin-top: 50px;
+	margin-top: 25px;
 }
 
 
 .welcome_container {
 	width: 100%;
-	padding: 200px 50px 60px;
+	/*padding: 200px 50px 60px;*/
 }
 
 .left_welcome_container,
@@ -188,16 +218,26 @@ p {
 
 .recent_tips {
 	background-color: #d0d0d0;
-	padding: 20px;
+}
+
+.recent_tips_container {
+	margin: 0;
+	height: 390px;
 }
 
 .sign_in,
-.sign_up {
+.sign_up,
+.edit_user,
+.password_form,
+.new_user_form {
 	text-align: center;
 	padding: 20px 20px 30px;
 }
 
-.sign_in {
+.sign_in,
+.edit_user,
+.password_form,
+#devise-form-style {
 	background-color: #d0d0d0;
 	margin-bottom: 0;
 }
@@ -208,13 +248,48 @@ p {
 }
 
 .sign_in .field,
-.sign_up .field {
+.sign_up .field,
+.edit_user .field,
+.password_form .field,
+.new_user_form .field {
 	padding: 5px 0 10px;
 }
 
+.sign_in input[type="text"],
+.sign_up input[type="text"],
+.edit_user input[type="text"],
+.new_user_form input[type="text"],
+.sign_in input[type="email"],
+.sign_up input[type="email"],
+.new_user_form input[type="email"],
+.edit_user input[type="email"],
+.sign_in input[type="password"],
+.sign_up input[type="password"],
+.edit_user input[type="password"],
+.new_user_form input[type="password"],
+.edit_user textarea,
+.new_user_form textarea {
+  text-align: center;
+  width: 65%;
+}
+
+.password_form input[type="email"] {
+  width: 70%;
+}
+
 .sign_in input[type="check_box"],
-.sign_up input[type="check_box"] {
+.sign_up input[type="check_box"],
+.edit_user input[type="check_box"],
+.edit_user textarea {
 	padding-right: 5px;
+}
+
+.sign_in input[type="submit"],
+.sign_up input[type="submit"],
+.edit_user input[type="submit"],
+.password_form input[type="submit"],
+.new_user_form input[type="submit"] {
+  padding: 5px 10px;
 }
 
 .clear {
@@ -237,6 +312,8 @@ input::-webkit-input-placeholder {
   text-align:center;
 }
 
+
+
 /*-------------------------------FORGOT PASSWORD--------------------------------*/
 
 /*----------------------------------HOME PAGE----------------------------------*/
@@ -245,15 +322,6 @@ input::-webkit-input-placeholder {
 	height: 370px;
 	padding: 10px;
 }
-
-/*.single_tip_container:hover {
-	background-color: #FFD121;
-
-}
-
-.tip_attributes_container_image:hover {
-	opacity: 1;
-}*/
 
 .tip_attributes_container_image {
 	background-position: center;
@@ -310,15 +378,13 @@ input::-webkit-input-placeholder {
 .profile_info_container {
 	background-color: #FFD121;
 	padding: 0;
-	/*text-align: center;*/
 	border-bottom: none;
-	height: 250px;
+	height: 260px;
 	clear: both;
 }
 
 .personal_info_container {
-	/*width: 50%;*/
-	height: 250px;
+	height: 260px;
 	padding: 0;
 	background-color: transparent;
 	position: relative;
@@ -326,14 +392,19 @@ input::-webkit-input-placeholder {
 
 .personal_info {
 	background-color: #FFE582;
-	width:100%;
+	width: 610px;
+	height: 220px;
 	padding: 0;
 }
 
 .profile_image {
-	height: 200px;
-	width: 200px;
+	height: 220px;
+	width: 220px;
 	float: left;
+}
+
+.profile_filter {
+	font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
 .profile_name,
@@ -341,7 +412,7 @@ input::-webkit-input-placeholder {
 .about,
 .tip_stats,
 .member_since {
-	padding-left: 220px;
+	padding-left: 240px;
 }
 
 .profile_name,
@@ -353,19 +424,22 @@ input::-webkit-input-placeholder {
 
 .account_info {
 	background-color: #D0D0D0;
-	width: 100%;
-	height: 50px;
-	
+	width: 610px;
+	height: 40px;
 }
 
 .following {
-	height: 250px;
+	height: 260px;
+	width: 240px;
+	padding: 0;
 	background-color: #D0D0D0;
 	float: right;
 }
 
 .followers {
-	height: 250px;
+	height: 260px;
+	width: 240px;
+	padding: 0;
 	background-color: #EAB900;
 	float: right;
 }
@@ -375,7 +449,7 @@ input::-webkit-input-placeholder {
 	width: 100%;
 	margin-top: 40px;
 	padding: 0;
-	position: relative; 
+	position: relative;
 	clear: both;
 }
 
@@ -386,16 +460,58 @@ input::-webkit-input-placeholder {
 	font-family: "Nexa-Bold";
 }
 
-.left_tips_container {
-	background-color: orange;
-	/*height: 100px;*/
-	/*width: 50%;*/
-	float: left;
+.follow_image {
+	height: 80px;
+	width: 80px;
+	float:left;
+	background-size: cover;
+	opacity: 0.8;
 }
 
-.right_tips_container {
-	background-color: green;
-	/*height: 100px;*/
-	/*width: 50%;*/
-	float: right;
+.follow_username{
+	float:left;
+	color: #646464;
+	padding-left: 5px;
+	font-size: 0.9em;
+}
+
+.follow_attributes_container {
+	background-color: #D0D0D0;
+	height: 20px;
+	margin-top: 60px;
+	opacity: 0.85;
+	display: none;
+}
+/*-------------------------------TIP SETTINGS PAGE----------------------------------*/
+
+.settings-panel h4,
+.tip-settings p,
+.settings-panel input[type="submit"],
+.settings-panel label,
+.settings-panel input[type="text"],
+.settings-panel select option {
+    font-family: "Nexa-Light", Verdana, Tahoma;
+}
+
+.settings-panel {
+  border-bottom: 1px solid #d0d0d0;
+  padding: 20px 20px 60px;
+}
+
+.settings-panel input[type="text"] {
+  padding: 3px;
+}
+
+.settings-panel input[type="submit"] {
+  padding: 5px 10px;
+  margin-top: 20px;
+}
+
+.settings-panel label {
+  margin-top: 15px;
+}
+
+.settings-panel label,
+.settings-panel select {
+  display: block;
 }
