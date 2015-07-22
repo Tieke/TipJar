@@ -110,9 +110,25 @@ p {
   width: 60%
 }
 
-.sign-in-form {
+.sign-in-form,
+.edit-user-form {
 	margin: 20px 30%;
 	width: 40%;
+  font-family: "Nexa-Light", Verdana, Tahoma;
+}
+
+.sign-in-form input[type="text"],
+.sign-in-form input[type="email"],
+.sign-in-form input[type="password"],
+.edit-user-form input[type="text"],
+.edit-user-form input[type="email"],
+.edit-user-form input[type="password"] {
+  text-align: center;
+}
+
+.sign-in-form input[type="submit"],
+.edit-user-form input[type="submit"] {
+  margin-bottom: 15px;
 }
 
 .notice, .alert {
@@ -159,7 +175,7 @@ p {
 }
 
 
-.welcome_container, h2, li {
+.welcome_container, h2, h3, li {
     font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
@@ -201,12 +217,14 @@ p {
 }
 
 .sign_in,
-.sign_up {
+.sign_up,
+.edit_user {
 	text-align: center;
 	padding: 20px 20px 30px;
 }
 
-.sign_in {
+.sign_in,
+.edit_user {
 	background-color: #d0d0d0;
 	margin-bottom: 0;
 }
@@ -217,27 +235,35 @@ p {
 }
 
 .sign_in .field,
-.sign_up .field {
+.sign_up .field,
+.edit_user .field {
 	padding: 5px 0 10px;
 }
 
 .sign_in input[type="text"],
 .sign_up input[type="text"],
+.edit_user input[type="text"],
 .sign_in input[type="email"],
 .sign_up input[type="email"],
+.edit_user input[type="email"],
 .sign_in input[type="password"],
-.sign_up input[type="password"] {
+.sign_up input[type="password"],
+.edit_user input[type="password"],
+.edit_user textarea {
   text-align: center;
   width: 65%;
 }
 
 .sign_in input[type="check_box"],
-.sign_up input[type="check_box"] {
+.sign_up input[type="check_box"],
+.edit_user input[type="check_box"],
+.edit_user textarea {
 	padding-right: 5px;
 }
 
 .sign_in input[type="submit"],
-.sign_up input[type="submit"] {
+.sign_up input[type="submit"],
+.edit_user input[type="submit"] {
   padding: 5px 10px;
 }
 
@@ -260,6 +286,7 @@ input::-webkit-input-placeholder {
 :-ms-input-placeholder {
   text-align:center;
 }
+
 
 /*-------------------------------FORGOT PASSWORD--------------------------------*/
 
@@ -422,4 +449,38 @@ input::-webkit-input-placeholder {
 	/*height: 100px;*/
 	/*width: 50%;*/
 	float: right;
+}
+
+/*-------------------------------TIP SETTINGS PAGE----------------------------------*/
+
+.settings-panel h4,
+.tip-settings p,
+.settings-panel input[type="submit"],
+.settings-panel label,
+.settings-panel input[type="text"],
+.settings-panel select option {
+    font-family: "Nexa-Light", Verdana, Tahoma;
+}
+
+.settings-panel {
+  border-bottom: 1px solid #d0d0d0;
+  padding: 20px 20px 60px;
+}
+
+.settings-panel input[type="text"] {
+  padding: 3px;
+}
+
+.settings-panel input[type="submit"] {
+  padding: 5px 10px;
+  margin-top: 20px;
+}
+
+.settings-panel label {
+  margin-top: 15px;
+}
+
+.settings-panel label,
+.settings-panel select {
+  display: block;
 }
