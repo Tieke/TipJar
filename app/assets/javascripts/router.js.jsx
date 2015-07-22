@@ -41,6 +41,22 @@ $(document).ready(function(){
     $(this).data("clicks", !clicks);
   })
 
+
+  $(document).on('click', '.follow_botton',  function(e){
+  	e.preventDefault();
+    var clicks = $(this).data('clicks');
+    var url = $("#profile_button")[0].pathname
+
+    if (clicks){
+    	//destroy
+ 			$(this).attr('value', 'Follow')
+    } else {
+    	//create
+    	$(this).attr('value', 'Unfollow')
+    }
+    $(this).data("clicks", !clicks);
+  })
+
 	// jQuery listener on our filter button
 		// when we hit 'all' we want to call renderFeed('/tips')
 		// when we hit 'following' we want to call 
