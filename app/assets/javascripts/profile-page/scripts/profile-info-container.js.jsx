@@ -12,18 +12,6 @@ var ProfileInfoContainer = React.createClass({
 			}.bind(this)
 		});
 	},
-	// handleFollowSubmit: function(user_id) {
-	// 	$.ajax({
-	// 		url : "shit",
-	// 		datatype: "shit",
-	// 		type: "POST",
-	// 		data: user_id,
-	// 		success: function() {
-	// 			// check if you are already following the page you are looking at
-	// 			// change the content of the button
-	// 		}.bind(this),
-	// 	})
-	// }
 	getInitialState: function() {
 		return {
 			data: []
@@ -38,7 +26,6 @@ var ProfileInfoContainer = React.createClass({
 			return (
 				<div className="profile_info_container col-lg-12">
 					<PersonalInfoContainer data={this.state.data} />
-					//<PersonalInfoContainer onFollowSubmit={this.handleFollowSubmit} data={this.state.data} />
 					<Following />
 					<Followers />
 				</div>

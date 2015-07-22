@@ -1,8 +1,6 @@
-renderFeed = function(filter_url) {
-	console.log(filter_url)
-	// $('.tipBox').remove();
+renderFeed = function() {
 	React.render(
-	  <TipBox url={filter_url} pollInterval={2000} />,
+	  <TipBox url="/tips" pollInterval={10000} />,
 		  document.getElementById('main_body')
 	);
 }

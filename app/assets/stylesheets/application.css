@@ -92,11 +92,6 @@ p {
 }
 
 /*----------------------------------WELCOME/SIGNUP/SIGNIN----------------------------------*/
-.home_filter {
-	margin-left: 20px;
-	position: fixed;
-	left: 0;
-}
 
 .header-buffer {
 	width: 100%;
@@ -170,7 +165,7 @@ p {
 
 .welcome_container {
 	width: 100%;
-	/*padding: 200px 50px 60px;*/
+	padding: 200px 50px 60px;
 }
 
 .left_welcome_container,
@@ -193,11 +188,7 @@ p {
 
 .recent_tips {
 	background-color: #d0d0d0;
-}
-
-.recent_tips_container {
-	margin: 0;
-	height: 390px;
+	padding: 20px;
 }
 
 .sign_in,

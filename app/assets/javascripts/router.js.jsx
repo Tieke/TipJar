@@ -22,7 +22,6 @@ $(document).ready(function(){
     $(this).data("clicks", !clicks);
   })
 
-
 	if (window.location.pathname === '/') {
 		renderWelcomeTips();
 	}
