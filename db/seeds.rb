@@ -3,6 +3,7 @@ User.destroy_all
 Tipper.destroy_all
 Tippee.destroy_all
 Tip.destroy_all
+Follow.destroy_all
 
 5.times do
   user = User.create(full_name: Faker::Name.name,
@@ -38,24 +39,31 @@ end
   Tippee.create(user_id: user.id)
 end
 
-User.create(full_name: "Suzie the Swan", email: "s@swan.sw", username: "suzie",
+user = User.create(full_name: "Suzie the Swan", email: "s@swan.sw", username: "suzie",
   password: "qwerty123",
   image_url: "https://www.birdclipart.com/bird_clipart_images/clip_art_illustration_of_a_cartoon_swan_wearing_a_princess_crown_0521-1102-0723-5716_SMU.jpg" ,
   balance: rand(3..10),
   terms_version: "1.0")
+  Tipper.create(user_id: user.id, standard_tip_amount: rand(0.01..0.2))
+  Tippee.create(user_id: user.id)
 
-User.create(full_name: "Dolly the Duck", email: "d@duck.dk", username: "dolly",
+user = User.create(full_name: "Dolly the Duck", email: "d@duck.dk", username: "dolly",
   password: "qwerty123",
   image_url: "https://www.drawingcoach.com/image-files/cartoon_ducks_st5.jpg",
   balance: rand(3..10),
   terms_version: "1.0")
+  Tipper.create(user_id: user.id, standard_tip_amount: rand(0.01..0.2))
+  Tippee.create(user_id: user.id)
 
-User.create(full_name: "Harry the horse", email: "h@horse.ho", username: "harry",
+user = User.create(full_name: "Harry the horse", email: "h@horse.ho", username: "harry",
   password: "qwerty123",
   image_url: "https://www.cliparthut.com/clip-arts/1425/cartoon-horse-clip-art-1425785.png",
   balance: rand(3..10),
   terms_version: "1.0")
+  Tipper.create(user_id: user.id, standard_tip_amount: rand(0.01..0.2))
+  Tippee.create(user_id: user.id)
 
+user_array = User.pluck(:id)
 tippee_array = Tippee.pluck(:id)
 tipper_array = Tipper.pluck(:id)
 
@@ -92,13 +100,14 @@ random_urls = [
 20.times do | i |
   link = random_urls[i]
   object = LinkThumbnailer.generate(link)
-  Tip.create(tipper_id: tipper_array.sample,
-              tippee_id: tippee_array.sample,
-              url: link,
-              amount: rand(0.01..0.1),
-              link_title: object.title,
-              link_thumbnail: object.images.first.src.to_s,
-              link_description: object.description
+  Tip.create(
+    tipper_id: tipper_array.sample,
+    tippee_id: tippee_array.sample,
+    url: link,
+    amount: rand(0.01..0.1),
+    link_title: object.title,
+    link_thumbnail: object.images.first.src.to_s,
+    link_description: object.description
   )
 end
 
@@ -107,39 +116,116 @@ end
 
 
 
-
-User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
+te = User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
   password: "qwerty123",
   image_url: "https://avatars3.githubusercontent.com/u/9012942?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Liz McKoy", email: "liz@team.squad", username: "Liz",
+liz = User.create(full_name: "Liz McKoy", email: "liz@team.squad", username: "Liz",
   password: "qwerty123",
   image_url: "https://avatars0.githubusercontent.com/u/11071977?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Kyle Black Snow", email: "kyle@team.squad", username: "Kyle",
+kyle = User.create(full_name: "Kyle Black Snow", email: "kyle@team.squad", username: "Kyle",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11069001?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Kelly Munro", email: "kelly@team.squad", username: "Kelly",
+kelly = User.create(full_name: "Kelly Munro", email: "kelly@team.squad", username: "Kelly",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11514966?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Will Sklenars", email: "will@team.squad", username: "Will",
+will = User.create(full_name: "Will Sklenars", email: "will@team.squad", username: "Will",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11266273?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
 
-User.create(full_name: "Rhys Portegys", email: "rhys@team.squad", username: "Rhys",
+rhys = User.create(full_name: "Rhys Portegys", email: "rhys@team.squad", username: "Rhys",
   password: "qwerty123",
   image_url: "https://avatars0.githubusercontent.com/u/11514884?v=3&s=460",
   balance: rand(3..10),
   terms_version: "1.0")
+
+tieke = [te,liz,kyle,kelly,will,rhys]
+
+
+tieke.each do | member |
+  Tipper.create(user_id: member.id)
+  Tippee.create(user_id: member.id)
+  user_array.each do | user_id | 
+    Follow.create(followed_id: member.id , following_id: user_id)    
+  end
+  tieke.each do | follower | 
+    if !(member == follower)
+      Follow.create(followed_id: member.id , following_id: follower.id)    
+    end
+  end
+end
+
+
+
+# #will
+# will_links = [
+#   "https://vimeo.com/55444380",
+#   "https://vimeo.com/91825051",
+#   "https://www.youtube.com/watch?v=-OTGYDp7vsM",
+#   "http://skwynethpaltrow.github.io/",
+#   "http://willandreece.bandcamp.com/releases"
+# ]
+
+
+# will_links.each do | link |
+#   temp_tipper_array = tipper_array.shuffle.dup
+#   object = LinkThumbnailer.generate(link)
+#   5.times do 
+#     Tip.create(
+#       tipper_id: temp_tipper_array.pop,
+#       tippee_id: Tippee.find(user_id: will.id),
+#       url: link,
+#       amount: rand(0.01..0.1),
+#       link_title: object.title,
+#       link_thumbnail: object.images.first.src.to_s,
+#       link_description: object.description
+#     )
+#   end
+# end
+
+# # kyle
+# kyle_links = [
+#   "kylesnowschwartz.github.io",
+#   "kylesnowschwartz.github.io/keyboardography",
+#   "https://kylesnowschwartz.github.io/conway_js/",
+#   "https://kylesnowschwartz.github.io/marmitegasm/",
+#   "https://cute-animals-in-space.herokuapp.com/",
+#   "https://eda-quick-draw.herokuapp.com/",
+#   "https://www.ethereum.org/"
+# ]
+# # kelly
+# kelly_links = [
+#   "http://kellymdev.github.io/",
+#   "http://kellymdev.github.io/wildlife/",
+#   "http://www.kellymunro.com/blog/",
+#   "https://acronyms.herokuapp.com/",
+#   "https://www.flickr.com/photos/kelstar-nz"
+# ]
+# # liz
+# liz_links = [
+#   "https://www.youtube.com/watch?v=qq4n0ioRbvs"
+# ]
+# # te
+# te_links = [
+# "https://soundcloud.com/teaihebutler",
+# "http://teaiheb.github.io/",
+# "https://www.facebook.com/teaiheb/videos/499550278097/?l=3409557855951914178"
+# ]
+# # rhys
+# rhys_links = [
+#   "http://rhyseda.github.io/"
+# ]
+
