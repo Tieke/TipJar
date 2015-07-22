@@ -108,38 +108,38 @@ end
 
 
 
-User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
+tieke = [User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
   password: "qwerty123",
   image_url: "https://avatars3.githubusercontent.com/u/9012942?v=3&s=460",
   balance: rand(3..10),
-  terms_version: "1.0")
+  terms_version: "1.0"),
 
 User.create(full_name: "Liz McKoy", email: "liz@team.squad", username: "Liz",
   password: "qwerty123",
   image_url: "https://avatars0.githubusercontent.com/u/11071977?v=3&s=460",
   balance: rand(3..10),
-  terms_version: "1.0")
+  terms_version: "1.0"),
 
 User.create(full_name: "Kyle Black Snow", email: "kyle@team.squad", username: "Kyle",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11069001?v=3&s=460",
   balance: rand(3..10),
-  terms_version: "1.0")
+  terms_version: "1.0"),
 
 User.create(full_name: "Kelly Munro", email: "kelly@team.squad", username: "Kelly",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11514966?v=3&s=460",
   balance: rand(3..10),
-  terms_version: "1.0")
+  terms_version: "1.0"),
 
 User.create(full_name: "Will Sklenars", email: "will@team.squad", username: "Will",
   password: "qwerty123",
   image_url: "https://avatars2.githubusercontent.com/u/11266273?v=3&s=460",
   balance: rand(3..10),
-  terms_version: "1.0")
+  terms_version: "1.0"),
 
 User.create(full_name: "Rhys Portegys", email: "rhys@team.squad", username: "Rhys",
   password: "qwerty123",
   image_url: "https://avatars0.githubusercontent.com/u/11514884?v=3&s=460",
   balance: rand(3..10),
-  terms_version: "1.0")
+  terms_version: "1.0")]
