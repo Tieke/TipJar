@@ -255,8 +255,7 @@ end
 # te
 te_links = [
 "https://soundcloud.com/teaihebutler",
-"http://teaiheb.github.io/",
-"https://www.facebook.com/teaiheb/videos/499550278097/?l=3409557855951914178"
+"http://teaiheb.github.io/"
 ]
 
 te_links.each do | link |
