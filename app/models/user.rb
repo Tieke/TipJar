@@ -3,14 +3,14 @@ class User < ActiveRecord::Base
   has_one :tipper
   has_many :withdrawals
   has_many :deposits
-  has_many :follower_follows, class_name: 'Follow', foreign_key: :follower_id
-  has_many :followings, through: :follower_follows
+  has_many :followed_follows, class_name: 'Follow', foreign_key: :followed_id
+  has_many :followings, through: :followed_follows
   has_many :following_follows, class_name: 'Follow', foreign_key: :following_id
-  has_many :followers, through: :following_follows
+  has_many :followeds, through: :following_follows
 
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable #, :omniauthable, omniauth_providers: [:coinbase]
+         :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true
@@ -26,15 +26,5 @@ class User < ActiveRecord::Base
     self.balance -= amount
     self.save
   end
-
-  # def self.find_for_oauth(auth)
-  #   where(auth.slice(:provider, :uid)).first_or_create do |user|
-  #     user.provider = auth.provider
-  #     user.uid = auth.uid
-  #     user.email = auth.info.email
-  #     user.name = auth.info.name
-  #     user.create_credentials! :user => user, :credentials => auth.credentials
-  #   end
-  # end
 
 end

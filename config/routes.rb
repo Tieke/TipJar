@@ -17,8 +17,6 @@ Rails.application.routes.draw do
 
   resources :bit_pay_clients
 
-  # get 'users/:user_id/purchase', to: 'users#initiate_coinbase', as: :purchase
-
   # post 'users/:user_id/retrieve', to: 'users#retrieve_checkout'
   get 'browse', to: 'pages#page'
 
@@ -44,6 +42,8 @@ Rails.application.routes.draw do
   resources :tippees, only: [:new, :create]
 
   resources :tippers, only: [:update]
+
+  get '/users/:user_id/following_tips', to: 'users#following_tips', as: :following_tips
 
   get '/users/:user_id/follow', to: 'users#follow', as: :follow_user
 
