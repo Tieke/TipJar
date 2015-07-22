@@ -94,5 +94,13 @@ $(document).ready(function(){
 	$(document).on('mouseleave', '.single_tip_container', function() {
 		$(this).find(".tip_attributes_container").hide("slide", {"direction":"down"}, 500)
 	})
+
+	$(document).on('mouseover', '.follow_container', function() {
+		$(this).find(".follow_attributes_container").show("slide", {"direction":"down"}, 500)
+	})
+
+	$(document).on('mouseleave', '.follow_container', function() {
+		$(this).find(".follow_attributes_container").hide("slide", {"direction":"down"}, 500)
+	})
 });
 
