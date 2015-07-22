@@ -93,23 +93,24 @@ random_urls = [
 ].shuffle
 
 
+
 20.times do | i |
   link = random_urls[i]
   object = LinkThumbnailer.generate(link)
-  Tip.create(
-    tipper_id: tipper_array.sample,
-    tippee_id: tippee_array.sample,
-    url: link,
-    link_title: object.title,
-    link_thumbnail: object.images.first.src.to_s,
-    link_description: object.description
-  )
+  rand(5..10).times do
+    Tip.create(
+      tipper_id: tipper_array.sample,
+      tippee_id: tippee_array.sample,
+      url: link,
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description,
+      amount: rand(0.01..0.20).round(2)
+    )
+  end
 end
 
 # Our stuff after here
-
-
-
 
 te = User.create(full_name: "Te Aihe Butler", email: "teaihe@team.squad", username: "Te",
   password: "qwerty123",
@@ -163,6 +164,22 @@ tieke.each do | member |
   end
 end
 
+tieke.each do | member |
+  8.times do 
+    link = random_urls.sample
+    object = LinkThumbnailer.generate(link)
+    Tip.create(
+      tipper_id: member.tipper.id,
+      tippee_id: tippee_array.sample,
+      url: link,
+      link_title: object.title,
+      link_thumbnail: object.images.first.src.to_s,
+      link_description: object.description,
+      amount: rand(0.01..0.20).round(2)
+    )
+  end
+end
+
 
 
 #will
@@ -185,7 +202,8 @@ will_links.each do | link |
       url: link,
       link_title: object.title,
       link_thumbnail: object.images.first.src.to_s,
-      link_description: object.description
+      link_description: object.description,
+      amount: rand(0.10..0.20).round(2)
     )
   end
 end
@@ -208,7 +226,8 @@ kelly_links.each do | link |
       url: link,
       link_title: object.title,
       link_thumbnail: object.images.first.src.to_s,
-      link_description: object.description
+      link_description: object.description,
+      amount: rand(0.01..0.20).round(2)
     )
   end
 end
@@ -229,7 +248,8 @@ liz_links.each do | link |
       url: link,
       link_title: object.title,
       link_thumbnail: object.images.first.src.to_s,
-      link_description: object.description
+      link_description: object.description,
+      amount: rand(0.01..0.20).round(2)
     )
   end
 end
@@ -251,7 +271,8 @@ te_links.each do | link |
       url: link,
       link_title: object.title,
       link_thumbnail: object.images.first.src.to_s,
-      link_description: object.description
+      link_description: object.description,
+      amount: rand(0.01..0.20).round(2)
     )
   end
 end
@@ -271,7 +292,8 @@ rhys_links.each do | link |
       url: link,
       link_title: object.title,
       link_thumbnail: object.images.first.src.to_s,
-      link_description: object.description
+      link_description: object.description,
+      amount: rand(0.10..0.20).round(2)
     )
   end
 end
@@ -291,7 +313,8 @@ kyle_links.each do | link |
       url: link,
       link_title: object.title,
       link_thumbnail: object.images.first.src.to_s,
-      link_description: object.description
+      link_description: object.description,
+      amount: rand(0.01..0.20).round(2)
     )
   end
 end
