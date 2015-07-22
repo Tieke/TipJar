@@ -150,11 +150,4 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
-	after do
-		User.destroy_all
-		Follow.destroy_all
-		Deposit.destroy_all
-		Withdrawal.destroy_all
-	end
-
 end

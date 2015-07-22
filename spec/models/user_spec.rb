@@ -85,9 +85,4 @@ RSpec.describe User, type: :model do
     end
   end
 
-
-  after do
-    Follow.destroy_all
-    User.destroy_all
-  end
 end
