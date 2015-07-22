@@ -106,7 +106,8 @@ p {
 }
 
 .sign-in-form,
-.edit-user-form {
+.edit-user-form,
+.password_form {
 	margin: 20px 30%;
 	width: 40%;
   font-family: "Nexa-Light", Verdana, Tahoma;
@@ -117,12 +118,14 @@ p {
 .sign-in-form input[type="password"],
 .edit-user-form input[type="text"],
 .edit-user-form input[type="email"],
-.edit-user-form input[type="password"] {
+.edit-user-form input[type="password"],
+.password_form input[type="email"] {
   text-align: center;
 }
 
 .sign-in-form input[type="submit"],
-.edit-user-form input[type="submit"] {
+.edit-user-form input[type="submit"],
+.password_form input[type="submit"] {
   margin-bottom: 15px;
 }
 
@@ -209,13 +212,15 @@ p {
 
 .sign_in,
 .sign_up,
-.edit_user {
+.edit_user,
+.password_form {
 	text-align: center;
 	padding: 20px 20px 30px;
 }
 
 .sign_in,
-.edit_user {
+.edit_user,
+.password_form {
 	background-color: #d0d0d0;
 	margin-bottom: 0;
 }
@@ -227,7 +232,8 @@ p {
 
 .sign_in .field,
 .sign_up .field,
-.edit_user .field {
+.edit_user .field,
+.password_form .field {
 	padding: 5px 0 10px;
 }
 
@@ -245,6 +251,10 @@ p {
   width: 65%;
 }
 
+.password_form input[type="email"] {
+  width: 70%;
+}
+
 .sign_in input[type="check_box"],
 .sign_up input[type="check_box"],
 .edit_user input[type="check_box"],
@@ -254,7 +264,8 @@ p {
 
 .sign_in input[type="submit"],
 .sign_up input[type="submit"],
-.edit_user input[type="submit"] {
+.edit_user input[type="submit"],
+.password_form input[type="submit"] {
   padding: 5px 10px;
 }
 
