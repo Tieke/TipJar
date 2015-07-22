@@ -178,7 +178,7 @@ p {
 }
 
 
-.welcome_container, h2, h3, li {
+.welcome_container, .topup-confirm, .withdrawal-confirm, h2, h3, h4, li {
     font-family: "Nexa-Light", Verdana, Tahoma;
 }
 
