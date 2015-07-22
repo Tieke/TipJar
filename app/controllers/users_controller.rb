@@ -47,10 +47,17 @@ end
 		user = User.find(params[:user_id])
 		tips_of_people_user_follows = []
 		user_followings = user.following_follows
+		puts "****************************"
 		user_followings.each do |user|
-			tips_of_people_user_follows << user.tipper.tips
+			followed = User.find(user.followed_id)
+				followed.tipper.tips.each do |tip|
+					tips_of_people_user_follows << tip
+				end
 		end
-		render json: tips_of_people_user_follows
+		formattedTips = formatTipsWithUsers(tips_of_people_user_follows)
+		pp formattedTips
+		puts "****************************"
+		render json: formattedTips
 	end
 
 	def topup
@@ -113,6 +120,33 @@ end
     render json: { "num_of_tips_given" => @num_of_tips_given,
                     "num_of_tips_recieved" => @num_of_tips_recieved }
   end
+
+  private
+
+	def formatTipsWithUsers(tips)
+		outputData = []
+		givers = tips.map { |tip| tip.tipper.user }
+		receivers = tips.map { |tip| tip.tippee.user }
+		givers.length.times do | i |
+			outputData.push(
+				{
+					tip: tips[i],
+					giver: {
+						userName: givers[i].username,
+						id: givers[i].id,
+						image_url: givers[i].image_url
+					},
+					receiver: {
+						userName: receivers[i].username,
+						id: receivers[i].id,
+						image_url: receivers[i].image_url
+					}
+				}
+			)
+		end
+		outputData
+	end
+
 end
 
 # HTTParty.post("https://test.bitpay.com/tokens", query: {'label'=>'TipJar', 'id'=>'TewzSJHWriVowxFYgAsa1TrZzkxnegawhcc', 'pairingCode'=>'bpsPdGQ'})

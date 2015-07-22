@@ -62,8 +62,8 @@ $(document).ready(function(){
 
 	$(document).on('click', '.profile_link', function(e) {
 		e.preventDefault()
-		another_users_pathname  = $(this).context.pathname
-		renderProfile(another_users_pathname )
+		another_users_pathname = $(this).context.pathname
+		renderProfile(another_users_pathname, "/tips/given")
 	})
 
 	$(document).on('click', '.external_link', function(e) {
@@ -74,7 +74,8 @@ $(document).ready(function(){
 
 	$(document).on('click', '#home_button', function(e) {
 		e.preventDefault()
-		renderFeed();
+		renderFeed('/tips');
+		$('.home_filter').attr('value', 'Following')
 	})
 
 	$(document).on('click', '#profile_button', function(e) {
