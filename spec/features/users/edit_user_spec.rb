@@ -53,4 +53,12 @@ describe "Editing a user account", js: true do
       expect(page).to have_content("Current password can't be blank")
     end
   end
+
+  context "when user is not logged in" do
+    it "displays an error message to the user" do
+      visit '/users/edit'
+
+      expect(page).to have_content("You need to sign in or sign up before continuing.")
+    end
+  end
 end
