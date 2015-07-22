@@ -38,7 +38,7 @@ var ProfileInfoContainer = React.createClass({
 			return (
 				<div className="profile_info_container col-lg-12">
 					<PersonalInfoContainer data={this.state.data} />
-					//<PersonalInfoContainer onFollowSubmit={this.handleFollowSubmit} data={this.state.data} />
+					//<PersonalInfoContainer userUrl={this.props.url} onFollowSubmit={this.handleFollowSubmit} data={this.state.data} />
 					<Following />
 					<Followers />
 				</div>
